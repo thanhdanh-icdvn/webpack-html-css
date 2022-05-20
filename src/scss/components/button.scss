@@ -1,0 +1,73 @@
+/* state */
+@import '../mixins/button';
+.btn {
+  border: none;
+  padding: $btn-padding;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: $fs-default;
+  cursor: pointer;
+  transition-duration: $btn-transition-duration;
+  min-width: 12rem;
+  border: 2px solid transparent;
+  &:focus {
+    outline: none;
+  }
+
+  &--success {
+    @include button-variant($clr-white,$btn-bg-success,$btn-bg-success);
+  }
+
+  &--info {
+    @include button-variant($clr-white,$btn-bg-info,$btn-bg-info);
+  }
+
+  &--error {
+    @include button-variant($clr-white,$btn-bg-error,$btn-bg-error);
+  }
+
+  &--warning {
+    @include button-variant($clr-black,$btn-bg-warning,$btn-bg-warning);
+  }
+
+  &--black {
+    @include button-variant($clr-white,$btn-bg-black,$btn-bg-black);
+  }
+
+  &--gray {
+    @include button-variant($clr-white,$btn-bg-gray,$btn-bg-gray);
+  }
+
+  &--fw {
+    width: 100%;
+    display: block;
+  }
+
+  &--outline{
+    @include button-variant($btn-bg-gray,$btn-bg-gray,$btn-bg-gray,"outline");
+    &-success{
+      @include button-variant($btn-bg-success,$btn-bg-success,$btn-bg-success,"outline");
+    }
+    &-info{
+      @include button-variant($btn-bg-info,$btn-bg-info,$btn-bg-info,"outline");
+    }
+    &-warning{
+      @include button-variant($btn-bg-warning,$btn-bg-warning,$btn-bg-warning,"outline");
+    }
+    &-error{
+      @include button-variant($btn-bg-error,$btn-bg-error,$btn-bg-error,"outline");
+    }
+    &-black{
+      @include button-variant($btn-bg-black,$btn-bg-black,$btn-bg-black,"outline");
+    }
+    &-gray{
+      @include button-variant($btn-bg-gray,$btn-bg-gray,$btn-bg-gray,"outline");
+    }
+  }
+}
+
+.disable {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

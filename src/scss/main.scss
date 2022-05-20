@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,500;0,700;0,900;1,100;1,400;1,700;1,900&display=swap');
+/*
+Libary block import
+**/
+// Swiper import
+@import '~swiper/modules/mousewheel/mousewheel.scss';
+@import '~swiper/modules/keyboard/keyboard.scss';
+@import '~swiper/modules/navigation/navigation.scss';
+@import '~swiper/modules/pagination/pagination.scss';
+@import '~swiper/swiper.scss';
+@import 'custom/swiper.scss';
+
+@import 'base/reset';
+@import 'base/variables';
+@import 'fonts/font-face';
+
+// Mixins block
+@import 'mixins/flex';
+@import 'mixins/utils';
+@import 'mixins/icon';
+@import 'mixins/utils';
+
+// Component block
+@import 'components/containter.scss';
+@import 'components/button.scss';
+@import 'components/menu.scss';
+@import 'components/input.scss';
+
+
+body {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: 'Poppins',Arial, Helvetica, sans-serif;
+}
+.header--top{
+  background-color: $btn-bg-info;
+}
+
+
+.button-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  justify-content: flex-start;
+
+  @media screen and (max-width: 40rem) {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .btn{
+      width: 100%;
+    }
+  }
+}
+
+.button-list>*:not(:last-child),
+.button-list>*:not(:first-child) {
+  margin-bottom: 15px;
+}
+
+img#output {
+  max-width: 100%;
+  object-fit: cover;
+  aspect-ratio: 16/9;
+}
+
+.list-icon {
+  overflow-y: scroll;
+  max-height: 600px;
+  table {
+    width: 100%;
+    max-height: 400px;
+    overflow: scroll;
+    thead{
+      position: sticky;
+      top: 0px;
+      background: #f3f3f3;
+    }
+    tfoot{
+      position: sticky;
+      bottom: 0px;
+      background: #f3f3f3;
+      min-height: 30px;
+    }
+  }
+
+  th{
+    padding: 15px;
+    font-weight: bold;
+    border: 1px solid white;
+  }
+  th,
+  td {
+    width: 33%;
+    text-align: center;
+    border: 1px solid $btn-default-border;
+  }
+}
+#lbl-search{
+  font-weight: bold;
+}

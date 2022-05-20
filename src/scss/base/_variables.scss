@@ -1,0 +1,35 @@
+$btn-default-color: #333 !default;
+$btn-default-bg: #fff !default;
+$btn-default-border: #ccc !default;
+
+$btn-padding:15px 32px !default;
+$btn-transition-duration: 400ms !default;
+$fs-default:16px !default;
+
+/* btn bg */
+$btn-bg-success:#4CAF50 !default;
+$btn-bg-info:#008CBA !default;
+$btn-bg-error:#F44336 !default;
+$btn-bg-warning:#ffc107 !default;
+$btn-bg-gray:gray !default;
+$btn-bg-black:black !default;
+$btn-bg-light:#e7e7e7 !default;
+
+/* color */
+$clr-black:black !default;
+$clr-light:#e7e7e7 !default;
+$clr-gray:gray !default;
+$clr-white:white !default;
+
+// menu vars
+$menu-anim-duration: 0.4s;
+$hamburger-menu-size: 30px;
+$hamburger-menu-line-height: 2px;
+$hamburger-menu-border-radius: 0.12em;
+
+$menu-main-color: #FEFEFE;
+$menu-default-color: #2962ff;
+$hamburger-menu-bg-color: lighten($menu-default-color,5%);
+$content-bg-color: rgba($menu-default-color, 0.98);
+$hover-line-height: $hamburger-menu-line-height;
+$hover-color: darken($menu-main-color, 10%);

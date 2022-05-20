@@ -1,0 +1,13 @@
+/**
+  * This is container block
+*/
+.container{
+  width: 85%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &--fluid{
+    width: 100%;
+    margin: 0 auto;
+  }
+}

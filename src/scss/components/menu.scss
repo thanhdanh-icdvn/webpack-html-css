@@ -1,0 +1,200 @@
+// Menu
+.outer-menu {
+  position: fixed;
+  top: 1rem;
+  left: 0rem;
+  z-index: 1;
+  @include flex-center();
+
+  .checkbox-toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: #{$hamburger-menu-size};
+    height: #{$hamburger-menu-size};
+    opacity: 0;
+
+    &:checked {
+      &+.hamburger {
+        >div {
+          transform: rotate(135deg);
+
+          &:before,
+          &:after {
+            top: 0;
+            transform: rotate(90deg);
+          }
+
+          &:after {
+            opacity: 0;
+          }
+        }
+      }
+
+      &~.menu {
+        pointer-events: auto;
+        visibility: visible;
+
+        >div {
+          transform: scale(1);
+          transition-duration: 0.75s;
+
+          >div {
+            opacity: 1;
+            transition: opacity #{$menu-anim-duration} ease #{$menu-anim-duration};
+          }
+        }
+      }
+    }
+
+    &:hover+.hamburger {
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    &:checked:hover+.hamburger>div {
+      transform: rotate(225deg);
+    }
+  }
+
+  .hamburger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    @include square(#{$hamburger-menu-size});
+    padding: 1em;
+    background: #{$hamburger-menu-bg-color};
+    border-radius: 0 #{$hamburger-menu-border-radius} #{$hamburger-menu-border-radius} 0;
+    cursor: pointer;
+    transition: box-shadow #{$menu-anim-duration} ease;
+    backface-visibility: hidden;
+    transition: all 0.5s ease;
+    border-radius: 0rem;
+
+    @media screen and(max-width:37.5rem) {
+      @include square(calc(#{$hamburger-menu-size} * 0.75))
+    }
+
+    @include flex-center;
+
+    >div {
+      position: relative;
+      flex: none;
+      width: 100%;
+      height: #{$hamburger-menu-line-height};
+      background: #{$menu-main-color};
+      transition: all #{$menu-anim-duration} ease;
+      @include flex-center;
+
+      &:before,
+      &:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: calc(calc(#{$hamburger-menu-size} / 6) * -1);
+        left: 0;
+        width: 100%;
+        height: #{$hamburger-menu-line-height};
+        background: inherit;
+        transition: all #{$menu-anim-duration} ease;
+      }
+
+      &:after {
+        top: calc(#{$hamburger-menu-size} / 6);
+      }
+    }
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    visibility: hidden;
+    overflow: hidden;
+    backface-visibility: hidden;
+    outline: 1px solid transparent;
+    @include flex-center;
+
+    >div {
+      width: 200vw;
+      height: 200vh;
+      color: #{$menu-main-color};
+      background: #{$content-bg-color};
+      border-radius: 50%;
+      transition: all #{$menu-anim-duration} ease;
+      flex: none;
+      transform: scale(0);
+      backface-visibility: hidden;
+      overflow: hidden;
+      @include flex-center();
+
+      >div {
+        text-align: center;
+        max-width: 90%;
+        max-height: 60vh;
+        opacity: 0;
+        transition: opacity #{$menu-anim-duration} ease;
+        overflow-y: auto;
+        flex: 1;
+        @include flex-center();
+
+        >ul {
+          list-style: none;
+          padding: 0 1em;
+          margin: 0;
+          max-height: 100vh;
+          @include flex-direction(column);
+          @include flex-center();
+
+          >li {
+            padding: 0;
+            margin: 1em;
+            font-size: 24px;
+            display: block;
+
+            >a {
+              color: white;
+              text-decoration: none;
+              position: relative;
+              display: inline;
+              cursor: pointer;
+              // transition: color #{$menu-anim-duration} ease;
+
+
+              &:hover {
+                color: #{$hover-color};
+
+                &:after {
+                  // width: 100%;
+                  transform-origin: left;
+                  transform: scaleX(1);
+                }
+              }
+
+              &:after {
+                content: "";
+                position: absolute;
+                z-index: 1;
+                bottom: -0.15em;
+                left: 0;
+                // width: 0;
+                width: 100%;
+                height: #{$hover-line-height};
+                background: #{$hover-color};
+                // transition: width #{$menu-anim-duration} ease;
+                transform-origin: right;
+                transform: scaleX(0);
+                transition: transform #{$menu-anim-duration} ease-in-out;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

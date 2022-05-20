@@ -1,0 +1,39 @@
+input[type="search"],input[type="text"],input[type="password"]{
+  outline: none;
+  position: relative;
+  padding: 10px 0px;
+  display: block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  &.fw{
+    width: 100%;
+  }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+	vertical-align: top;
+  -webkit-appearance: none;
+  -moz-appearance: sear;
+  margin-right: 1rem;
+  height: 2em;
+  width: 2em;
+  border-radius: 50em;
+  opacity: 0;
+  content: 'close';
+  pointer-events: none;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  right: 0;
+  display: inline-block;
+  @include svg-mask(url(~assets/icons/close-circled.svg),);
+}
+
+input[type="search"]:focus::-webkit-search-cancel-button {
+  opacity: 0.5;
+  pointer-events: all;
+}
+
+input[type="search"].dark::-webkit-search-cancel-button {
+  filter: invert(1);
+}

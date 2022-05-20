@@ -1,0 +1,13 @@
+/*
+*Svg mask
+* $svgUrl as url(../*.svg)
+* $svgColor as color | #hex | rgba(...)
+*/
+@mixin svg-mask($svgUrl, $svgColor:gray) {
+  background-color: #{$clr-gray};
+  background-color: #{$svgColor};
+  -webkit-mask: #{$svgUrl} no-repeat 50% 50%;
+  mask:#{$svgUrl} no-repeat 50% 50%;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+}
