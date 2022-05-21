@@ -72,6 +72,29 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          {
+            loader: 'postcss-loader',
+            options:{
+              postcssOptions: {
+                sourceMap: true,
+                plugins: [
+                  "postcss-flexbugs-fixes",
+                  [
+                    "postcss-preset-env",
+                    {
+                      "autoprefixer": {
+                        "flexbox": "no-2009"
+                      },
+                      "stage": 3,
+                      "features": {
+                        "custom-properties": false
+                      }
+                    }
+                  ]
+                ]
+              }
+            }
+          },
           'resolve-url-loader',
           {
             loader: 'sass-loader',
