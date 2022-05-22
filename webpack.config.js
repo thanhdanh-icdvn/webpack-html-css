@@ -21,13 +21,16 @@ module.exports = {
       title: 'Development',
       template: "src/index.html"
     }),
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin({
+      filename:"assets/css/[name].css"
+    })
   ],
   devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: "[name].bundle.js",
+    filename: "assets/js/[name].bundle.js",
     clean: true,
+    publicPath: '/'
   },
   devServer: {
     static: {
