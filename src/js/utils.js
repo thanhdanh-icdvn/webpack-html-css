@@ -1,6 +1,9 @@
-// Load image from user iamge computer
-function loadFile(event) {
-  var output = document.getElementById('output');
+/**
+ * Function to load single image from local
+ * @param {*} event
+ */
+function loadFile(event,$selectorId) {
+  var output = document.getElementById($selectorId);
   const currentFile = event.target.files[0];
   if(currentFile){
     output.src = URL.createObjectURL(currentFile);
@@ -10,7 +13,10 @@ function loadFile(event) {
   }
 };
 window.loadFile = loadFile;
-
+/**
+ * Function to update Table index from table selector
+ * @param {*} $selector
+ */
 function updateTableIndex($selector)
 {
     $($selector).each(function(){
@@ -18,7 +24,11 @@ function updateTableIndex($selector)
     });
 }
 window.updateTableIndex = updateTableIndex;
-
+/**
+ * Function to generate an Array with size
+ * @param {*} size
+ * @returns Array with size
+ */
 function GenerateNewArray(size){
   let array = [];
   for(let i = 0; i < size;i++){
@@ -28,7 +38,12 @@ function GenerateNewArray(size){
 }
 window.GenerateNewArray = GenerateNewArray;
 
-// Deplay function to wait user input end and handle event after that
+/**
+ * Deplay function to wait user input end and handle event after that
+ * @param {*} callback Callback function
+ * @param {*} ms Milisecond delay
+ * @returns Callback function with delay
+ */
 function delay(callback, ms) {
   var timer = 0;
   return function() {
@@ -40,3 +55,29 @@ function delay(callback, ms) {
   };
 }
 window.delay = delay;
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}

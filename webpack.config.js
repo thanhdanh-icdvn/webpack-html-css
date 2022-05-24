@@ -2,6 +2,28 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const fs = require('fs');
+const CopyPlugin = require('copy-webpack-plugin');
+
+/**
+ * Function to generate HTML from template
+ * @param {*} templateDir The tempalte directory
+ * @returns Html filed in build directory
+ */
+function generateHtmlPlugins(templateDir = './src/pages') {
+  const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
+  return templateFiles.map(item => {
+    // Split names and extension
+    const parts = item.split('.')
+    const name = parts[0]
+    const extension = parts[1]
+    return new HtmlWebpackPlugin({
+      filename: `${name}.html`,
+      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`)
+    })
+  })
+}
+const htmlPlugins = generateHtmlPlugins('./src/pages');
 
 module.exports = {
   entry: './src/js/app.js',
@@ -10,6 +32,7 @@ module.exports = {
     modules: [path.join(__dirname, 'src'), 'node_modules'],
     alias: {
       'swiper': path.resolve(__dirname, './node_modules/swiper'),
+      'assets':path.resolve(__dirname,'./src/assets')
     }
   },
   plugins: [
@@ -17,14 +40,16 @@ module.exports = {
       $: 'jquery',
       jQuery: 'jquery',
     }),
-    new HtmlWebpackPlugin({
-      title: 'Development',
-      template: "src/index.html"
-    }),
     new MiniCssExtractPlugin({
-      filename:"assets/css/[name].css"
-    })
-  ],
+      filename: "assets/css/[name].css"
+    }),
+    new CopyPlugin({
+      patterns: [{
+        from: 'src/assets/images',
+        to: 'assets/images'
+      }]
+    }),
+  ].concat(htmlPlugins),
   devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -39,7 +64,10 @@ module.exports = {
     compress: true,
     port: 9000,
     hot: true,
-    watchFiles: ["./src/*"],
+
+
+
+    watchFiles: ["./src/pages/**/*.html"],
   },
   module: {
     rules: [{
@@ -77,7 +105,7 @@ module.exports = {
           'css-loader',
           {
             loader: 'postcss-loader',
-            options:{
+            options: {
               postcssOptions: {
                 sourceMap: true,
                 plugins: [
@@ -120,12 +148,12 @@ module.exports = {
           'webfonts-loader'
         ]
       },
-      {
-        test:/\.html$/,
-        use:{
-          loader:'html-loader'
-        }
-      }
+      // {
+      //   test: /\.html$/,
+      //   use: {
+      //     loader: 'html-loader'
+      //   }
+      // },
     ],
-  },
+  }
 }

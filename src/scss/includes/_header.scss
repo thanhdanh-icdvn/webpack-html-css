@@ -1,0 +1,16 @@
+#header{
+  background-color: lighten($color: $btn-bg-success, $amount: 5%); /* Grey background */
+  padding: $top-header-padding; /* Some padding */
+  font-size: $top-header-fs-large; /* Big font size */
+  position: fixed; /* Fixed position - sit on top of the page */
+  top: 0;
+  width: 100%; /* Full width */
+  transition: 0.2s; // Add a transition effect (when scrolling - and font size is decreased)
+  z-index: 10;
+  transition: 500ms ease;
+  border: 1px solid red;
+  box-sizing: border-box;
+  .center{
+    text-align: center;
+  }
+}

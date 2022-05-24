@@ -18,7 +18,7 @@ $.each(swiper1Array, function () {
   let itemTemplate = `
   <div class="swiper-slide">
     <figure>
-      <img src="https://picsum.photos/id/${item}/1920/1080"/>
+      <img src="/assets/images/post/${item}-1920x1080.jpg"/>
       <div class="swiper-lazy-preloader"></div>
       <figcaption>
         Slide ${item}

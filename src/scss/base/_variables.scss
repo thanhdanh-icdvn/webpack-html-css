@@ -33,3 +33,9 @@ $hamburger-menu-bg-color: lighten($menu-default-color,5%);
 $content-bg-color: rgba($menu-default-color, 0.98);
 $hover-line-height: $hamburger-menu-line-height;
 $hover-color: darken($menu-main-color, 10%);
+
+// header
+$top-header-padding: 10px 10px;
+$top-header-color-main:black;
+$top-header-fs-small:30px;
+$top-header-fs-large:60px;
