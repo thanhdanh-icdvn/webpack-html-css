@@ -47,9 +47,9 @@
 	border: 1px solid #888;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	-webkit-animation-name: animatetop;
-	-webkit-animation-duration: 0.4s;
+	-webkit-animation-duration:0.7s;
 	animation-name: animatetop;
-	animation-duration: 0.4s;
+	animation-duration: 0.7s;
   width: 80%;
 }
 .close {
@@ -60,7 +60,7 @@
 	margin-left: auto;
 	font-size: 32px;
 	font-weight: bold;
-  transition: transform .7s ease-in-out;
+  transition: transform 0.7s ease-in-out;
 	&:hover,	&:focus  {
     transform: rotate(180deg);
 		color: #f3f3f3a5;
