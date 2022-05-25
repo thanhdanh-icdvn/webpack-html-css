@@ -1,6 +1,7 @@
 #header {
   $ul-sub-width: 8em;
-  background-color: lighten($color: $btn-bg-success, $amount: 5%);
+  $current-bg: $btn-bg-success;
+  background-color: lighten($color: $current-bg, $amount: 5%);
   /* Grey background */
   padding: $top-header-padding;
   /* Some padding */
@@ -23,9 +24,10 @@
     @include flex-row;
     @include flex-center-vert;
     @include flex-wrap(wrap);
-    @include mqMobile599{
-      @include flex-column;
+
+    @include mqMobile599 {
       @include align-items(flex-start);
+      @include justify-content(flex-start);
     }
 
     #logo {
@@ -34,27 +36,75 @@
       height: $top-header-fs-large;
       margin-top: 15px;
       margin-bottom: 15px;
-      @include mqMobile599{
-       margin: 0;
+
+      @include mqMobile599 {
+        a{
+          img{
+            vertical-align: middle;
+          }
+        }
       }
     }
 
     nav {
-      margin-top: 15px;
-      margin-bottom: 15px;
-      /* nav */
+      display: flex;
+      flex-direction: column;
+      @include mqMobile599{
+        margin-top: 0;
+      }
+      button.btn-menu-toogle {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        right: 10px;
+        top: 15px;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+
+        .icon {
+          color: white;
+          font-size: 3em;
+        }
+
+        display: none;
+
+        @include mqMobile599 {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+      }
+      ul.nav-menu{
+        @include mqMobile599 {
+          display: none;
+          transition: all 500ms linear;
+          transform-origin: top left;
+          transform: scaleY(0);
+          &.show{
+            display: block;
+            transform: scaleY(1);
+          }
+        }
+
+      }
       .nav-menu,
       .nav-menu ul,
       .nav-menu li,
       .nav-menu a {
-        margin: 0;
-        padding: 0;
         line-height: normal;
         list-style: none;
         position: relative;
         @include flex-column();
         width: 100%;
-        @include mqTablet600{
+        @include mqTablet600 {
           @include flex-row();
         }
       }
@@ -71,11 +121,12 @@
       }
 
       .nav-menu li:hover>ul {
-        min-width:  $ul-sub-width;
+        min-width: $ul-sub-width;
         left: 0;
         opacity: 1;
         z-index: 1000;
-        @include mqMobile599{
+
+        @include mqMobile599 {
           top: 0;
           left: calc(100% + 20px);
         }
@@ -84,7 +135,8 @@
       .nav-menu ul li:hover>ul {
         top: 0;
         left: 100%;
-        @include mqMobile599{
+
+        @include mqMobile599 {
           left: calc(100% + 20px);
         }
       }
@@ -101,7 +153,7 @@
 
       /* sub width */
       .nav-menu ul {
-        min-width:  $ul-sub-width;
+        min-width: $ul-sub-width;
         -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
       }
@@ -112,11 +164,11 @@
         color: white;
         font-weight: normal;
         font-size: 1rem;
-        line-height: 2rem;
         text-decoration: none;
         width: 100%;
         display: flex;
-        &::after{
+
+        &::after {
           position: absolute;
           -webkit-transition: all 0.35s ease;
           transition: all 0.35s ease;
@@ -132,8 +184,9 @@
 
       /* root: active */
       .nav-menu>li>.nav-active {
-        background-color: darken($color: $btn-bg-success, $amount: 5%);
-        &::after{
+        background-color: darken($color: $current-bg, $amount: 5%);
+
+        &::after {
           position: absolute;
           -webkit-transition: all 0.35s ease;
           transition: all 0.35s ease;
@@ -142,7 +195,8 @@
           height: 3px;
           content: "";
           left: 0;
-          background-color: white;;
+          background-color: white;
+          ;
           width: 100%;
         }
       }
@@ -151,9 +205,10 @@
       .nav-menu a:hover,
       .nav-menu a:focus,
       .nav-menu li:hover a {
-        background: darken($color: $btn-bg-success, $amount: 2%);
+        background: darken($color: $current-bg, $amount: 2%);
         color: #FFF;
-        &::after{
+
+        &::after {
           opacity: 1;
           width: 100%;
         }
@@ -163,11 +218,12 @@
       .nav-menu li li a,
       .nav-menu li:hover li a {
         padding: 8px 10px;
-        background: darken($color: $btn-bg-success, $amount: 2%);
+        background: darken($color: $current-bg, $amount: 2%);
         color: #FFF;
         font-size: 12px;
         line-height: normal;
-        &::after{
+
+        &::after {
           position: absolute;
           -webkit-transition: all 0.35s ease;
           transition: all 0.35s ease;
@@ -185,8 +241,9 @@
       .nav-menu li:hover li a:hover,
       .nav-menu li:hover li a:focus,
       .nav-menu li:hover li:hover a {
-        background: darken($color: $btn-bg-success, $amount: 5%);
-        &::after{
+        background: darken($color: $current-bg, $amount: 5%);
+
+        &::after {
           opacity: 1;
           width: 100%;
         }
@@ -194,11 +251,12 @@
 
       /* 3 */
       .nav-menu li:hover li:hover li a {
-        background: darken($color: $btn-bg-success, $amount: 5%);
+        background: darken($color: $current-bg, $amount: 5%);
         display: flex;
         width: 100%;
         flex: 1;
-        &::after{
+
+        &::after {
           position: absolute;
           -webkit-transition: all 0.35s ease;
           transition: all 0.35s ease;
@@ -217,8 +275,9 @@
       .nav-menu li:hover li:hover li a:hover,
       .nav-menu li:hover li:hover li a:focus,
       .nav-menu li:hover li:hover li:hover a {
-        background: darken($color: $btn-bg-success, $amount: 7%);
-        &::after{
+        background: darken($color: $current-bg, $amount: 7%);
+
+        &::after {
           opacity: 1;
           width: 100%;
         }
@@ -226,8 +285,9 @@
 
       /* 4 */
       .nav-menu li:hover li:hover li:hover li a {
-        background: darken($color: $btn-bg-success, $amount: 7%);
-        &::after{
+        background: darken($color: $current-bg, $amount: 7%);
+
+        &::after {
           position: absolute;
           -webkit-transition: all 0.35s ease;
           transition: all 0.35s ease;
@@ -244,8 +304,9 @@
       /* 4: hover */
       .nav-menu li:hover li:hover li:hover li a:hover,
       .nav-menu li:hover li:hover li:hover li a:focus {
-        background: darken($color: $btn-bg-success, $amount: 10%);
-        &::after{
+        background: darken($color: $current-bg, $amount: 10%);
+
+        &::after {
           opacity: 1;
           width: 100%;
         }

@@ -84,4 +84,4 @@ function renderModal($modalId, $buttonId) {
   }
 }
 window.renderModal = renderModal;
-renderModal("myModal","myBtn")
+renderModal("myModal","myBtn");

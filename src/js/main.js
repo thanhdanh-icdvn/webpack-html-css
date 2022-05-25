@@ -44,3 +44,7 @@ $("#txt-search").on("input", delay(function() {
   });
   console.log(value);
 },1000));
+
+$("#btn-menu-toogle").on("click",function(e){
+  $("ul#top-menu").toggleClass("hidden show");
+})
