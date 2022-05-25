@@ -20,3 +20,11 @@ function scrollFunction() {
 }
 
 scrollFunction();
+
+$("#btn-menu-toogle").on("click",function(e){
+  var menuToogleIcon = $(this).find("span.icon");
+  var navMenu = $("ul#top-menu");
+
+  menuToogleIcon.toggleClass("icon-navigation-menu icon-close");
+  navMenu.toggleClass("hidden show");
+})
