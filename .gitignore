@@ -151,5 +151,4 @@ dist
 #npm lock
 package-lock.json
 .vscode
-.firebase*
-firebase.json
+.firebase/*
