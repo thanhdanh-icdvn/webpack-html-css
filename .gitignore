@@ -149,6 +149,6 @@ dist
 /build
 
 #npm lock
-package-lock.json
+# package-lock.json --need for ci
 .vscode
 .firebase/*
