@@ -1,0 +1,48 @@
+[class*='grid-']{
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-even-columns{
+  grid-template-columns: repeat(auto-fit,minmax((min(300px,100%)),1fr));
+
+}
+.grid-odd-columns{
+  grid-template-columns: repeat(auto-fit,minmax((min(400px,100%)),1fr));
+}
+
+.flow{
+  @include flex-column;
+  background-color: lighten($clr-light,5%);
+  padding: 20px 10px;
+  @include box-shadow(2px, 2px, 2px, gray);
+  transition: all 500ms ease-in-out;
+  position: relative;
+  .icon{
+    position: relative;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    @include square(32px);
+    background-color: $clr-success;
+    padding: 10px;
+    border-radius: 50%;
+    transition: transform 500ms ease-in-out;
+    transform: scale(1);
+    &:hover{
+      transform: scale(1.2);
+    }
+  }
+
+  &:hover{
+    @include box-shadow(4px, 4px, 4px, gray);
+  }
+}
+
+
+@media (min-width: 50em) {
+  .grid-auto-flow {
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+  }
+}

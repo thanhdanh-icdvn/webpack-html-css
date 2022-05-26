@@ -84,13 +84,21 @@
       }
       ul.nav-menu{
         @include mqMobile599 {
-          display: none;
-          transition: all 500ms linear;
-          transform-origin: top left;
-          transform: scaleY(0);
+          display: block;
+          &.hidden{
+            height: 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition:all 1s ease-in-out;
+          }
           &.show{
-            display: block;
-            transform: scaleY(1);
+            height: 100%;
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+            transition:all 1s ease-in-out;
+
           }
         }
 

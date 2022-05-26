@@ -11,8 +11,10 @@ Libary block import
 @import 'custom/swiper';
 
 @import 'base/reset';
+@import 'base/colors';
 @import 'base/variables';
 @import 'fonts/font-face';
+@import 'base/spacing';
 
 // Mixins block
 @import 'mixins/flex';
@@ -20,13 +22,17 @@ Libary block import
 @import 'mixins/icon';
 @import 'mixins/utils';
 @import 'mixins/media-query';
-@import 'mixins/spacing';
+
 
 // Component block
 @import 'components/containter';
 @import 'components/button';
 @import 'components/input';
 @import 'components/modal';
+@import 'components/grid';
+
+
+//Include block
 @import 'includes/header';
 
 

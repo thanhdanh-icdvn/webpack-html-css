@@ -2,3 +2,50 @@
   width: $size;
   height: $size;
 }
+@mixin size($width,$height) {
+  width: $width;
+  height: $heght;
+}
+
+@mixin fade($type,$duration:1s) {
+  @if $type== "hide" {
+    opacity: 0;
+    transition: visibility #{$duration}, opacity #{$duration};
+  } @else if $type== "show" {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility #{$duration}, opacity #{$duration};
+  }
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow:$top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin centerAbsolute($pos) {
+  position: absolute;
+  @if $pos == "both" {
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+  } @else if $pos == "left" {
+   left: 50%;
+   transform: translateX(-50%);
+  } @else if $pos == "top" {
+   top: 50%;
+   transform: translateY(-50%);
+  }
+ }
+
+ @mixin minWidth($breakpoint) {
+  @media only screen and (min-width: $breakpoint) { @content; }
+}
+@mixin maxWidth($breakpoint) {
+  @media only screen and (max-width: $breakpoint) { @content; }
+}

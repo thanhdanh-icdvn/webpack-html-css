@@ -237,3 +237,11 @@
   @include flexbox();
   @include justify-content(center);
 }
+
+@mixin flex($direction: row, $content: null , $items: null, $wrap: null) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $content;
+  align-items: $items;
+  flex-wrap: $wrap;
+}
