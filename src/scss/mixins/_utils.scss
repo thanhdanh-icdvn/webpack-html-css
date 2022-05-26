@@ -2,50 +2,112 @@
   width: $size;
   height: $size;
 }
-@mixin size($width,$height) {
+
+@mixin size($width, $height) {
   width: $width;
   height: $heght;
 }
 
-@mixin fade($type,$duration:1s) {
-  @if $type== "hide" {
+@mixin fade($type, $duration:1s) {
+  @if $type=="hide" {
     opacity: 0;
-    transition: visibility #{$duration}, opacity #{$duration};
-  } @else if $type== "show" {
+    transition: visibility #{$duration},
+    opacity #{$duration};
+  }
+
+  @else if $type=="show" {
     visibility: visible;
     opacity: 1;
-    transition: visibility #{$duration}, opacity #{$duration};
+    transition: visibility #{$duration},
+    opacity #{$duration};
   }
 }
 
 @mixin box-shadow($top, $left, $blur, $color, $inset: false) {
   @if $inset {
-    -webkit-box-shadow:inset $top $left $blur $color;
-    box-shadow:inset $top $left $blur $color;
-  } @else {
-    -webkit-box-shadow:$top $left $blur $color;
+    -webkit-box-shadow: inset $top $left $blur $color;
+    box-shadow: inset $top $left $blur $color;
+  }
+
+  @else {
+    -webkit-box-shadow: $top $left $blur $color;
     box-shadow: $top $left $blur $color;
   }
 }
 
 @mixin centerAbsolute($pos) {
   position: absolute;
-  @if $pos == "both" {
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-  } @else if $pos == "left" {
-   left: 50%;
-   transform: translateX(-50%);
-  } @else if $pos == "top" {
-   top: 50%;
-   transform: translateY(-50%);
-  }
- }
 
- @mixin minWidth($breakpoint) {
-  @media only screen and (min-width: $breakpoint) { @content; }
+  @if $pos=="both" {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @else if $pos=="left" {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @else if $pos=="top" {
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
+
+@mixin minWidth($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
 @mixin maxWidth($breakpoint) {
-  @media only screen and (max-width: $breakpoint) { @content; }
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+
+  @if $orientation==vertical {
+    // vertical
+    background: -moz-linear-gradient(top, $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $start-color), color-stop(100%, $end-color));
+    background: -webkit-linear-gradient(top, $start-color 0%, $end-color 100%);
+    background: -o-linear-gradient(top, $start-color 0%, $end-color 100%);
+    background: -ms-linear-gradient(top, $start-color 0%, $end-color 100%);
+    background: linear-gradient(to bottom, $start-color 0%, $end-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start-color', endColorstr='$end-color', GradientType=0);
+  }
+
+  @else if $orientation==horizontal {
+    // horizontal
+    background: -moz-linear-gradient(left, $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, $start-color), color-stop(100%, $end-color));
+    background: -webkit-linear-gradient(left, $start-color 0%, $end-color 100%);
+    background: -o-linear-gradient(left, $start-color 0%, $end-color 100%);
+    background: -ms-linear-gradient(left, $start-color 0%, $end-color 100%);
+    background: linear-gradient(to right, $start-color 0%, $end-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start-color', endColorstr='$end-color', GradientType=1);
+  }
+
+  @else {
+    // radial
+    background: -moz-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, $start-color), color-stop(100%, $end-color));
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+    background: -o-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+    background: -ms-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);
+    background: radial-gradient(ellipse at center, $start-color 0%, $end-color 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$start-color', endColorstr='$end-color', GradientType=1);
+  }
 }

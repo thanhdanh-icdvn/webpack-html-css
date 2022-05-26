@@ -48,6 +48,9 @@
         &-github-2{
           color: $clr-github;
         }
+        &-zalo{
+          color: $clr-zalo;
+        }
       }
       +a{
         margin-top: 7px;
@@ -77,10 +80,21 @@
       &.github-2{
         border-color: $clr-github;
       }
+      &.zalo{
+        border-color: $clr-zalo;
+      }
     }
     &--vert{
       @include flex-column;
       @include flex-center;
+    }
+    &--horiz{
+      @include flex-row;
+      @include flex-center;
+      a + a{
+        margin-top: 0;
+        margin-left: 10px;
+      }
     }
   }
 }

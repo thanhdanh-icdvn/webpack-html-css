@@ -32,10 +32,19 @@ module.exports = {
     modules: [path.join(__dirname, 'src'), 'node_modules'],
     alias: {
       'swiper': path.resolve(__dirname, './node_modules/swiper'),
-      'assets':path.resolve(__dirname,'./src/assets')
+      'assets': path.resolve(__dirname, './src/assets')
+    },
+    fallback: {
+      fs: false
     }
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      // Make a global `process` variable that points to the `process` package,
+      // because the `util` package expects there to be a global variable named `process`.
+           // Thanks to https://stackoverflow.com/a/65018686/14239942
+      process: 'process/browser'
+   }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -64,9 +73,6 @@ module.exports = {
     compress: true,
     port: 9000,
     hot: true,
-
-
-
     watchFiles: ["./src/pages/**/*.html"],
   },
   module: {
@@ -148,12 +154,7 @@ module.exports = {
           'webfonts-loader'
         ]
       },
-      // {
-      //   test: /\.html$/,
-      //   use: {
-      //     loader: 'html-loader'
-      //   }
-      // },
-    ],
+
+    ]
   }
 }
