@@ -38,8 +38,8 @@
       margin-bottom: 15px;
 
       @include mqMobile599 {
-        a{
-          img{
+        a {
+          img {
             vertical-align: middle;
           }
         }
@@ -49,21 +49,23 @@
     nav {
       display: flex;
       flex-direction: column;
-      @include mqMobile599{
-        margin-top: 0;
+
+      @include mqMobile599 {
+        margin-top: 15px;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
       }
+
       button.btn-menu-toogle {
         position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         right: 10px;
         top: 15px;
         background-color: transparent;
         outline: none;
         border: none;
         cursor: pointer;
-
+        @include flex-center;
         &:focus {
           outline: none;
         }
@@ -82,27 +84,31 @@
         }
 
       }
-      ul.nav-menu{
+
+      ul.nav-menu {
         @include mqMobile599 {
-          display: block;
-          &.hidden{
+          @include flex-column;
+          width: 100%;
+          &.hidden {
             height: 0;
             opacity: 0;
             visibility: hidden;
             transform: translateY(-100%);
-            transition:all 1s ease-in-out;
+            transition: all 1s ease-in-out;
           }
-          &.show{
+
+          &.show {
             height: 100%;
             visibility: visible;
             opacity: 1;
             transform: translateY(0);
-            transition:all 1s ease-in-out;
+            transition: all 1s ease-in-out;
 
           }
         }
 
       }
+
       .nav-menu,
       .nav-menu ul,
       .nav-menu li,
@@ -112,6 +118,7 @@
         position: relative;
         @include flex-column();
         width: 100%;
+
         @include mqTablet600 {
           @include flex-row();
         }
