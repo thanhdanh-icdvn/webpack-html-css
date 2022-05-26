@@ -1,0 +1,5 @@
+@for $i from 2 through 18{
+  .fs-#{calc($i * 50)}{
+    font-weight: #{$i * 50};
+  }
+}

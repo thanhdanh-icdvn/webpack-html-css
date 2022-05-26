@@ -15,6 +15,7 @@ Libary block import
 @import 'base/variables';
 @import 'fonts/font-face';
 @import 'base/spacing';
+@import 'base/typography';
 
 // Mixins block
 @import 'mixins/flex';
@@ -30,10 +31,13 @@ Libary block import
 @import 'components/input';
 @import 'components/modal';
 @import 'components/grid';
+@import 'components/social-media-block';
 
 
 //Include block
 @import 'includes/header';
+@import 'includes/footer';
+@import 'includes/sidebar';
 
 
 body {

@@ -238,7 +238,7 @@
   @include justify-content(center);
 }
 
-@mixin flex($direction: row, $content: null , $items: null, $wrap: null) {
+@mixin flex2($direction: row, $content: null , $items: null, $wrap: null) {
   display: flex;
   flex-direction: $direction;
   justify-content: $content;

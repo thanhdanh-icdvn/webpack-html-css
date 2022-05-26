@@ -1,0 +1,86 @@
+.sec-social-block{
+  position: relative;
+  .social-list{
+    position: fixed;
+    right: 10px;
+    margin-left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 50;
+    background: transparent;
+    a{
+      text-decoration: none;
+      transform: scale(1);
+      transition: transform 300ms ease-in-out;
+      background-color: $clr-white;
+      border-radius: 50%;
+      padding: 5px;
+      max-width: 100%;
+      border-width: 2px;
+      border-style: solid;
+      &:hover{
+        transform: scale(1.2);
+      }
+      .icon{
+        text-decoration: none;
+        font-size: 1.5em;
+        &-facebook{
+          color: $clr-facebook;
+        }
+        &-facebook-messenger{
+          color: $clr-facebook-messenger;
+        }
+        &-instagram{
+          color: $clr-instagram;
+        }
+        &-twitter{
+          color: $clr-twitter;
+        }
+        &-google-plus{
+          color: $clr-google;
+        }
+        &-linkedin{
+          color: $clr-linkedin;
+        }
+        &-youtube{
+          color: $clr-youtube;
+        }
+        &-github-2{
+          color: $clr-github;
+        }
+      }
+      +a{
+        margin-top: 7px;
+      }
+
+      &.facebook{
+       border-color: $clr-facebook;
+      }
+      &.facebook-messenger{
+        border-color: $clr-facebook-messenger;
+      }
+      &.instagram{
+        border-color: $clr-instagram;
+      }
+      &.twitter{
+        border-color: $clr-twitter;
+      }
+      &.google{
+        border-color: $clr-google;
+      }
+      &.linkedin{
+        border-color: $clr-linkedin;
+      }
+      &.youtube{
+        border-color: $clr-youtube;
+      }
+      &.github-2{
+        border-color: $clr-github;
+      }
+    }
+    &--vert{
+      @include flex-column;
+      @include flex-center;
+    }
+  }
+}
