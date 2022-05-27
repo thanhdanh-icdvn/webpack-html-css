@@ -1,4 +1,8 @@
-on: push
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -16,14 +20,14 @@ jobs:
     - name: 🔨 Build Project
       run: |
         npm install
-        npm run build
+        npm run build:prod
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
         server: ftp://danhthanh.x10.bz/domains/danhthanh.x10.bz/public_html
         username: zchzxnqe
-        password: ${{ secrets.password }}
+        password: ${{ secrets.FTP_PASSWORD }}
         exclude: |
           **/.git*
           **/.git*/**
