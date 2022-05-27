@@ -9,13 +9,15 @@ function setBackToTopBtnVisibility(offset = 50) {
   }
 }
 document.addEventListener("scroll", function () {
-  setBackToTopBtnVisibility(100);
+  setBackToTopBtnVisibility(50);
 })
 
 $(backToTopBtn).on("click", function (e) {
+  e.preventDefault();
   window.scrollTo({
     top: 0, // could be negative value
     left: 0,
     behavior: 'smooth'
   });
+  $(this).removeClass("show").addClass("hide");
 })
