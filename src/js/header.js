@@ -1,4 +1,6 @@
-const { fstat } = require("fs");
+const {
+  fstat
+} = require("fs");
 
 // When the user scrolls down 50px from the top of the document, resize the header's font size
 window.onscroll = function () {
@@ -23,10 +25,9 @@ function scrollFunction() {
 
 scrollFunction();
 
-$("#btn-menu-toogle").on("click",function(e){
+$("#btn-menu-toogle").on("click", function (e) {
   var menuToogleIcon = $(this).find("span.icon");
   var navMenu = $("ul#top-menu");
-
   menuToogleIcon.toggleClass("icon-navigation-menu icon-close");
   navMenu.toggleClass("hidden show");
 })

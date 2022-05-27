@@ -23,9 +23,14 @@ screenClass();
 // And recheck when window gets resized.
 $(window).on('resize',function(){
   screenClass();
+  let currentHeaderHeight = $("header").outerHeight();
+  $("main").css({
+    "margin-top":currentHeaderHeight+"px"
+  })
 });
 window.onresize = function() {
-  console.log( $("body").attr("class"))
+  let currentHeaderHeight = $("header").outerHeight();
+  console.log(currentHeaderHeight);
 };
 
 updateTableIndex("table#tbl-list-icon>tbody>tr");
@@ -44,3 +49,8 @@ $("#txt-search").on("input", delay(function() {
   });
   console.log(value);
 },1000));
+
+let currentHeaderHeight = $("header").outerHeight();
+$("main").css({
+  "margin-top":currentHeaderHeight+"px"
+})

@@ -50,6 +50,7 @@ body {
 
 .main{
   display: flex;
+  position: relative;
   &__content{
     position: relative;
     .button-list {
