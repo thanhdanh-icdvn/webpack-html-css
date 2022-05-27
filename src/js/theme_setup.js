@@ -40,9 +40,7 @@ const swiperInstance1 = new Swiper(".mySwiper", {
   keyboard: {
     enabled: true,
   },
-  mousewheel: {
-    invert: true,
-  },
+  mousewheel:false,
   pagination: {
     el: ".swiper-pagination",
     type: 'bullets',

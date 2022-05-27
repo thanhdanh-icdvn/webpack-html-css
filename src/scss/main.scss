@@ -32,12 +32,16 @@ Libary block import
 @import 'components/modal';
 @import 'components/grid';
 @import 'components/social-media-block';
+@import 'components/scroll-to-top';
+
 
 
 //Include block
 @import 'includes/header';
 @import 'includes/footer';
 @import 'includes/sidebar';
+
+@import 'custom/webkit-scrollbar';
 
 
 body {
@@ -48,10 +52,8 @@ body {
   font-size: 16px;
 }
 
-.main{
-  display: flex;
-  position: relative;
-  &__content{
+main{
+  .main__content{
     position: relative;
     .button-list {
       flex: 1;
