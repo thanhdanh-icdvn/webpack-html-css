@@ -33,4 +33,5 @@ jobs:
           **/.git*/**
           **/node_modules/**
           **/.firebase*/**
-          **/.firebase.json*
+          **/src/**
+          **/package-lock.json*
