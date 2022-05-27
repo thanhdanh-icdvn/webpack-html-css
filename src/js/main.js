@@ -30,7 +30,6 @@ $(window).on('resize',function(){
 });
 window.onresize = function() {
   let currentHeaderHeight = $("header").outerHeight();
-  console.log(currentHeaderHeight);
 };
 
 updateTableIndex("table#tbl-list-icon>tbody>tr");
@@ -47,7 +46,6 @@ $("#txt-search").on("input", delay(function() {
   $("table#tbl-list-icon > tbody > tr").filter(function() {
     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
   });
-  console.log(value);
 },1000));
 
 let currentHeaderHeight = $("header").outerHeight();
