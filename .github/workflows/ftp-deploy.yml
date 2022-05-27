@@ -28,6 +28,10 @@ jobs:
         server: ${{ secrets.FTP_SERVER_ADDRESS }}
         username: ${{ secrets.FTP_USER_NAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: |
+          ./dist
+        server-dir: |
+          ./public_html
         exclude: |
           **/.git*
           **/.git*/**
