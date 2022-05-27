@@ -1,26 +1,18 @@
-const backToTopBtn  = $(".scroll-to-top")|| {};
+const backToTopBtn = $(".scroll-to-top") || {};
 
 // Set button visibility
-function setBackToTopBtnVisibility(offset=50){
- if(document.body.scrollTo > offset || document.documentElement.scrollTop > offset){
-  $(backToTopBtn).css({
-    "visibility":"visible",
-    "opacity":1,
-    "transform":"scale(1)"
-  })
- }else{
-  $(backToTopBtn).css({
-    "visibility":"hidden",
-    "opacity":0,
-    "transform":"scale(0)"
-  })
- }
+function setBackToTopBtnVisibility(offset = 50) {
+  if (document.body.scrollTo > offset || document.documentElement.scrollTop > offset) {
+    $(backToTopBtn).removeClass("hide").addClass("show");
+  } else {
+    $(backToTopBtn).removeClass("show").addClass("hide");
+  }
 }
-document.addEventListener("scroll",function(){
+document.addEventListener("scroll", function () {
   setBackToTopBtnVisibility(100);
 })
 
-$(backToTopBtn).on("click",function (e) {
+$(backToTopBtn).on("click", function (e) {
   window.scrollTo({
     top: 0, // could be negative value
     left: 0,
