@@ -1,6 +1,7 @@
-.sec-social-block{
+.sec-social-block {
   position: relative;
-  .social-list{
+
+  .social-list {
     position: fixed;
     right: 10px;
     margin-left: auto;
@@ -8,7 +9,8 @@
     transform: translateY(-50%);
     z-index: 50;
     background: transparent;
-    a{
+
+    a {
       text-decoration: none;
       transform: scale(1);
       transition: transform 300ms ease-in-out;
@@ -18,80 +20,112 @@
       max-width: 100%;
       border-width: 2px;
       border-style: solid;
-      &:hover{
+
+      &:hover {
         transform: scale(1.2);
       }
-      .icon{
+
+      .icon {
         text-decoration: none;
         font-size: 1.5em;
-        &-facebook{
+
+        &-facebook {
           color: $clr-facebook;
         }
-        &-facebook-messenger{
+
+        &-facebook-messenger {
           color: $clr-facebook-messenger;
         }
-        &-instagram{
-          color: $clr-instagram;
+
+        &-instagram {
+          // font-size: 5em;
+          background: $clr-instagram;
+          background: -moz-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+          background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+          background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+          -webkit-background-clip: text;
+          -moz-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
-        &-twitter{
+
+        &-twitter {
           color: $clr-twitter;
         }
-        &-google-plus{
+
+        &-google-plus {
           color: $clr-google;
         }
-        &-linkedin{
+
+        &-linkedin {
           color: $clr-linkedin;
         }
-        &-youtube{
+
+        &-youtube {
           color: $clr-youtube;
         }
-        &-github-2{
+
+        &-github-2 {
           color: $clr-github;
         }
-        &-zalo{
+
+        &-zalo {
           color: $clr-zalo;
         }
       }
-      +a{
+
+      +a {
         margin-top: 7px;
       }
 
-      &.facebook{
-       border-color: $clr-facebook;
+      &.facebook {
+        border-color: $clr-facebook;
       }
-      &.facebook-messenger{
+
+      &.facebook-messenger {
         border-color: $clr-facebook-messenger;
       }
-      &.instagram{
-        border-color: $clr-instagram;
+
+      &.instagram {
+        background:linear-gradient(white, white) padding-box,$clr-instagram-gradient border-box;
+        border-color: transparent;
       }
-      &.twitter{
+
+      &.twitter {
         border-color: $clr-twitter;
       }
-      &.google{
+
+      &.google {
         border-color: $clr-google;
       }
-      &.linkedin{
+
+      &.linkedin {
         border-color: $clr-linkedin;
       }
-      &.youtube{
+
+      &.youtube {
         border-color: $clr-youtube;
       }
-      &.github-2{
+
+      &.github-2 {
         border-color: $clr-github;
       }
-      &.zalo{
+
+      &.zalo {
         border-color: $clr-zalo;
       }
     }
-    &--vert{
+
+    &--vert {
       @include flex-column;
       @include flex-center;
     }
-    &--horiz{
+
+    &--horiz {
       @include flex-row;
       @include flex-center;
-      a + a{
+
+      a+a {
         margin-top: 0;
         margin-left: 10px;
       }
