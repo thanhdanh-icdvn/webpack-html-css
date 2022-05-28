@@ -19,7 +19,7 @@ jobs:
 
     - name: 🔨 Build Project
       run: |
-        npm install
+        npm ci
         npm run build:prod
 
     - name: 📂 Sync files
@@ -38,4 +38,3 @@ jobs:
           **/node_modules/**
           **/.firebase*/**
           **/src/**
-          **/package-lock.json*
