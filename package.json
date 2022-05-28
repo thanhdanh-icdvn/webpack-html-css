@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "npm run build && npm run serve",
     "serve": "webpack-dev-server --open",
-    "dev:server": "node server.js",
     "build": "webpack --mode=development",
     "build:prod": "webpack --mode=production"
   },
@@ -20,8 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.6.0",
-    "swiper": "^8.1.4",
-    "tinymce": "^6.0.3"
+    "swiper": "^8.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.17.10",
