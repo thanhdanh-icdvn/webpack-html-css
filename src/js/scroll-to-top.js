@@ -15,7 +15,7 @@ document.addEventListener("scroll", function () {
 $(backToTopBtn).on("click", function (e) {
   e.preventDefault();
   window.scrollTo({
-    top: 0, // could be negative value
+    top: 10, // could be negative value
     left: 0,
     behavior: 'smooth'
   });

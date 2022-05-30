@@ -21,6 +21,7 @@
   }
 
   .wrapper {
+    position: relative;
     @include flex-row;
     @include flex-center-vert;
     @include flex-wrap(wrap);
