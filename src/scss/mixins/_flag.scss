@@ -1,0 +1,21 @@
+.flag{
+  vertical-align: middle;
+  display: inline-block;
+  @extend .mr-5;
+}
+@mixin flag($flag-name,$flag-size:1.5rem){
+  .flag-#{$flag-name}{
+    @extend .flag;
+    color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    @include square(#{$flag-size});
+    background-position: center center;
+    background-image: url('~assets/images/flags/#{$flag-name}.svg');
+  }
+}
+@include flag('vietnam');
+@include flag('usa');
+@include flag('japan');
+@include flag('china');
+@include flag('uk');

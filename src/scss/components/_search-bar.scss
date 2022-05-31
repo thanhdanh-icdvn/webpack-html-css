@@ -1,0 +1,33 @@
+.search-box {
+  display: block;
+  position: absolute;
+  width: 100%;
+  bottom: -5px;
+  transform: scale(1, 0);
+  transition: all 400ms ease-in-out;
+  .search-input {
+    opacity: 0;
+    transition: opacity 300ms;
+    position: absolute;
+    padding: 10px 10px;
+    width: 100%;
+    border: none;
+    @include box-shadow(4px, 4px, 4px, darken($clr-white, 30%));
+  }
+
+  &.show {
+    transform: scale(1, 1);
+    transform-origin: top;
+    transition: all 400ms ease-in-out;
+
+    .search-input {
+      opacity: 1;
+      transition: opacity 300ms;
+    }
+  }
+}
+
+#btn-search-top {
+  width: 60px;
+  @include flex-center;
+}

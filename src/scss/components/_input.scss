@@ -10,7 +10,7 @@ input[type="search"],input[type="text"],input[type="password"]{
   }
 }
 
-input[type="search"]::-webkit-search-cancel-button {
+#txt-search::-webkit-search-cancel-button {
 	vertical-align: top;
   -webkit-appearance: none;
   -moz-appearance: sear;
@@ -29,11 +29,11 @@ input[type="search"]::-webkit-search-cancel-button {
   @include svg-mask(url(~assets/icons/close-circled.svg),);
 }
 
-input[type="search"]:focus::-webkit-search-cancel-button {
+#txt-search:focus::-webkit-search-cancel-button {
   opacity: 0.5;
   pointer-events: all;
 }
 
-input[type="search"].dark::-webkit-search-cancel-button {
+#txt-search.dark::-webkit-search-cancel-button {
   filter: invert(1);
 }
