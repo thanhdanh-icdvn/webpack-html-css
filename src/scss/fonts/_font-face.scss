@@ -1,6 +1,98 @@
-#tbl-list-icon{
-  span[class~='icon']{
+// Font Murecho
+@font-face {
+  font-family: 'Murecho';
+  font-weight: 400;
+  font-style: normal;
+  src:
+    url('../../assets/fonts/Murecho/Murecho-Regular.eot');
+  src:
+    url('../../assets/fonts/Murecho/Murecho-Regular.eot#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/Murecho/Murecho-Regular.ttf') format('truetype'),
+    url('../../assets/fonts/Murecho/Murecho-Regular.woff') format('woff'),
+    url('../../assets/fonts/Murecho/Murecho-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Murecho';
+  font-weight: 700;
+  font-style: normal;
+  src:
+    url('../../assets/fonts/Murecho/Murecho-700.eot');
+  src:
+    url('../../assets/fonts/Murecho/Murecho-700.eot#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/Murecho/Murecho-700.ttf') format('truetype'),
+    url('../../assets/fonts/Murecho/Murecho-700.woff') format('woff'),
+    url('../../assets/fonts/Murecho/Murecho-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Murecho';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../../assets/fonts/Murecho/Murecho-900.eot');
+  src:
+    url('../../assets/fonts/Murecho/Murecho-900.eot#iefix') format('embedded-opentype'),
+    url('../../assets/fonts/Murecho/Murecho-900.ttf') format('truetype'),
+    url('../../assets/fonts/Murecho/Murecho-900.woff') format('woff'),
+    url('../../assets/fonts/Murecho/Murecho-900.woff2') format('woff2');
+}
+
+// Font Notosans
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 400;
+  font-style: normal;
+  src:
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Regular.ttf') format('truetype'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Regular.woff') format('woff'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 700;
+  font-style: normal;
+  src:
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Bold.ttf') format('truetype'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Bold.woff') format('woff'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 900;
+  font-style: normal;
+  src:
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Black.ttf') format('truetype'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Black.woff') format('woff'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Black.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 600;
+  font-style: normal;
+  src:
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Medium.ttf') format('truetype'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Medium.woff') format('woff'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  font-weight: 300;
+  font-style: normal;
+  src:
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Light.ttf') format('truetype'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Light.woff') format('woff'),
+    url('../../assets/fonts/NotoSansJP/NotoSansJP-Light.woff2') format('woff2');
+}
+
+
+
+#tbl-list-icon {
+  span[class~='icon'] {
     font-size: 3rem;
-    color:$btn-bg-info;
+    color: $btn-bg-info;
   }
 }
