@@ -1,0 +1,10 @@
+@mixin flag($flag-name,$flag-size:2rem){
+  .flag-#{$flag-name}{
+    color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    @include square(2rem);
+    background-position: center center;
+    background-image: url('../../assets/images/flags/#{$flag-name}.svg');
+  }
+}

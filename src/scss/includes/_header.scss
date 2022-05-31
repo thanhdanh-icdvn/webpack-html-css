@@ -238,7 +238,10 @@
         color: #FFF;
         font-size: 12px;
         line-height: normal;
-
+        @include flex-center-vert;
+       span{
+        @extend .mr-5;
+       }
         &::after {
           position: absolute;
           -webkit-transition: all 0.35s ease;
@@ -330,3 +333,28 @@
     }
   }
 }
+.icon-vietnam,.icon-japan,.icon-usa{
+  color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  @include square(2rem);
+  background-position: center center;
+}
+.icon-vietnam{
+  background-image: url(../../assets/images/flags/vietnam.svg);
+}
+
+.icon-japan{
+  background-image: url(../../assets/images/flags/japan.svg);
+}
+
+.icon-usa{
+  background-image: url(../../assets/images/flags/usa.svg);
+}
+.flag{
+  vertical-align: middle;
+  display: inline-block;
+}
+@include flag('vietnam');
+@include flag('usa');
+@include flag('japan');

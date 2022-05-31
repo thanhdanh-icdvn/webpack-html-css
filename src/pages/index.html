@@ -78,13 +78,14 @@
           <li>
             <a id="btn-search-top" class="btn-search" href="#"><span class="icon icon-search"></span></a>
           </li>
-          <!-- <li>
-            <select class="selectpicker" data-width="fit">
-              <option  data-content='<span class="fi fi-vn"></span> Vietnamese'>Vietnamese</option>
-              <option data-content='<span class="fi fi-us"></span> English'>English</option>
-              <option  data-content='<span class="fi fi-jp"></span> Japanese'>Japanese</option>
-            </select>
-          </li> -->
+          <li class="language-switcher">
+            <a id="current-language" class="current-language" onclick="e  => e.preventDefault()">Language</a>
+            <ul class="language-picker">
+              <li value="vn"><a href=""><span class='flag flag-vietnam'></span> Vietnamese</a></li>
+              <li value="us"><a href=""><span class='flag flag-usa'></span> English</a></li>
+              <li value="jp"><a href=""><span class='flag flag-japan'></span> Japanese</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <form action="" class="search-box">
@@ -215,8 +216,8 @@
       <a class="youtube" href="https://youtube.com/" target="_blank">
         <i class="icon icon-youtube"></i>
       </a>
-      <a class="github-2" href="https://github.com/thanhdanh-icdvn" target="_blank">
-        <i class="icon icon-github-2"></i>
+      <a class="github" href="https://github.com/thanhdanh-icdvn" target="_blank">
+        <i class="icon icon-github"></i>
       </a>
       <a class="zalo" href="https://zalo.me/danhthanh418" target="_blank">
         <i class="icon icon-zalo"></i>
