@@ -1,6 +1,7 @@
 /* state */
 @import '../mixins/button';
 .btn {
+  font-family: inherit;
   border: none;
   padding: $btn-padding;
   text-align: center;
