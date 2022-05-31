@@ -29,7 +29,7 @@ module.exports = {
   entry: './src/js/app.js',
   mode: 'development',
   resolve: {
-    modules: [path.join(__dirname, 'src'), 'node_modules'],
+    modules: ['./node_modules'],
     alias: {
       'swiper': path.resolve(__dirname, './node_modules/swiper'),
       'assets': path.resolve(__dirname, './src/assets')

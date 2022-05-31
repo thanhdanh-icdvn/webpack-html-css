@@ -104,7 +104,6 @@
             opacity: 1;
             transform: translateY(0);
             transition: all 1s ease-in-out;
-
           }
         }
 
@@ -175,7 +174,7 @@
       }
 
       /* root */
-      .nav-menu a {
+      .nav-menu a{
         padding: 8px 10px;
         color: white;
         font-weight: normal;
@@ -333,28 +332,35 @@
     }
   }
 }
-.icon-vietnam,.icon-japan,.icon-usa{
-  color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  @include square(2rem);
-  background-position: center center;
-}
-.icon-vietnam{
-  background-image: url(../../assets/images/flags/vietnam.svg);
-}
 
-.icon-japan{
-  background-image: url(../../assets/images/flags/japan.svg);
+.select2{
+  width: 100%;
+  @include flex-row;
+  @include flex-center;
 }
+.select2-container {
 
-.icon-usa{
-  background-image: url(../../assets/images/flags/usa.svg);
+  .select2-selection--single {
+    min-width: 6em;
+     height: 30px;
+     position: relative;
+
+    .select2-selection__rendered {
+      line-height: 30px;
+      min-width: 10rem;
+      outline: none;
+    }
+
+    .select2-selection__arrow {
+      top: 0;
+      right: 0;
+    }
+
+    .select2-container--default {
+
+      .select2-results>.select2-results__options {
+        -webkit-overflow-scrolling: touch; /* use momentum scrolling */
+      }
+    }
+  }
 }
-.flag{
-  vertical-align: middle;
-  display: inline-block;
-}
-@include flag('vietnam');
-@include flag('usa');
-@include flag('japan');
