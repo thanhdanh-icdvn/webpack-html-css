@@ -4,6 +4,7 @@ const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
+const ImageminWebpWebpackPlugin  = require('imagemin-webp-webpack-plugin');
 
 /**
  * Function to generate HTML from template
@@ -53,6 +54,16 @@ module.exports = {
         to: 'assets/images'
       }]
     }),
+    new ImageminWebpWebpackPlugin({
+      detailedLogs: true,
+      overrideExtension: true,
+      config: [{
+        test: /\.(png|jpg|jpeg|gif|tiff|bmp)/,
+        options: {
+          quality: 75
+        }
+      }],
+    })
   ].concat(htmlPlugins),
   devtool: 'inline-source-map',
   output: {
@@ -79,8 +90,7 @@ module.exports = {
     watchFiles: ["./src/pages/**/*.html"],
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
@@ -94,15 +104,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|tiff|bmp|svg)$/i,
-        include:[
-          path.resolve(__dirname,'./src/assets/images')
+        include: [
+          path.resolve(__dirname, './src/assets/images')
         ],
         type: 'asset/resource',
       },
       {
         test: /\.(svg)$/i,
-        include:[
-          path.resolve(__dirname,'./src/assets/icons')
+        include: [
+          path.resolve(__dirname, './src/assets/icons')
         ],
         type: 'asset/resource',
       },

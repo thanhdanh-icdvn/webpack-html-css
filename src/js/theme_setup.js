@@ -18,7 +18,7 @@ $.each(swiper1Array, function () {
   let itemTemplate = `
   <div class="swiper-slide">
     <figure>
-      <img src="/assets/images/post/${item}-1920x1080.jpg"/>
+      <img src="/assets/images/post/${item}-1920x1080.webp"/>
       <div class="swiper-lazy-preloader"></div>
       <figcaption>
         Slide ${item}
@@ -74,9 +74,12 @@ $(".swiper-slide figure").css({
   "max-height":"400px"
 });
 
-const currentStyle = localStorage.getItem("--swiper-theme-color") ?? getComputedStyle(document.documentElement).getPropertyValue('--swiper-theme-color');
-$("#theme-setting").val(currentStyle);
-document.documentElement.style.setProperty("--swiper-theme-color", currentStyle);
+$(window).on("load", function(){
+  const currentStyle = localStorage.getItem("--swiper-theme-color")?localStorage.getItem("--swiper-theme-color") : getComputedStyle(document.documentElement).getPropertyValue('--swiper-theme-color').trim();
+  $("#theme-setting").val(currentStyle);
+  document.documentElement.style.setProperty("--swiper-theme-color", currentStyle);
+});
+
 $("#theme-setting").on("change", function () {
   let swiperThemeColor = $(this).val() + "";
   localStorage.setItem("--swiper-theme-color", swiperThemeColor);
