@@ -40,12 +40,7 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      // Make a global `process` variable that points to the `process` package,
-      // because the `util` package expects there to be a global variable named `process`.
-           // Thanks to https://stackoverflow.com/a/65018686/14239942
-      process: 'process/browser'
-   }),
-    new webpack.ProvidePlugin({
+      process: 'process/browser',
       $: 'jquery',
       jQuery: 'jquery',
     }),
@@ -64,7 +59,15 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: "assets/js/[name].bundle.js",
     clean: true,
-    publicPath: '/'
+    publicPath: '/',
+    assetModuleFilename: (pathData) => {
+      const filepath = path
+        .dirname(pathData.filename)
+        .split("/")
+        .slice(1)
+        .join("/");
+      return `${filepath}/[name].[ext][query]`;
+    }
   },
   devServer: {
     static: {
@@ -76,7 +79,13 @@ module.exports = {
     watchFiles: ["./src/pages/**/*.html"],
   },
   module: {
-    rules: [{
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader'],
+      },
+      {
         test: /\.css$/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -84,18 +93,18 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|jpg|jpeg|gif|tiff|bmp)$/i,
+        test: /\.(png|jpg|jpeg|gif|tiff|bmp|svg)$/i,
+        include:[
+          path.resolve(__dirname,'./src/assets/images')
+        ],
         type: 'asset/resource',
-        generator: {
-          filename: 'assets/images/[name].[ext]'
-        }
       },
       {
         test: /\.(svg)$/i,
+        include:[
+          path.resolve(__dirname,'./src/assets/icons')
+        ],
         type: 'asset/resource',
-        generator: {
-          filename: 'assets/icons/[name].[ext]'
-        }
       },
       {
         test: /\.(eot|woff|woff2|ttf|otf)$/,
