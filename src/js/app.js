@@ -7,3 +7,4 @@ require('./header')
 require('./scroll-to-top');
 require('select2/dist/js/select2.js');
 require('./language-switcher');
+require('./accordion')
