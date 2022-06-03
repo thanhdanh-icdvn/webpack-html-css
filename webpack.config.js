@@ -5,6 +5,8 @@ const webpack = require('webpack');
 const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
 const ImageminWebpWebpackPlugin  = require('imagemin-webp-webpack-plugin');
+const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
+
 
 /**
  * Function to generate HTML from template
@@ -20,11 +22,12 @@ function generateHtmlPlugins(templateDir = './src/pages') {
     const extension = parts[1]
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
-      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`)
+      template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
+      minify: false
     })
   })
 }
-const htmlPlugins = generateHtmlPlugins('./src/pages');
+const htmlPlugins = generateHtmlPlugins('./src/pages/views/');
 
 module.exports = {
   entry: './src/js/app.js',
@@ -64,7 +67,11 @@ module.exports = {
         }
       }],
     })
-  ].concat(htmlPlugins),
+  ].concat(htmlPlugins).concat(
+    new HtmlWebpackPugPlugin({
+      adjustIndent: true
+    })
+  ),
   devtool: 'inline-source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -87,7 +94,7 @@ module.exports = {
     compress: true,
     port: 9000,
     hot: true,
-    watchFiles: ["./src/pages/**/*.html"],
+    watchFiles: ["./src/pages/**/*.pug"],
   },
   module: {
     rules: [{
@@ -173,7 +180,12 @@ module.exports = {
           'webfonts-loader'
         ]
       },
-
+      {
+        test: /\.pug$/,
+        use: [
+          "pug-loader"
+        ]
+      }
     ]
   }
 }

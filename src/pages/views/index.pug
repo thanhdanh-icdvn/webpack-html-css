@@ -1,0 +1,85 @@
+extends ../layouts/main.pug
+block head
+  title Đây là trang chủ
+block main-content
+  section.container--fluid
+    #swiper01.swiper.mySwiper.swiper-container
+      .swiper-wrapper
+      .swiper-button-next
+      .swiper-button-prev
+      .swiper-pagination
+  .container
+    section
+      div
+        input#theme-setting(type='color' name='theme-setting' value='#f6b73c')
+        label(for='theme-setting') Theme setting
+    section
+      button#myBtn.btn.btn--outline-info Open Modal
+      // The Modal
+      #myModal.modal.modal
+        // Modal content
+        .modal-content
+          .modal-header
+            span.close.icon.icon-close-circled
+            h2 Modal Header
+          .modal-body
+            p Some text in the Modal Body
+            p Some other text...
+          .modal-footer
+            h3 Modal Footer
+    section#icon-sec
+      .sec__title Danh s&aacute;ch c&aacute;c icon
+      input#txt-search.fw(type='search' place-holder='Enter to search')
+      .list-icon
+        table#tbl-list-icon
+          thead
+            th STT
+            th Icon
+            th T&ecirc;n Icon
+          tbody
+            tr
+              td
+              td
+                span.icon.icon-addons
+              td
+          tfoot
+            tr
+              td Some text here
+              td Some text here
+              td Some text here
+    section#sec-btn-default
+      .sec__title Default
+      .button-list
+        button.btn Button default
+        button.btn.btn--success Button success
+        button.btn.btn--info Button info
+        button.btn.btn--warning Button warning
+        button.btn.btn--error Button error
+        button.btn.btn--black Button black
+        button.btn.btn--gray Button gray
+    section#sec-btn-outline
+      .sec__title Outline
+      .button-list
+        button.btn.btn--outline Button outline default
+        button.btn.btn--outline-success Button outline success
+        button.btn.btn--outline-info Button outline info
+        button.btn.btn--outline-warning Button outline warning
+        button.btn.btn--outline-error Button outline error
+        button.btn.btn--outline-black Button outline black
+        button.btn.btn--outline-gray Button outline gray
+    section#sec-uploader
+      div
+        input(type='file' accept='image/*' onchange="loadFile(event,'output')")
+        img#output
+  include ../includes/social-button-list.pug
+  section.sec-hamburger
+    label(for='hamburger')
+      input#hamburger.hamburger(type='checkbox')
+      span
+      span
+      span
+    label(for='hamburger-2')
+      input#hamburger-2.hamburger.hamburger-2(type='checkbox')
+      span
+      span
+      span
