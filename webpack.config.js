@@ -23,7 +23,8 @@ function generateHtmlPlugins(templateDir = './src/pages') {
     return new HtmlWebpackPlugin({
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-      minify: false
+      minify: false,
+      pretty:true
     })
   })
 }
