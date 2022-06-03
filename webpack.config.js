@@ -62,7 +62,7 @@ module.exports = {
       detailedLogs: true,
       overrideExtension: true,
       config: [{
-        test: /\.(png|jpg|jpeg|gif|tiff|bmp)/,
+        test: /\.(png|jpg|jpeg|gif|tiff|bmp|avif)/,
         options: {
           quality: 75
         }

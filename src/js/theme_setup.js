@@ -18,7 +18,7 @@ $.each(swiper1Array, function () {
   let itemTemplate = `
   <div class="swiper-slide">
     <figure>
-      <img src="/assets/images/post/${item}-1920x1080.webp"/>
+      <img src="/assets/images/post/${item}.webp"/>
       <div class="swiper-lazy-preloader"></div>
       <figcaption>
         Slide ${item}

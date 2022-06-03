@@ -1,0 +1,48 @@
+.cards {
+  @include flex-row;
+  @include flex-wrap(wrap);
+  @include mqMobile599(){
+    @include flex-column;
+    @include flex-center-vert
+  }
+  .card {
+    margin: 15px;
+    min-width: 300px;
+    width: calc(100% / 3 - 30px);
+    display: flex;
+    background-color: white;
+    @include box-shadow(2px, 2px, 8px, darken($clr-white, 15%));
+    transition: all 500ms ease-in-out;
+    transform: scale(1);
+    &:hover{
+      @include box-shadow(4px, 4px, 16px, darken($clr-white, 30%));
+      transform: scale(1.03);
+      transition: all 500ms ease-in-out;;
+    }
+
+    &__wrapper {
+      display: flex;
+      flex-direction: row;
+      padding: 20px;
+      flex-wrap: nowrap;
+    }
+    &__title {
+      display: flex;
+      flex-shrink: 0;
+      padding: 10px
+    }
+
+    &__icon{
+      @extend .mr-10;
+    }
+    &__desc {
+      flex-basis: 200px;
+      display: flex;
+      flex: 1;
+      text-overflow: ellipsis;
+    }
+    @include mqMobile599(){
+      width: 100%;
+    }
+  }
+}
