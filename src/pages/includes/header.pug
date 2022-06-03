@@ -11,7 +11,7 @@ block header
           li
             a.nav-active(href='/') Products
           li
-            a(href='') Services
+            a(href='#') Services
             ul
               li
                 a(href='#') Services 1
@@ -56,3 +56,10 @@ block header
             a(href='/cart.html')
               span.icon.icon-shopping-cart.m-5
               |               Your cart
+          li
+            a#btn-search-top.btn-search(href='#')
+              span.icon.icon-search
+          li.language-switcher
+            select#language-switcher.select2.language-switcher(name='language-switcher')
+      form.search-box(action='')
+        input.search-input(type='text' placeholder='Type here to search...')
