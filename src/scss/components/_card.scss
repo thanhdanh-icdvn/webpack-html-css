@@ -2,21 +2,19 @@
   padding: 2rem 0px;
   @include flex-row;
   @include flex-wrap(wrap);
-  @include flex-center-horiz;
 
   @include mqMobile599() {
     @include flex-column;
   }
 
   .card {
-    $card-margin: 20px;
+    $card-margin: 25px;
     $card-radius: 10px;
     $card-margin-double: calc(#{$card-margin} * 2);
     margin: $card-margin;
     min-width: 300px;
-    width: calc(100% / 3 - $card-margin-double);
+    width: calc(100% / 3 - #{$card-margin-double});
     @include flex-column;
-    flex: 1;
     position: relative;
     background-color: white;
     @include box-shadow(2px, 2px, 8px, darken($clr-white, 15%));
@@ -28,16 +26,15 @@
       @include box-shadow(4px, 4px, 16px, darken($clr-white, 30%));
       transform: scale(1.03);
       transition: all 500ms ease-in-out;
-      ;
     }
 
     position: relative;
 
     &__avatar {
-      @include flex-center;
       $avatar-size: 60px;
+      $avatar-border-width: 3px;
+      $avatar-outline-width: 3px;
       overflow: hidden;
-
       img {
         position: absolute;
         border-radius: 50%;
@@ -46,7 +43,10 @@
         transform: translate(-50%, -50%);
         @include square($avatar-size);
         object-fit: cover;
-        outline: 3px solid white;
+        outline: $avatar-outline-width solid white;
+        z-index: 3;
+        border-width: $avatar-border-width;
+        border-style: solid;
       }
     }
 
@@ -55,24 +55,27 @@
       width: 100%;
       height: auto;
       object-fit: cover;
+      z-index: 1;
     }
 
-    &__wrapper {
+    &__inner {
       flex: 1;
       display: flex;
       flex-direction: row;
       padding: 20px;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
     }
 
     &__title {
       display: flex;
       flex-shrink: 0;
-      padding: 10px
+      margin-right: 10px;
+      font-size: 1.4rem;
     }
 
     &__icon {
       @extend .mr-10;
+      font-size: 2em;
     }
 
     &__desc {
@@ -83,9 +86,10 @@
     }
 
     @include mqMobile599() {
-      & + .card{
+      &+.card {
         margin-block: 30px;
       }
+
       width: calc(100% - $card-margin-double);
     }
 
@@ -96,9 +100,12 @@
     @include mqTabletLg900() {
       width: calc(100% / 3 - $card-margin-double);
     }
-    &__btn{
+
+    &__btn {
       @extend .btn;
+      margin-top: auto;
     }
+
     &--rounded {
       @extend .card;
       border-radius: $card-radius;
@@ -106,31 +113,56 @@
       .card__featured-image {
         border-radius: $card-radius $card-radius 0px 0px;
       }
-      .card__btn{
+
+      .card__btn {
         border-radius: 0px 0px $card-radius $card-radius;
       }
     }
 
     &:nth-of-type(3n + 1) {
       outline: 3px solid $clr-info;
-      .card__btn{
+
+      .card__btn {
         @extend .btn--info;
       }
-    }
-    &:nth-of-type(3n + 2) {
-      outline: 3px solid $clr-warning;
-      .card__btn{
-        @extend .btn--warning;
-        color: white;
-        &:hover{
-          color: white;
+
+      .card__avatar {
+        img {
+          border-color: $clr-info;
         }
       }
     }
+
+    &:nth-of-type(3n + 2) {
+      outline: 3px solid $clr-warning;
+
+      .card__btn {
+        @extend .btn--warning;
+        color: white;
+
+        &:hover {
+          color: white;
+        }
+      }
+
+      .card__avatar {
+        img {
+          border-color: $clr-warning;
+        }
+      }
+    }
+
     &:nth-of-type(3n + 3) {
       outline: 3px solid $clr-success;
-      .card__btn{
+
+      .card__btn {
         @extend .btn--success;
+      }
+
+      .card__avatar {
+        img {
+          border-color: $clr-success;
+        }
       }
     }
   }

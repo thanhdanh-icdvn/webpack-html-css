@@ -178,7 +178,7 @@
 // Cross-axis Alignment
 // - applies to: flex containers
 // flex-start | flex-end | center | baseline | stretch
-@mixin align-items($value: stretch) {
+@mixin align-items($value: flex-start) {
   @if $value == flex-start {
     -webkit-box-align: start;
        -moz-box-align: start;
