@@ -1,0 +1,39 @@
+//- mixin productList(images=[],ribbon={icon:'',text:''},title='',desc='',colorVariants,colorVariantImages=[],price=0)
+//-   .product-card
+//-     .product-card--top
+//-       .product-card__ribbon
+//-         span(style="background-image: url(#{ribbon.icon})")
+//-       .product-card__images
+//-         img(src="../../../assets/images/products/product02.webp", alt="123")
+//-     .product-card--bottom
+//-       .product-card__title aaaaa
+//-       .product-card__desc Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, eos autem consectetur optio aliquid assumenda odio unde quisquam, omnis architecto obcaecati aut, saepe fugiat voluptatem facilis. Natus molestias cupiditate iure.
+//-       .product-card__color-variants 3 colors
+//-       .product-card__price 399
+
+block product-list
+  .product-list
+    .product-card
+      .product-card--top
+        .product-card__ribbon
+          span.icon.icon-home
+          | New
+        .product-card__images
+          img(src="../../../assets/images/products/product03.jfif", alt="123")
+      .product-card--bottom
+        .product-card__title aaaaa
+        .product-card__desc Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore, eos autem consectetur optio aliquid assumenda odio unde quisquam, omnis architecto obcaecati aut, saepe fugiat voluptatem facilis. Natus molestias cupiditate iure.
+        .product-card__color-variants 3 colors
+        .product-card__price 399
+    .product-card
+      .product-card--top
+        .product-card__ribbon
+          span.icon.icon-home
+          | New
+        .product-card__images
+          img(src="../../../assets/images/products/product08.jfif", alt="123")
+      .product-card--bottom
+        .product-card__title aaaaa
+        .product-card__desc Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        .product-card__color-variants 3 colors
+        .product-card__price 399

@@ -1,0 +1,55 @@
+.product-list{
+  @include flex-row;
+  @include flex-wrap(wrap);
+}
+
+.product-card {
+  outline: 2px solid green;
+// top card
+  position: relative;
+  @include flex-column;
+  @include flex-wrap;
+  margin: 20px;
+  width: calc(100% / 3 - 40px);
+
+  @include mqMobile599(){
+    width: calc(100% - 40px);
+  }
+  &--top {
+    width: 100%;
+  }
+
+  &__ribbon {
+    position: absolute;
+    left: 3rem;
+    top: 3rem;
+    z-index: 1;
+    background-color: lighten($color: $clr-white, $amount: 30%);
+    .icon{
+      @extend .mr-10;
+    }
+    text-transform: uppercase;
+    color: black;
+    padding: 10px 15px;
+  }
+
+  &__images {
+    img{
+      aspect-ratio: 1/ 1;
+      object-fit: cover;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // bottom card
+  &--bottom {}
+
+  &__title {}
+
+  &__desc {}
+
+  &__color-variants {}
+
+  &__price {}
+}
