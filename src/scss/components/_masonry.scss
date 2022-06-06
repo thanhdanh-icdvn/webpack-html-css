@@ -1,7 +1,7 @@
 .masonry {
   display: grid;
+  margin-inline: auto;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-
   @include mqTablet600() {
     grid-template-columns:
       repeat(3, 1fr);
@@ -9,7 +9,7 @@
       repeat(4, minmax(200px, 1fr));
   }
 
-  grid-gap: 0.5rem;
+  grid-gap: 1.5rem;
   counter-reset: masonry-counter;
   width: min(95%, 70rem);
 
