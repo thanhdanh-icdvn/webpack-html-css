@@ -1,30 +1,47 @@
 .product-list{
   @include flex-row;
   @include flex-wrap(wrap);
+  background-color: #f3f3f3;
+  position: relative;
+  // overflow: hidden;
 }
-
 .product-card {
-  outline: 2px solid green;
-// top card
+  $product-card-margin:20px;
+  $product-card-margin-double: calc(2 * #{$product-card-margin});
+  transform: scale(1.0);
+  transition: transform 500ms ease-in-out;
   position: relative;
   @include flex-column;
   @include flex-wrap;
-  margin: 20px;
-  width: calc(100% / 3 - 40px);
-
-  @include mqMobile599(){
-    width: calc(100% - 40px);
+  margin: $product-card-margin;
+  width: calc(100% / 4 - #{$product-card-margin-double});
+  @include box-shadow(2px,2px,4px, darken(#fff,10%));
+  background-color: $clr-white;
+  cursor: pointer;
+  &__overlay{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
   }
   &--top {
     width: 100%;
+    @include box-shadow(2px,2px,4px, darken(#f3f3f3,5%));
   }
 
   &__ribbon {
     position: absolute;
-    left: 3rem;
-    top: 3rem;
+    left: 1rem;
+    top: 1rem;
     z-index: 1;
     background-color: lighten($color: $clr-white, $amount: 30%);
+    @include box-shadow(2px,2px,4px, darken(#fff,15%));
     .icon{
       @extend .mr-10;
     }
@@ -34,22 +51,80 @@
   }
 
   &__images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include flex-column;
+    overflow: hidden;
+    z-index: -1;
     img{
       aspect-ratio: 1/ 1;
       object-fit: cover;
       width: 100%;
       height: auto;
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 500ms ease-in-out;
+      z-index: -1;
+      &.back{
+        opacity: 0;
+        visibility: hidden;
+      }
     }
   }
 
   // bottom card
-  &--bottom {}
+  &--bottom {
+    padding: 15px;
+    @include flex-column;
+    @include flex-wrap(wrap);
+    flex: 1;
+    margin-top: auto;
+  }
 
-  &__title {}
+  &__title {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    font-weight: 500;
+    font-style: normal;
+  }
 
-  &__desc {}
+  &__desc {
+    margin-top: 15px;
+  }
 
-  &__color-variants {}
+  &__color-variants {
+    margin-top: auto;
+  }
 
-  &__price {}
+  &__price {
+
+  }
+
+  &:hover{
+    @include box-shadow(4px,4px,8px, darken(#fff,30%));
+    .product-card__overlay{
+      background-color: rgba($color: #333, $alpha: 0.2);
+    }
+    transform: scale(1.005);
+
+    .product-card__images > img{
+      transform: translateY(-100%);
+      &.back{
+        visibility: visible;
+      }
+    }
+  }
+  @include mqMobile599(){
+    width: calc(100% - #{$product-card-margin-double});
+  }
+  @include mqTablet600(){
+    width: calc(100% / 2 - #{$product-card-margin-double});
+  }
+  @include mqTabletLg900(){
+    width: calc(100% / 3 - #{$product-card-margin-double});
+  }
+  @include mqDesktop1200(){
+    width: calc(100% / 4 - #{$product-card-margin-double});
+  }
 }

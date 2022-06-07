@@ -70,7 +70,7 @@
 // Flex Line Wrapping
 // - applies to: flex containers
 // nowrap | wrap | wrap-reverse
-@mixin flex-wrap($value: nowrap) {
+@mixin flex-wrap($value: wrap) {
   // No Webkit/FF Box fallback.
   -webkit-flex-wrap: $value;
   @if $value == nowrap {
