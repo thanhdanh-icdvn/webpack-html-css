@@ -37,7 +37,8 @@ module.exports = {
     modules: ['./node_modules'],
     alias: {
       'swiper': path.resolve(__dirname, './node_modules/swiper'),
-      'assets': path.resolve(__dirname, './src/assets')
+      'gsap': path.resolve(__dirname, './node_modules/gsap'),
+      'assets': path.resolve(__dirname, './src/assets'),
     },
     fallback: {
       fs: false
@@ -48,6 +49,7 @@ module.exports = {
       process: 'process/browser',
       $: 'jquery',
       jQuery: 'jquery',
+      gsap:'gsap'
     }),
     new MiniCssExtractPlugin({
       filename: "assets/css/[name].css"
