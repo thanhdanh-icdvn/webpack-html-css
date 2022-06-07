@@ -18,7 +18,9 @@
   "author": "thanhd",
   "license": "ISC",
   "dependencies": {
+    "gsap": "^3.10.4",
     "jquery": "^3.6.0",
+    "scrollmagic": "^2.0.8",
     "select2": "^4.1.0-rc.0",
     "swiper": "^8.1.4"
   },
