@@ -10,42 +10,49 @@
   font-size: $fs-default;
   cursor: pointer;
   transition-duration: $btn-transition-duration;
-  min-width: 12rem;
   border: 2px solid transparent;
   &:focus {
     outline: none;
   }
 
   &--success {
+    @extend .btn;
     @include button-variant($clr-white,$btn-bg-success,$btn-bg-success);
   }
 
   &--info {
+    @extend .btn;
     @include button-variant($clr-white,$btn-bg-info,$btn-bg-info);
   }
 
   &--error {
+    @extend .btn;
     @include button-variant($clr-white,$btn-bg-error,$btn-bg-error);
   }
 
   &--warning {
+    @extend .btn;
     @include button-variant($clr-black,$btn-bg-warning,$btn-bg-warning);
   }
 
   &--black {
+    @extend .btn;
     @include button-variant($clr-white,$btn-bg-black,$btn-bg-black);
   }
 
   &--gray {
+    @extend .btn;
     @include button-variant($clr-white,$btn-bg-gray,$btn-bg-gray);
   }
 
   &--block {
+    @extend .btn;
     width: 100%;
     display: block;
   }
 
   &--outline{
+    @extend .btn;
     @include button-variant($btn-bg-gray,$btn-bg-gray,$btn-bg-gray,"outline");
     &-success{
       @include button-variant($btn-bg-success,$btn-bg-success,$btn-bg-success,"outline");

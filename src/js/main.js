@@ -32,7 +32,6 @@ $(window).on('resize', function () {
   })
 });
 window.onresize = function () {
-  let currentHeaderHeight = $("header").outerHeight();
 };
 
 updateTableIndex("table#tbl-list-icon>tbody>tr");
@@ -54,9 +53,4 @@ $("#txt-search").on("input", delay(function () {
 let currentHeaderHeight = $("header").outerHeight();
 $("main").css({
   "margin-top": currentHeaderHeight + "px"
-})
-
-
-$(window).on("load",function(){
-
 })

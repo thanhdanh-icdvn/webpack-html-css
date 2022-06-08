@@ -1,7 +1,7 @@
 .product-list{
   @include flex-row;
   @include flex-wrap(wrap);
-  background-color: #f3f3f3;
+  background-color: white;
   position: relative;
   // overflow: hidden;
 }
@@ -32,22 +32,31 @@
   }
   &--top {
     width: 100%;
-    @include box-shadow(2px,2px,4px, darken(#f3f3f3,5%));
+    height: auto;
+    @include box-shadow(2px,2px,4px, darken(#f7f7f7,5%));
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #f7f7f7;
   }
 
   &__ribbon {
     position: absolute;
     left: 1rem;
     top: 1rem;
-    z-index: 1;
+    z-index: 2;
     background-color: lighten($color: $clr-white, $amount: 30%);
-    @include box-shadow(2px,2px,4px, darken(#fff,15%));
+    @include box-shadow(1px,1px,2px, darken($clr-white,5%));
     .icon{
       @extend .mr-10;
     }
     text-transform: uppercase;
     color: black;
     padding: 10px 15px;
+    opacity: 1;
+    transform: translateX(0%);
+    transform-origin: left;
+    transition: opacity 500ms ease-in-out,transform 600ms ease-in-out;
   }
 
   &__images {
@@ -55,22 +64,46 @@
     width: 100%;
     height: 100%;
     @include flex-column;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    align-self: center;
     overflow: hidden;
-    z-index: -1;
     img{
       aspect-ratio: 1/ 1;
       object-fit: cover;
       width: 100%;
       height: auto;
       opacity: 1;
-      transform: translateY(0);
-      transition: transform 500ms ease-in-out;
+      // transform: translateY(0);
+      // transition: transform 500ms ease-in-out;
+      transition: opacity 500ms ease-in-out,w;
       z-index: -1;
-      &.back{
-        opacity: 0;
-        visibility: hidden;
+      &:not(:first-of-type){
+        display: none;
       }
     }
+  }
+  &__quick-add{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    height: auto;
+    font-size: normal;
+    width: 100%;
+    @include flex-center;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+  }
+  &__btn{
+    @extend .btn;
+    background-color: #fff;
+    color: black;
+    width: 100%;
+    @include box-shadow(1px,1px,2px,darken($clr-white,15%));
   }
 
   // bottom card
@@ -103,16 +136,28 @@
 
   &:hover{
     @include box-shadow(4px,4px,8px, darken(#fff,30%));
-    .product-card__overlay{
-      background-color: rgba($color: #333, $alpha: 0.2);
-    }
     transform: scale(1.005);
-
+    .product-card__ribbon{
+      opacity: 0;
+      transform: translateX(-100%);
+      transform-origin: left;
+      transition: opacity 500ms ease-in-out,transform 600ms ease-in-out;
+    }
     .product-card__images > img{
-      transform: translateY(-100%);
-      &.back{
-        visibility: visible;
+      // transform: translateY(-100%);
+      &:first-of-type{
+        display: none;
       }
+      &:not(:first-of-type){
+        display: block;
+      }
+    }
+    .product-card__quick-add{
+      opacity: 1;
+      transform: opacity 500ms ease-in-out;
+    }
+    .product-card__btn{
+      @include box-shadow(2px,2px,3px,darken($clr-white,20%))
     }
   }
   @include mqMobile599(){
