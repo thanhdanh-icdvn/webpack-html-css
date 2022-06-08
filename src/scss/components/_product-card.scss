@@ -3,7 +3,6 @@
   @include flex-wrap(wrap);
   background-color: white;
   position: relative;
-  // overflow: hidden;
 }
 .product-card {
   $product-card-margin:20px;
@@ -172,4 +171,13 @@
   @include mqDesktop1200(){
     width: calc(100% / 4 - #{$product-card-margin-double});
   }
+}
+.icon-color-palate{
+  color: transparent;
+  background-image: url('../../assets/icons/color-palate.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% auto;
+  object-fit: cover;
+
 }

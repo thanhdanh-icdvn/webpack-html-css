@@ -2,5 +2,7 @@ extends ../layouts/main.pug
 block prepend head
   title Đây là trang sản phẩm
 block main-content
-  p Trang sản phẩm
-  include ../components/products/_product-list.pug
+  .p-product
+    include ../components/products/_product-banner.pug
+    include ../components/products/_product-sidebar.pug
+    include ../components/products/_product-list.pug
