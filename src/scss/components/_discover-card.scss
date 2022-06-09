@@ -1,0 +1,133 @@
+.sec-discover {
+  position: relative;
+
+  .discover {
+    &__heading {
+      @include flex-center;
+      text-align: center;
+    }
+
+    &__list {
+      @include flex-row;
+      @include flex-wrap(wrap);
+
+      @include mqMobile599 {
+        @include flex-column;
+      }
+    }
+
+    &-card {
+      position: relative;
+      $discover-card-margin-size: 15px;
+      $discover-card-margin-size-double: calc(#{$discover-card-margin-size} * 2);
+      height: auto;
+      margin: $discover-card-margin-size;
+      width: calc(100% / 3 - $discover-card-margin-size-double);
+      background-position: center;
+      background-size: auto;
+      background-repeat: no-repeat;
+      min-height: 500px;
+
+      &__overlay {
+        position: absolute;
+        overflow: hidden;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        @include flex-center;
+        text-align: center;
+        overflow: hidden;
+
+        background-color: rgba(#000, 0.3);
+        color: white;
+        box-sizing: border-box;
+        text-transform: capitalize;
+        font-size: 1.2rem;
+      }
+
+      &:nth-of-type(1) {
+        background-image: url(../../assets/images/discovers/discover1.jpg);
+      }
+
+      &:nth-of-type(2) {
+        background-image: url(../../assets/images/discovers/discover2.jpg);
+      }
+
+      &:nth-of-type(3) {
+        background-image: url(../../assets/images/discovers/discover3.jpg);
+      }
+
+      &:nth-of-type(4) {
+        background-image: url(../../assets/images/discovers/discover4.jpg);
+      }
+
+      &:nth-of-type(5) {
+        background-image: url(../../assets/images/discovers/discover5.jpg);
+      }
+
+      &:nth-of-type(6) {
+        background-image: url(../../assets/images/discovers/discover6.jpg);
+      }
+
+      &:nth-of-type(7) {
+        background-image: url(../../assets/images/discovers/discover7.jpg);
+      }
+
+      &:nth-of-type(8) {
+        background-image: url(../../assets/images/discovers/discover8.jpg);
+      }
+
+      &:nth-of-type(9) {
+        background-image: url(../../assets/images/discovers/discover9.jpg);
+      }
+
+      @media(hover) {
+        & {
+          transform: scale(1.0);
+          transition: transform 500ms ease-in-out;
+
+          &__overlay {
+            opacity: 0;
+            visibility: hidden;
+            transform-origin: center;
+            transform: scale(0, 0);
+            transition: visibility 500ms ease-in-out, opacity 500ms linear, transform 600ms ease-in-out;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          transform: scale(1.03);
+          .discover-card__overlay {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1, 1);
+            transform-origin: center;
+            transition: visibility 500ms ease-in-out, opacity 500ms linear, transform 600ms;
+          }
+        }
+      }
+
+      @include mqMobile599() {
+        width: calc(100% - $discover-card-margin-size-double);
+      }
+
+      @include mqTablet600() {
+        width: calc(100% / 2 - $discover-card-margin-size-double);
+      }
+
+      @include mqTabletLg900() {
+        width: calc(100% / 2 - $discover-card-margin-size-double);
+      }
+
+      @include mqDesktop1200() {
+        width: calc(100% / 3 - $discover-card-margin-size-double);
+      }
+
+      @include mqDesktop1800() {
+        width: calc(100% / 4 - $discover-card-margin-size-double);
+      }
+    }
+  }
+}

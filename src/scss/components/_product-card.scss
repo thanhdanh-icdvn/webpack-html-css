@@ -1,3 +1,12 @@
+.p-product{
+  img{
+    // object-fit: cover;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
 .product-list{
   @include flex-row;
   @include flex-wrap(wrap);
@@ -13,7 +22,7 @@
   @include flex-column;
   @include flex-wrap;
   margin: $product-card-margin;
-  width: calc(100% / 4 - #{$product-card-margin-double});
+  width: calc(100% / 3 - #{$product-card-margin-double});
   @include box-shadow(2px,2px,4px, darken(#fff,10%));
   background-color: $clr-white;
   cursor: pointer;
@@ -62,24 +71,28 @@
     position: relative;
     width: 100%;
     height: 100%;
-    @include flex-column;
+    @include flex-row;
     z-index: 1;
     bottom: 0;
     left: 0;
     align-self: center;
-    overflow: hidden;
+    transform: translateY(0%);
+    transform-origin: top;
+    transition:transform 500ms ease-in-out;
     img{
       aspect-ratio: 1/ 1;
       object-fit: cover;
       width: 100%;
       height: auto;
-      opacity: 1;
-      // transform: translateY(0);
-      // transition: transform 500ms ease-in-out;
-      transition: opacity 500ms ease-in-out,w;
-      z-index: -1;
-      &:not(:first-of-type){
-        display: none;
+      &:first-of-type{
+        opacity: 1;
+        visibility: visible;
+        transition: visibility 0.3s, opacity 0.5s linear;
+      }
+      &:nth-of-type(2){
+        opacity: 0;
+        visibility: hidden;
+        transition: visibility 0.3s, opacity 0.5s linear;
       }
     }
   }
@@ -138,19 +151,27 @@
     transform: scale(1.005);
     .product-card__ribbon{
       opacity: 0;
-      transform: translateX(-100%);
-      transform-origin: left;
+      transform: translateY(-100%);
+      transform-origin: top;
       transition: opacity 500ms ease-in-out,transform 600ms ease-in-out;
     }
-    .product-card__images > img{
-      // transform: translateY(-100%);
-      &:first-of-type{
-        display: none;
-      }
-      &:not(:first-of-type){
-        display: block;
+    .product-card__images{
+      transform: translateX(-100%);
+      transition:transform 500ms ease-in-out;
+      > img{
+        &:first-of-type{
+          opacity: 0;
+          visibility: hidden;
+          transition: visibility 0.3s, opacity 0.5s linear;
+        }
+        &:nth-of-type(2){
+          opacity: 1;
+          visibility: visible;
+          transition: visibility 0.3s, opacity 0.5s linear;
+        }
       }
     }
+
     .product-card__quick-add{
       opacity: 1;
       transform: opacity 500ms ease-in-out;
@@ -169,7 +190,7 @@
     width: calc(100% / 3 - #{$product-card-margin-double});
   }
   @include mqDesktop1200(){
-    width: calc(100% / 4 - #{$product-card-margin-double});
+    width: calc(100% / 3 - #{$product-card-margin-double});
   }
 }
 .icon-color-palate{

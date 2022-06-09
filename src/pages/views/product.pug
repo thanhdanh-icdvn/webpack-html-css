@@ -5,4 +5,23 @@ block main-content
   .p-product
     include ../components/products/_product-banner.pug
     include ../components/products/_product-sidebar.pug
-    include ../components/products/_product-list.pug
+    .container
+      include ../components/products/_product-list.pug
+      section.sec-discover
+        h2.discover__heading Discover
+        .discover__list
+          .discover-card
+            .discover-card__overlay Running shoes
+          .discover-card
+            .discover-card__overlay Shoe finder
+          .discover-card
+            .discover-card__overlay New arrivals
+          .discover-card
+            .discover-card__overlay Outdoor collections
+          .discover-card
+            .discover-card__overlay Accessories
+          .discover-card
+            .discover-card__overlay The rogger collection
+          .discover-card
+            .discover-card__overlay
+              |Home Workout
