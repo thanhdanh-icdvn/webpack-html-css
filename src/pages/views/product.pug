@@ -10,18 +10,22 @@ block main-content
       include ../components/products/_product-list.pug
       section.sec-discover
         h2.discover__heading Discover
-        .discover__list
-          .discover-card
-            .discover-card__overlay Running shoes
-          .discover-card
-            .discover-card__overlay Shoe finder
-          .discover-card
-            .discover-card__overlay New arrivals
-          .discover-card
-            .discover-card__overlay Outdoor collections
-          .discover-card
-            .discover-card__overlay Accessories
-          .discover-card
-            .discover-card__overlay The rogger collection
-          .discover-card
-            .discover-card__overlay Home Workout
+        .swiper#discover-list-swiper
+          .discover__list.swiper-wrapper
+            .discover-card.swiper-slide
+              .discover-card__overlay Running shoes
+            .discover-card.swiper-slide
+              .discover-card__overlay Shoe finder
+            .discover-card.swiper-slide
+              .discover-card__overlay New arrivals
+            .discover-card.swiper-slide
+              .discover-card__overlay Outdoor collections
+            .discover-card.swiper-slide
+              .discover-card__overlay Accessories
+            .discover-card.swiper-slide
+              .discover-card__overlay The rogger collection
+            .discover-card.swiper-slide
+              .discover-card__overlay Home Workout
+          .swiper-button-prev
+          .swiper-button-next
+          .swiper-pagination

@@ -9,11 +9,10 @@
 
     &__list {
       @include flex-row;
-      @include flex-wrap(wrap);
-
-      @include mqMobile599 {
-        @include flex-column;
-      }
+      @include flex-wrap(nowrap);
+      // @include mqMobile599 {
+      //   @include flex-column;
+      // }
     }
 
     &-card {
@@ -46,42 +45,42 @@
         font-size: 1.2rem;
       }
 
-      &:nth-of-type(1) {
+      &:nth-of-type(9n+1) {
         background-image: url(../../assets/images/discovers/discover1.jpg);
       }
 
-      &:nth-of-type(2) {
+      &:nth-of-type(9n+2) {
         background-image: url(../../assets/images/discovers/discover2.jpg);
       }
 
-      &:nth-of-type(3) {
+      &:nth-of-type(9n+3) {
         background-image: url(../../assets/images/discovers/discover3.jpg);
       }
 
-      &:nth-of-type(4) {
+      &:nth-of-type(9n+4) {
         background-image: url(../../assets/images/discovers/discover4.jpg);
       }
 
-      &:nth-of-type(5) {
+      &:nth-of-type(9n+5) {
         background-image: url(../../assets/images/discovers/discover5.jpg);
       }
 
-      &:nth-of-type(6) {
+      &:nth-of-type(9n+6) {
         background-image: url(../../assets/images/discovers/discover6.jpg);
       }
 
-      &:nth-of-type(7) {
+      &:nth-of-type(9n+7) {
         background-image: url(../../assets/images/discovers/discover7.jpg);
       }
 
-      &:nth-of-type(8) {
+      &:nth-of-type(9n+8) {
         background-image: url(../../assets/images/discovers/discover8.jpg);
       }
 
-      &:nth-of-type(9) {
+      &:nth-of-type(9n+9) {
         background-image: url(../../assets/images/discovers/discover9.jpg);
       }
-
+      // background-image: url(../../assets/images/discovers/discover9.jpg);
       @media(hover) {
         & {
           transform: scale(1.0);
@@ -109,25 +108,25 @@
         }
       }
 
-      @include mqMobile599() {
-        width: calc(100% - $discover-card-margin-size-double);
-      }
+      // @include mqMobile599() {
+      //   width: calc(100% - $discover-card-margin-size-double);
+      // }
 
-      @include mqTablet600() {
-        width: calc(100% / 2 - $discover-card-margin-size-double);
-      }
+      // @include mqTablet600() {
+      //   width: calc(100% / 2 - $discover-card-margin-size-double);
+      // }
 
-      @include mqTabletLg900() {
-        width: calc(100% / 3 - $discover-card-margin-size-double);
-      }
+      // @include mqTabletLg900() {
+      //   width: calc(100% / 3 - $discover-card-margin-size-double);
+      // }
 
-      @include mqDesktop1200() {
-        width: calc(100% / 3 - $discover-card-margin-size-double);
-      }
+      // @include mqDesktop1200() {
+      //   width: calc(100% / 3 - $discover-card-margin-size-double);
+      // }
 
-      @include mqDesktop1800() {
-        width: calc(100% / 4  - $discover-card-margin-size-double);
-      }
+      // @include mqDesktop1800() {
+      //   width: calc(100% / 4  - $discover-card-margin-size-double);
+      // }
     }
   }
 }

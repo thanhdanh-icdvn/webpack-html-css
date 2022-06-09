@@ -30,7 +30,7 @@ $.each(swiper1Array, function () {
 
 const swiperInstance1 = new Swiper(".mySwiper", {
   slidesPerView: 1,
-  spaceBetween: 10,
+  spaceBetween: 20,
   centeredSlides: false,
   loop: true,
   autoplay: true,
@@ -55,18 +55,70 @@ const swiperInstance1 = new Swiper(".mySwiper", {
   breakpoints:{
     320: {
       slidesPerView: 1,
-      spaceBetween: 10
+      spaceBetween: 20
     },
     // when window width is >= 480px
     480: {
       slidesPerView: 2,
-      spaceBetween: 10
+      spaceBetween: 20
     },
     // when window width is >= 640px
     640: {
       slidesPerView: 3,
-      spaceBetween: 10
+      spaceBetween: 20
     }
+  },
+});
+
+const discoverSwiper = new Swiper("#discover-list-swiper", {
+  slidesPerView: 1,
+  spaceBetween: 20,
+  centeredSlides: true,
+  loop: true,
+  autoplayDisableOnInteraction: true,
+  speed: 500,
+  scrollbar: true,
+  keyboard: {
+    enabled: true,
+  },
+  mousewheel:false,
+  pagination: {
+    el: ".swiper-pagination",
+    type: 'bullets',
+    dynamicBullets: true,
+    progressbarOpposite: true,
+    clickable: true,
+  },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+  breakpoints:{
+    // >=0
+    0: {
+      slidesPerView: 1,
+      spaceBetween: 10
+    },
+    // >=600
+    600: {
+      slidesPerView: 2,
+      spaceBetween: 10
+    },
+    // >=900
+    900: {
+      slidesPerView: 3,
+      spaceBetween: 10
+    },
+    // >=1200
+    1200: {
+      slidesPerView: 4,
+      spaceBetween: 10
+    },
+    // >=1800
+    1800: {
+      slidesPerView: 5,
+      spaceBetween: 10
+    },
   },
 });
 
