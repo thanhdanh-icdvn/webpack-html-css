@@ -3,9 +3,10 @@ block prepend head
   title Đây là trang sản phẩm
 block main-content
   .p-product
-    include ../components/products/_product-banner.pug
-    include ../components/products/_product-sidebar.pug
-    .container
+    .p-product--top
+      include ../components/products/_product-banner.pug
+    .p-product--bottom
+      include ../components/products/_product-sidebar.pug
       include ../components/products/_product-list.pug
       section.sec-discover
         h2.discover__heading Discover
@@ -23,5 +24,4 @@ block main-content
           .discover-card
             .discover-card__overlay The rogger collection
           .discover-card
-            .discover-card__overlay
-              |Home Workout
+            .discover-card__overlay Home Workout
