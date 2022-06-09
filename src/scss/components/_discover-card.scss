@@ -24,7 +24,7 @@
       margin: $discover-card-margin-size;
       width: calc(100% / 3 - $discover-card-margin-size-double);
       background-position: center;
-      background-size: 100% auto;
+      background-size: cover;
       background-repeat: no-repeat;
       min-height: 500px;
 
@@ -118,7 +118,7 @@
       }
 
       @include mqTabletLg900() {
-        width: calc(100% / 2 - $discover-card-margin-size-double);
+        width: calc(100% / 3 - $discover-card-margin-size-double);
       }
 
       @include mqDesktop1200() {
@@ -126,7 +126,7 @@
       }
 
       @include mqDesktop1800() {
-        width: calc(100% / 4 - $discover-card-margin-size-double);
+        width: calc(100% / 4  - $discover-card-margin-size-double);
       }
     }
   }
