@@ -12,7 +12,6 @@
     $card-radius: 10px;
     $card-margin-double: calc(#{$card-margin} * 2);
     margin: $card-margin;
-    min-width: 300px;
     width: calc(100% / 3 - #{$card-margin-double});
     @include flex-column;
     position: relative;
