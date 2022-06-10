@@ -4,21 +4,26 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin.js';
 gsap.registerPlugin(ScrollTrigger,ScrollToPlugin);
 
 
-function revealAniamation(){
+function revealAnimation(){
   var reveals = $(".product-card");
 
   for(var i = 0; i < reveals.length; i++){
     var windowHeight = window.innerHeight;
-    var elementTop = reveals[i].getBoundingClientRect().top;
-    var elementVisible = 600;
-    if (elementTop < windowHeight - elementVisible) {
+    var headerSize = $("#header").outerHeight();
+    var elementTop = reveals[i].getBoundingClientRect().top - headerSize ;
+    var elementVisible = $('.product-card:first').height();
+
+    if (windowHeight - elementVisible > elementTop ) {
       reveals[i].classList.add("active");
     } else {
-      // reveals[i].classList.remove("active");
+      reveals[i].classList.remove("active");
     }
   }
 }
-window.revealAniamation = revealAniamation;
-window.addEventListener("scroll", revealAniamation);
+window.revealAnimation = revealAnimation;
+window.addEventListener("scroll", revealAnimation);
 // To check the scroll position on page load
-revealAniamation();
+revealAnimation();
+$(window).on("resize",function(){
+  revealAnimation();
+})

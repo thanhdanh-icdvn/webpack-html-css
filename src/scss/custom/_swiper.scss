@@ -15,24 +15,27 @@ $swiperSize: 30px;
   .swiper-button-prev,
   .swiper-button-next {
     &:after {
-      opacity: 0.8;
-      transform: scale(1.0);
+
       transition: all 500ms ease-in-out;
       background-color: rgba($color: #000, $alpha: 0.5);
       padding: 15px 20px;
       @include flex-center;
       position: absolute;
-
       @include mqMobile599() {
         padding: 15px 15px;
       }
     }
-
-    &:hover {
-      &:after {
-        transform: scale(1.2);
-        opacity: 1;
-        transition: all 500ms ease-in-out;
+    @media(hover){
+      &:after{
+        opacity: 0.8;
+        transform: scale(1.0);
+      }
+      &:hover {
+        &:after {
+          transform: scale(1.2);
+          opacity: 1;
+          transition: all 500ms ease-in-out;
+        }
       }
     }
   }

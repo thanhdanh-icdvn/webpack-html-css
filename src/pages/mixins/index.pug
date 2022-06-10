@@ -1,0 +1,6 @@
+mixin discoverCard(discoverName)
+  .discover-card.swiper-slide
+    .discover-card__overlay=discoverName
+mixin discoverList(list)
+  each val,index in list
+    +discoverCard(val.discoverName)

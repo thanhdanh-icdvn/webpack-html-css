@@ -2,6 +2,7 @@ extends ../layouts/main.pug
 block prepend head
   title Đây là trang sản phẩm
 block main-content
+  -var discoverList =[{discoverName:"Running shoes"},{discoverName:"Shoe finder"},{discoverName:"New arrivals"},{discoverName:"Outdoor collections"},{discoverName:"Accessories"},{discoverName:"Home Workout"}]
   .p-product
     .p-product--top
       include ../components/products/_product-banner.pug
@@ -12,20 +13,7 @@ block main-content
         h2.discover__heading Discover
         .swiper#discover-list-swiper
           .discover__list.swiper-wrapper
-            .discover-card.swiper-slide
-              .discover-card__overlay Running shoes
-            .discover-card.swiper-slide
-              .discover-card__overlay Shoe finder
-            .discover-card.swiper-slide
-              .discover-card__overlay New arrivals
-            .discover-card.swiper-slide
-              .discover-card__overlay Outdoor collections
-            .discover-card.swiper-slide
-              .discover-card__overlay Accessories
-            .discover-card.swiper-slide
-              .discover-card__overlay The rogger collection
-            .discover-card.swiper-slide
-              .discover-card__overlay Home Workout
+            +discoverList(discoverList)
           .swiper-button-prev
           .swiper-button-next
           .swiper-pagination

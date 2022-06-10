@@ -15,7 +15,8 @@
   .product-card {
     $product-card-margin:20px;
     $product-card-margin-double: calc(2 * #{$product-card-margin});
-    transform: scale(1),translateY(-100%);
+    // transform: translateX(300%);
+    transform: scale(1.0);
     opacity: 0;
     transition: all 500ms ease-in-out;
     position: relative;
@@ -84,15 +85,15 @@
         object-fit: cover;
         width: 100%;
         height: auto;
-        &:first-of-type{
+        &:first-child{
           opacity: 1;
           visibility: visible;
-          transition: visibility 0.3s, opacity 0.5s linear;
+          transition: visibility 0.3s, opacity 1s linear;
         }
-        &:nth-of-type(2){
+        &:nth-child(2){
           opacity: 0;
           visibility: hidden;
-          transition: visibility 0.3s, opacity 0.5s linear;
+          transition: visibility 0.3s, opacity 1s linear;
         }
       }
     }
@@ -142,13 +143,10 @@
       margin-top: auto;
     }
 
-    &__price {
-
-    }
-
     &:hover{
       @include box-shadow(4px,4px,8px, darken(#fff,30%));
-      transform: scale(1.005);
+      transform: scale(1.05);
+      transition: all 500ms ease-in-out;
       .product-card__ribbon{
         opacity: 0;
         transform: translateY(-100%);
@@ -159,15 +157,15 @@
         transform: translateX(-100%);
         transition:transform 500ms ease-in-out;
         > img{
-          &:first-of-type{
+          &:nth-child(1){
             opacity: 0;
             visibility: hidden;
-            transition: visibility 0.3s, opacity 0.5s linear;
+            transition: visibility 0.3s, opacity 1s linear;
           }
-          &:nth-of-type(2){
+          &:nth-child(2){
             opacity: 1;
             visibility: visible;
-            transition: visibility 0.3s, opacity 0.5s linear;
+            transition: visibility 0.3s, opacity 1s linear;
           }
         }
       }
@@ -193,8 +191,9 @@
       width: calc(100% / 3 - #{$product-card-margin-double});
     }
     &.active{
-      transform: translateY(0%);
+      // transform: translateX(0%);
       opacity: 1;
+      transition: all 500ms ease-in-out;
     }
   }
   .icon-color-palate{
