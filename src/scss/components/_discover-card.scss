@@ -20,11 +20,10 @@
       $discover-card-margin-size: 15px;
       $discover-card-margin-size-double: calc(#{$discover-card-margin-size} * 2);
       height: auto;
-      margin: $discover-card-margin-size;
+      // margin: $discover-card-margin-size;
       width: calc(100% / 3 - $discover-card-margin-size-double);
       background-position: center;
       background-size: cover;
-      background-repeat: no-repeat;
       min-height: 500px;
 
       &__overlay {
@@ -81,6 +80,7 @@
         background-image: url(../../assets/images/discovers/discover9.jpg);
       }
       // background-image: url(../../assets/images/discovers/discover9.jpg);
+      background-repeat: no-repeat;
       @media(hover) {
         & {
           transform: scale(1.0);
