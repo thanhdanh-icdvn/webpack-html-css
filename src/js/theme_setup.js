@@ -74,6 +74,7 @@ const discoverSwiper = new Swiper("#discover-list-swiper", {
   slidesPerView: 1,
   spaceBetween: 15,
   centeredSlides: false,
+  autoplay:true,
   loop: true,
   autoplayDisableOnInteraction: true,
   speed: 500,

@@ -5,6 +5,9 @@
     &__heading {
       @include flex-center;
       text-align: center;
+      margin: 28px 0px -4px;
+      font-size: 52px;
+      line-height: 1.2;
     }
 
     &__list {
@@ -13,6 +16,10 @@
       // @include mqMobile599 {
       //   @include flex-column;
       // }
+      margin-top: 24px;
+      @include mqDesktop1200(){
+        margin-top: 48px;
+      }
     }
 
     &-card {
@@ -21,11 +28,12 @@
       $discover-card-margin-size-double: calc(#{$discover-card-margin-size} * 2);
       height: auto;
       // margin: $discover-card-margin-size;
-      width: calc(100% / 3 - $discover-card-margin-size-double);
-      background-position: center;
+      // width: calc(100% / 3 - $discover-card-margin-size-double);
+      width: 100%;
+      background-position: center center;
       background-size: cover;
       min-height: 500px;
-
+      overflow: hidden;
       &__overlay {
         position: absolute;
         overflow: hidden;
@@ -42,6 +50,7 @@
         box-sizing: border-box;
         text-transform: capitalize;
         font-size: 1.2rem;
+        overflow: hidden;
       }
 
       &:nth-of-type(9n+1) {
@@ -79,13 +88,12 @@
       &:nth-of-type(9n+9) {
         background-image: url(../../assets/images/discovers/discover9.jpg);
       }
-      // background-image: url(../../assets/images/discovers/discover9.jpg);
       background-repeat: no-repeat;
       @media(hover) {
         & {
-          transform: scale(1.0);
+          transform: scale(1);
           transition: transform 500ms ease-in-out;
-
+          transform-origin: bottom;
           &__overlay {
             opacity: 0;
             visibility: hidden;
@@ -97,12 +105,11 @@
 
         &:hover,
         &:focus {
-          transform: scale(1.03);
+          transform: scale(1.05);
           .discover-card__overlay {
             opacity: 1;
             visibility: visible;
             transform: scale(1, 1);
-            transform-origin: center;
             transition: visibility 500ms ease-in-out, opacity 500ms linear, transform 600ms;
           }
         }

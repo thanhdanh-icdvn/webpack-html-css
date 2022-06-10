@@ -1,5 +1,5 @@
 $themeColor :#ff0000; //use hex only to set root color for js use
-$swiperSize: 20px;
+$swiperSize: 30px;
 
 @at-root {
   :root {
@@ -40,13 +40,13 @@ $swiperSize: 20px;
   .swiper-button-prev:after {
     transform-origin: left;
     left: -10px;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 50% 50% 0px;
   }
 
   .swiper-button-next:after {
     transform-origin: right;
     right: -10px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 50% 0px 0px 50%;
   }
 
   .swiper-slide {

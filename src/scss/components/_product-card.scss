@@ -5,199 +5,204 @@
     height: 100%;
     box-sizing: border-box;
   }
-}
-
-.product-list{
-  @include flex-row;
-  @include flex-wrap(wrap);
-  background-color: white;
-  position: relative;
-}
-.product-card {
-  $product-card-margin:20px;
-  $product-card-margin-double: calc(2 * #{$product-card-margin});
-  transform: scale(1.0);
-  transition: transform 500ms ease-in-out;
-  position: relative;
-  @include flex-column;
-  @include flex-wrap;
-  margin: $product-card-margin;
-  width: calc(100% / 3 - #{$product-card-margin-double});
-  @include box-shadow(2px,2px,4px, darken(#fff,10%));
-  background-color: $clr-white;
-  cursor: pointer;
-  &__overlay{
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    background-color: transparent;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  &--top {
-    width: 100%;
-    height: auto;
-    @include box-shadow(2px,2px,4px, darken(#f7f7f7,5%));
+  .product-list{
+    @include flex-row;
+    @include flex-wrap(wrap);
+    background-color: white;
     position: relative;
     overflow: hidden;
-    box-sizing: border-box;
-    background-color: #f7f7f7;
   }
-
-  &__ribbon {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
-    z-index: 2;
-    background-color: lighten($color: $clr-white, $amount: 30%);
-    @include box-shadow(1px,1px,2px, darken($clr-white,5%));
-    .icon{
-      @extend .mr-10;
-    }
-    text-transform: uppercase;
-    color: black;
-    padding: 10px 15px;
-    opacity: 1;
-    transform: translateX(0%);
-    transform-origin: left;
-    transition: opacity 500ms ease-in-out,transform 600ms ease-in-out;
-  }
-
-  &__images {
+  .product-card {
+    $product-card-margin:20px;
+    $product-card-margin-double: calc(2 * #{$product-card-margin});
+    transform: scale(1),translateY(-100%);
+    opacity: 0;
+    transition: all 500ms ease-in-out;
     position: relative;
-    width: 100%;
-    height: 100%;
-    @include flex-row;
-    z-index: 1;
-    bottom: 0;
-    left: 0;
-    align-self: center;
-    transform: translateY(0%);
-    transform-origin: top;
-    transition:transform 500ms ease-in-out;
-    img{
-      aspect-ratio: 1/ 1;
-      object-fit: cover;
+    @include flex-column;
+    @include flex-wrap;
+    margin: $product-card-margin;
+    width: calc(100% / 3 - #{$product-card-margin-double});
+    @include box-shadow(2px,2px,4px, darken(#fff,10%));
+    background-color: $clr-white;
+    cursor: pointer;
+    &__overlay{
+      position: relative;
+      left: 0;
+      top: 0;
       width: 100%;
       height: auto;
-      &:first-of-type{
-        opacity: 1;
-        visibility: visible;
-        transition: visibility 0.3s, opacity 0.5s linear;
-      }
-      &:nth-of-type(2){
-        opacity: 0;
-        visibility: hidden;
-        transition: visibility 0.3s, opacity 0.5s linear;
-      }
+      background-color: transparent;
+      opacity: 1;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
-  }
-  &__quick-add{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-    height: auto;
-    font-size: normal;
-    width: 100%;
-    @include flex-center;
-    padding: 1rem 2rem;
-    box-sizing: border-box;
-    opacity: 0;
-    transition: opacity 500ms ease-in-out;
-  }
-  &__btn{
-    @extend .btn;
-    background-color: #fff;
-    color: black;
-    width: 100%;
-    @include box-shadow(1px,1px,2px,darken($clr-white,15%));
-  }
+    &--top {
+      width: 100%;
+      height: auto;
+      @include box-shadow(2px,2px,4px, darken(#f7f7f7,5%));
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      background-color: #f7f7f7;
+    }
 
-  // bottom card
-  &--bottom {
-    padding: 15px;
-    @include flex-column;
-    @include flex-wrap(wrap);
-    flex: 1;
-    margin-top: auto;
-  }
-
-  &__title {
-    font-size: 1.2rem;
-    line-height: 1.2rem;
-    font-weight: 500;
-    font-style: normal;
-  }
-
-  &__desc {
-    margin-top: 15px;
-  }
-
-  &__color-variants {
-    margin-top: auto;
-  }
-
-  &__price {
-
-  }
-
-  &:hover{
-    @include box-shadow(4px,4px,8px, darken(#fff,30%));
-    transform: scale(1.005);
-    .product-card__ribbon{
-      opacity: 0;
-      transform: translateY(-100%);
-      transform-origin: top;
+    &__ribbon {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      z-index: 2;
+      background-color: lighten($color: $clr-white, $amount: 30%);
+      @include box-shadow(1px,1px,2px, darken($clr-white,5%));
+      .icon{
+        @extend .mr-10;
+      }
+      text-transform: uppercase;
+      color: black;
+      padding: 10px 15px;
+      opacity: 1;
+      transform: translateX(0%);
+      transform-origin: left;
       transition: opacity 500ms ease-in-out,transform 600ms ease-in-out;
     }
-    .product-card__images{
-      transform: translateX(-100%);
+
+    &__images {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      @include flex-row;
+      z-index: 1;
+      bottom: 0;
+      left: 0;
+      align-self: center;
+      transform: translateY(0%);
+      transform-origin: top;
       transition:transform 500ms ease-in-out;
-      > img{
+      img{
+        aspect-ratio: 1/ 1;
+        object-fit: cover;
+        width: 100%;
+        height: auto;
         &:first-of-type{
-          opacity: 0;
-          visibility: hidden;
-          transition: visibility 0.3s, opacity 0.5s linear;
-        }
-        &:nth-of-type(2){
           opacity: 1;
           visibility: visible;
           transition: visibility 0.3s, opacity 0.5s linear;
         }
+        &:nth-of-type(2){
+          opacity: 0;
+          visibility: hidden;
+          transition: visibility 0.3s, opacity 0.5s linear;
+        }
       }
     }
+    &__quick-add{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 2;
+      height: auto;
+      font-size: normal;
+      width: 100%;
+      @include flex-center;
+      padding: 1rem 2rem;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 500ms ease-in-out;
+    }
+    &__btn{
+      @extend .btn;
+      background-color: #fff;
+      color: black;
+      width: 100%;
+      @include box-shadow(1px,1px,2px,darken($clr-white,15%));
+    }
 
-    .product-card__quick-add{
+    // bottom card
+    &--bottom {
+      padding: 15px;
+      @include flex-column;
+      @include flex-wrap(wrap);
+      flex: 1;
+      margin-top: auto;
+    }
+
+    &__title {
+      font-size: 1.2rem;
+      line-height: 1.2rem;
+      font-weight: 500;
+      font-style: normal;
+    }
+
+    &__desc {
+      margin-top: 15px;
+    }
+
+    &__color-variants {
+      margin-top: auto;
+    }
+
+    &__price {
+
+    }
+
+    &:hover{
+      @include box-shadow(4px,4px,8px, darken(#fff,30%));
+      transform: scale(1.005);
+      .product-card__ribbon{
+        opacity: 0;
+        transform: translateY(-100%);
+        transform-origin: top;
+        transition: opacity 500ms ease-in-out,transform 600ms ease-in-out;
+      }
+      .product-card__images{
+        transform: translateX(-100%);
+        transition:transform 500ms ease-in-out;
+        > img{
+          &:first-of-type{
+            opacity: 0;
+            visibility: hidden;
+            transition: visibility 0.3s, opacity 0.5s linear;
+          }
+          &:nth-of-type(2){
+            opacity: 1;
+            visibility: visible;
+            transition: visibility 0.3s, opacity 0.5s linear;
+          }
+        }
+      }
+
+      .product-card__quick-add{
+        opacity: 1;
+        transform: opacity 500ms ease-in-out;
+      }
+      .product-card__btn{
+        @include box-shadow(2px,2px,3px,darken($clr-white,20%))
+      }
+    }
+    @include mqMobile599(){
+      width: calc(100% - #{$product-card-margin-double});
+    }
+    @include mqTablet600(){
+      width: calc(100% / 2 - #{$product-card-margin-double});
+    }
+    @include mqTabletLg900(){
+      width: calc(100% / 3 - #{$product-card-margin-double});
+    }
+    @include mqDesktop1200(){
+      width: calc(100% / 3 - #{$product-card-margin-double});
+    }
+    &.active{
+      transform: translateY(0%);
       opacity: 1;
-      transform: opacity 500ms ease-in-out;
-    }
-    .product-card__btn{
-      @include box-shadow(2px,2px,3px,darken($clr-white,20%))
     }
   }
-  @include mqMobile599(){
-    width: calc(100% - #{$product-card-margin-double});
+  .icon-color-palate{
+    color: transparent;
+    background-image: url('../../assets/icons/color-palate.svg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% auto;
+    object-fit: cover;
   }
-  @include mqTablet600(){
-    width: calc(100% / 2 - #{$product-card-margin-double});
-  }
-  @include mqTabletLg900(){
-    width: calc(100% / 3 - #{$product-card-margin-double});
-  }
-  @include mqDesktop1200(){
-    width: calc(100% / 3 - #{$product-card-margin-double});
-  }
-}
-.icon-color-palate{
-  color: transparent;
-  background-image: url('../../assets/icons/color-palate.svg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: 100% auto;
-  object-fit: cover;
 }
