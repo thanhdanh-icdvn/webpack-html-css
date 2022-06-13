@@ -123,6 +123,8 @@ const discoverSwiper = new Swiper("#discover-list-swiper", {
   },
 });
 
+
+
 $(".swiper-slide figure").css({
   "max-height":"400px"
 });
@@ -131,6 +133,18 @@ $(window).on("load", function(){
   const currentStyle = localStorage.getItem("--swiper-theme-color")?localStorage.getItem("--swiper-theme-color") : getComputedStyle(document.documentElement).getPropertyValue('--swiper-theme-color').trim();
   $("#theme-setting").val(currentStyle);
   document.documentElement.style.setProperty("--swiper-theme-color", currentStyle);
+  const discoverCardList = $(".discover-card");
+  $.each(discoverCardList,function(index){
+    if(index+1 <=  10){
+      $(this).css({
+        "background-image":`url(../assets/images/discovers/discover${(index+1)}.webp)`
+      })
+    }else{
+      $(this).css({
+        "background-image":`url(../assets/images/discovers/discover${(index+1)-10}.webp)`
+      })
+    }
+  })
 });
 
 $("#theme-setting").on("change", function () {

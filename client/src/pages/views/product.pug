@@ -1,8 +1,19 @@
-extends ../layouts/main.pug
+extends ../layouts/main-with-sidebar.pug
 block prepend head
   title Đây là trang sản phẩm
 block main-content
-  -var discoverList =[{discoverName:"Running shoes"},{discoverName:"Shoe finder"},{discoverName:"New arrivals"},{discoverName:"Outdoor collections"},{discoverName:"Accessories"},{discoverName:"Home Workout"}]
+  -var discoverList =[
+  -{discoverName:"Cloud collection"},
+  -{discoverName:"Running shoes"},
+  -{discoverName:"Shoe finder"},
+  -{discoverName:"New arrivals"},
+  -{discoverName:"Outdoor collections"},
+  -{discoverName:"Apparel"},
+  -{discoverName:"Accessories"},
+  -{discoverName:"Best seller"},
+  -{discoverName:"The roger collection"},
+  -{discoverName:"Home Workout"}
+  -]
   .p-product
     .p-product--top
       include ../components/products/_product-banner.pug

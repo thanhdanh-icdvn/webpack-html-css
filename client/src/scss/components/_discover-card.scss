@@ -47,50 +47,54 @@
         @include flex-center;
         text-align: center;
         overflow: hidden;
-
         background-color: rgba(#000, 0.3);
         color: white;
         box-sizing: border-box;
         text-transform: capitalize;
-        font-size: 1.2rem;
+        font-size: 2.5rem;
+        padding: 0 5rem;
         overflow: hidden;
+        line-height: 2.7rem;
       }
 
-      &:nth-of-type(9n+1) {
-        background-image: url(../../assets/images/discovers/discover1.jpg);
-      }
+      // &:nth-of-type(10n+1) {
+      //   background-image: url(../../assets/images/discovers/discover1.jpg);
+      // }
 
-      &:nth-of-type(9n+2) {
-        background-image: url(../../assets/images/discovers/discover2.jpg);
-      }
+      // &:nth-of-type(10n+2) {
+      //   background-image: url(../../assets/images/discovers/discover2.jpg);
+      // }
 
-      &:nth-of-type(9n+3) {
-        background-image: url(../../assets/images/discovers/discover3.jpg);
-      }
+      // &:nth-of-type(10n+3) {
+      //   background-image: url(../../assets/images/discovers/discover3.jpg);
+      // }
 
-      &:nth-of-type(9n+4) {
-        background-image: url(../../assets/images/discovers/discover4.jpg);
-      }
+      // &:nth-of-type(10n+4) {
+      //   background-image: url(../../assets/images/discovers/discover4.jpg);
+      // }
 
-      &:nth-of-type(9n+5) {
-        background-image: url(../../assets/images/discovers/discover5.jpg);
-      }
+      // &:nth-of-type(10n+5) {
+      //   background-image: url(../../assets/images/discovers/discover5.jpg);
+      // }
 
-      &:nth-of-type(9n+6) {
-        background-image: url(../../assets/images/discovers/discover6.jpg);
-      }
+      // &:nth-of-type(10n+6) {
+      //   background-image: url(../../assets/images/discovers/discover6.jpg);
+      // }
 
-      &:nth-of-type(9n+7) {
-        background-image: url(../../assets/images/discovers/discover7.jpg);
-      }
+      // &:nth-of-type(10n+7) {
+      //   background-image: url(../../assets/images/discovers/discover7.jpg);
+      // }
 
-      &:nth-of-type(9n+8) {
-        background-image: url(../../assets/images/discovers/discover8.jpg);
-      }
+      // &:nth-of-type(10n+8) {
+      //   background-image: url(../../assets/images/discovers/discover8.jpg);
+      // }
 
-      &:nth-of-type(9n+9) {
-        background-image: url(../../assets/images/discovers/discover9.jpg);
-      }
+      // &:nth-of-type(10n+9) {
+      //   background-image: url(../../assets/images/discovers/discover9.jpg);
+      // }
+      // &:nth-of-type(10n+10) {
+      //   background-image: url(../../assets/images/discovers/discover10.jpg);
+      // }
       background-repeat: no-repeat;
       @media(hover) {
         & {
@@ -98,10 +102,10 @@
           transition: transform 500ms ease-in-out;
           transform-origin: bottom;
           &__overlay {
+            transform-origin: bottom;
+            transform: translateY(100%);
             opacity: 0;
             visibility: hidden;
-            transform-origin: center;
-            transform: scale(0, 0);
             transition: visibility 500ms ease-in-out, opacity 500ms linear, transform 600ms ease-in-out;
           }
         }
@@ -110,9 +114,9 @@
         &:focus {
           transform: scale(1.05);
           .discover-card__overlay {
+            transform: translateY(0%);
             opacity: 1;
             visibility: visible;
-            transform: scale(1, 1);
             transition: visibility 500ms ease-in-out, opacity 500ms linear, transform 600ms;
           }
         }

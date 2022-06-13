@@ -6,14 +6,14 @@ const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
 const ImageminWebpWebpackPlugin  = require('imagemin-webp-webpack-plugin');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-
+const nodeExternals = require('webpack-node-externals');
 
 /**
  * Function to generate HTML from template
  * @param {*} templateDir The tempalte directory
  * @returns Html filed in build directory
  */
-function generateHtmlPlugins(templateDir = './src/pages') {
+function generateHtmlPlugins(templateDir = './client/src/pages/views/') {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
   return templateFiles.map(item => {
     // Split names and extension
@@ -28,17 +28,17 @@ function generateHtmlPlugins(templateDir = './src/pages') {
     })
   })
 }
-const htmlPlugins = generateHtmlPlugins('./src/pages/views/');
+const htmlPlugins = generateHtmlPlugins('./client/src/pages/views/');
 
-module.exports = {
-  entry: './src/js/app.js',
+const client = {
+  entry: './client/src/js/app.js',
   mode: 'development',
   resolve: {
     modules: ['./node_modules'],
     alias: {
       'swiper': path.resolve(__dirname, './node_modules/swiper'),
       'gsap': path.resolve(__dirname, './node_modules/gsap'),
-      'assets': path.resolve(__dirname, './src/assets'),
+      'assets': path.resolve(__dirname, './client/src/assets'),
     },
     fallback: {
       fs: false
@@ -56,7 +56,7 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [{
-        from: 'src/assets/images',
+        from: 'client/src/assets/images',
         to: 'assets/images'
       }]
     }),
@@ -97,7 +97,7 @@ module.exports = {
     compress: true,
     port: 9000,
     hot: true,
-    watchFiles: ["./src/pages/**/*.pug"],
+    watchFiles: ["./client/src/pages/**/*.pug"],
   },
   module: {
     rules: [{
@@ -115,14 +115,14 @@ module.exports = {
       {
         test: /\.(png|jpg|jpeg|gif|tiff|bmp|svg|jfif)$/i,
         include: [
-          path.resolve(__dirname, './src/assets/images')
+          path.resolve(__dirname, './client/src/assets/images')
         ],
         type: 'asset/resource',
       },
       {
         test: /\.(svg)$/i,
         include: [
-          path.resolve(__dirname, './src/assets/icons')
+          path.resolve(__dirname, './client/src/assets/icons')
         ],
         type: 'asset/resource',
       },
@@ -192,3 +192,8 @@ module.exports = {
     ]
   }
 }
+
+const server = {
+
+}
+module.exports = [client];
