@@ -9,7 +9,6 @@ block main-content
       .swiper-button-prev
       .swiper-pagination
   .container
-    iframe(src='https://docs.google.com/spreadsheets/d/e/2PACX-1vQtKTLOZYmJJqjqPp-Jru3XdaOzo1EX4qWXemtAoeMOAMro3HVM9NVvCdKplFXz5Nkt3DCvmdNOhYrl/pubhtml?widget=true&headers=false' frameborder="1px" height="450px" width="100%")
     section
       div
         input#theme-setting(type='color' name='theme-setting' value='#f6b73c')
@@ -73,7 +72,6 @@ block main-content
         input(type='file' accept='image/*' onchange="loadFile(event,'output')")
         img#output
     include ../components/_accordion.pug
-    include ../includes/social-button-list.pug
     include ../components/_pagination.pug
     include ../components/_masonry.pug
     include ../components/_card.pug
