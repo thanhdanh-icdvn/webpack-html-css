@@ -15,7 +15,6 @@
   .product-card {
     $product-card-margin:20px;
     $product-card-margin-double: calc(2 * #{$product-card-margin});
-    // transform: translateX(300%);
     transform: scale(1.0);
     opacity: 0;
     transition: all 500ms ease-in-out;

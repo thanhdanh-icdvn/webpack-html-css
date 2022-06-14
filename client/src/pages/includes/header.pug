@@ -1,65 +1,745 @@
 block header
-  header#header
-    .wrapper.container
-      h1#logo
-        a(href='/')
-          img(src='assets/images/logo.svg' alt='Logo image')
-      nav
-        button#btn-menu-toogle.btn-menu-toogle(type='button')
-          span.icon.icon-navigation-menu
-        ul#top-menu.nav-menu.hidden
-          li
-            a.nav-active(href='/product.html') Products
-          li
-            a(href='#') Services
-            ul
-              li
-                a(href='#') Services 1
-              li
-                a(href='#') Services 2
+  // START: RUBY DEMO HEADER
+  div#header.ruby-menu-demo-header
+    // ###########################
+    // START: RUBY HORIZONTAL MENU
+    .ruby-wrapper
+      button.c-hamburger.c-hamburger--htx.visible-xs
+        span toggle menu
+      ul.ruby-menu
+        li.ruby-active-menu-item
+          a(href='#') Home
+        li
+          a(href='#') Classic
+          ul
+            li
+              a(href='#') 2nd Level #1
+            li
+              a(href='#') 2nd Level #2
+            li
+              a(href='#') 2nd Level #3
+              ul
+                li
+                  a(href='#')
+                    i.icon.icon-university(aria-hidden='true')
+                    | 3rd Level #1
+                  ul
+                    li
+                      a(href='#') 4th Level #1
+                    li
+                      a(href='#') 4th Level #2
+                  span.ruby-dropdown-toggle
+                li
+                  a(href='#')
+                    i.icon.icon-thumbs-up(aria-hidden='true')
+                    | 3rd Level #2
+                li
+                  a(href='#')
+                    i.icon.icon-users(aria-hidden='true')
+                    | 3rd Level #3
+                  ul
+                    li
+                      a(href='#')
+                        i.icon.icon-paper-plane(aria-hidden='true')
+                        | 4th Level #1
+                    li
+                      a(href='#')
+                        i.icon.icon-print(aria-hidden='true')
+                        | 4th Level #2
+                    li
+                      a(href='#')
+                        i.icon.icon-shopping-bag(aria-hidden='true')
+                        | 4th Level #3
+                  span.ruby-dropdown-toggle
+              span.ruby-dropdown-toggle
+            li.ruby-open-to-left
+              a(href='#') 2nd Level #4
+              ul
+                li
+                  a(href='#') 3rd Level #1
+                li
+                  a(href='#') 3rd Level #2
+                li
+                  a(href='#') 3rd Level #3
+              span.ruby-dropdown-toggle
+            li
+              a(href='#') 2nd Level #5
+          span.ruby-dropdown-toggle
+        li.ruby-menu-mega
+          a(href='#') Mega
+          .ruby-grid.ruby-grid-lined
+            .ruby-row
+              .ruby-col-2
+                h3.ruby-list-heading Normal List
                 ul
                   li
-                    a(href='#') Services 2.1
+                    a(href='#') Menu Item #1
                   li
-                    a(href='#') Services 2.2
+                    a(href='#') Menu Item #2
                   li
-                    a(href='#') Services 2.3
-              li
-                a(href='#') Services 3
-              li
-                a(href='#') Services 4
-          li
-            a(href='#') Test
-            ul
-              li
-                a(href='#') Test 1
-              li
-                a(href='#') Test 2
+                    a(href='#') Menu Item #3
+                  li
+                    a(href='#') Menu Item #4
+                  li
+                    a(href='#') Menu Item #5
+              .ruby-col-2.hidden-md
+                h3.ruby-list-heading List with Icons
                 ul
                   li
-                    a(href='#') Test 2.1
+                    a(href='#')
+                      i.icon.icon-motorcycle(aria-hidden='true')
+                      | Menu Item #1
                   li
-                    a(href='#') Test 2.2
+                    a(href='#')
+                      i.icon.icon-music(aria-hidden='true')
+                      | Menu Item #2
                   li
-                    a(href='#') Test 2.3
+                    a(href='#')
+                      i.icon.icon-shopping-cart(aria-hidden='true')
+                      | Menu Item #3
+                  li
+                    a(href='#')
+                      i.icon.icon-slider(aria-hidden='true')
+                      | Menu Item #4
+                  li
+                    a(href='#')
+                      i.icon.icon-search(aria-hidden='true')
+                      | Menu Item #5
+              .ruby-col-3.ruby-col-4-md
+                h3.ruby-list-heading List with Images + Desc
+                ul.ruby-list-with-images
+                  li
+                    a(href='#')
+                      img(src='img/c-1.png')
+                      | Menu Item #1
+                    span.ruby-list-desc Lorem ipsum dolor sit
+                  li
+                    a(href='#')
+                      img(src='img/c-2.png')
+                      | Menu Item #2
+                    span.ruby-list-desc Lorem ipsum dolor sit
+                  li
+                    a(href='#')
+                      img(src='img/c-3.png')
+                      | Menu Item #3
+                    span.ruby-list-desc Lorem ipsum dolor sit
+              .ruby-col-5
+                h3.ruby-list-heading Multiple Lists with Icons
+                .ruby-row
+                  .ruby-col-4.ruby-col-6-md
+                    ul
+                      li
+                        a(href='#')
+                          i.icon.icon-star(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-signal(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-send(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-user(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-thumbs-up(aria-hidden='true')
+                          | Menu Item
+                  .ruby-col-4.ruby-col-6-md(style='padding-left:10px')
+                    ul
+                      li
+                        a(href='#')
+                          i.icon.icon-rocket(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-warning(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-upload(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-umbrella(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-trophy(aria-hidden='true')
+                          | Menu Item
+                  .ruby-col-4.hidden-md(style='padding-left:15px')
+                    ul
+                      li
+                        a(href='#')
+                          i.icon.icon-map(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-image(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-legal(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-paint-brush(aria-hidden='true')
+                          | Menu Item
+                      li
+                        a(href='#')
+                          i.icon.icon-heart(aria-hidden='true')
+                          | Menu Item
+          span.ruby-dropdown-toggle
+        li.ruby-menu-mega-blog
+          a(href='#') Blog
+          div(style='height: 269.359px;')
+            ul.ruby-menu-mega-blog-nav
+              li.ruby-active-menu-item
+                a(href='#') Blog-4-Column
+                .ruby-grid.ruby-grid-lined(style='height: 264.359px;')
+                  .ruby-row
+                    .ruby-col-3
+                      img(src='http://brienlabs.com/ruby-mega-menu/img/travel-1.jpg')
+                      .ruby-c-inline
+                        span.ruby-c-category
+                          a(href='#') News / Travel
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                      span.ruby-c-title.ruby-margin-10
+                        a(href='#') Vacation Proved To Increase Productivity
+                      span.ruby-c-content The primary research for the study was based on an online survey that was...
+                    .ruby-col-3
+                      img(src='http://brienlabs.com/ruby-mega-menu/img/health-3.jpg')
+                      .ruby-c-inline
+                        span.ruby-c-category
+                          a(href='#') News / Health
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                      span.ruby-c-title.ruby-margin-10
+                        a(href='#') Stereotype Idioms By The Smokers
+                      span.ruby-c-content If you have ever said some of below idioms you are for sure a smoking...
+                    .ruby-col-3
+                      img(src='http://brienlabs.com/ruby-mega-menu/img/culture-2.jpg')
+                      .ruby-c-inline
+                        span.ruby-c-category
+                          a(href='#') News / Culture
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                      span.ruby-c-title.ruby-margin-10
+                        a(href='#') 10 Facts About The Philosophers
+                      span.ruby-c-content When we think &ldquo;philosopher,&rdquo; a certain image comes to mind&mdash;most often a wise...
+                    .ruby-col-3
+                      img(src='http://brienlabs.com/ruby-mega-menu/img/health-2.jpg')
+                      .ruby-c-inline
+                        span.ruby-c-category
+                          a(href='#') News / Tech
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                      span.ruby-c-title.ruby-margin-10
+                        a(href='#') In 2016, 10 People Died While Taking Selfie
+                      span.ruby-c-content
+                        | This is a list of serious injuries and deaths in which the victim or a member of...
+                span.ruby-dropdown-toggle
+              li.hidden-md
+                a(href='#') Blog-3-Column
+                .ruby-grid.ruby-grid-lined(style='height: 264.359px;')
+                  .ruby-row
+                    .ruby-col-4
+                      .ruby-col-5
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-1.jpg')
+                      .ruby-col-7
+                        span.ruby-c-title
+                          a(href='#') An Erupting Volcano And A Meteor
+                        span.ruby-c-category
+                          a(href='#') News / Science
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                    .ruby-col-4
+                      .ruby-col-5
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-2.jpg')
+                      .ruby-col-7
+                        span.ruby-c-title
+                          a(href='#') Bottle Labels: Short Stories To Read
+                        span.ruby-c-category
+                          a(href='#') News / Culture
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                    .ruby-col-4
+                      .ruby-col-5
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-3.jpg')
+                      .ruby-col-7
+                        span.ruby-c-title
+                          a(href='#') 10+ Stunning Animal Portraits By Polyushko
+                        span.ruby-c-category
+                          a(href='#') News / Photography
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                  .ruby-row
+                    .ruby-col-4
+                      .ruby-col-5
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-8.jpg')
+                      .ruby-col-7
+                        span.ruby-c-title
+                          a(href='#') Photographing The Beauty Of Fall
+                        span.ruby-c-category
+                          a(href='#') News / Photography
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                    .ruby-col-4
+                      .ruby-col-5
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-9.jpg')
+                      .ruby-col-7
+                        span.ruby-c-title
+                          a(href='#') 10 Freaking Facts About Being A Pilot
+                        span.ruby-c-category
+                          a(href='#') News / Life
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                    .ruby-col-4
+                      .ruby-col-5
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-10.jpg')
+                      .ruby-col-7
+                        span.ruby-c-title
+                          a(href='#') Health Benefits Of A Glass Of Whiskey
+                        span.ruby-c-category
+                          a(href='#') News / Health
+                        span.ruby-c-date
+                          a(href='#') 05/01/2017
+                span.ruby-dropdown-toggle
               li
-                a(href='#') Test 3
+                a(href='#') Blog-2-Column
+                .ruby-grid.ruby-grid-lined(style='height: 264.359px;')
+                  .ruby-row
+                    .ruby-col-6
+                      .ruby-col-4
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-4.jpg')
+                      .ruby-col-8
+                        span.ruby-c-title
+                          a(href='#') Nexo Created New Airless Bike Tires That Will Never Get Flat
+                        .ruby-c-inline
+                          span.ruby-c-category
+                            a(href='#')
+                              i.icon.icon-tag(aria-hidden='true')
+                              |  News / Tech
+                          span.ruby-c-date
+                            a(href='#')
+                              i.icon.icon-calendar(aria-hidden='true')
+                              |  05/01/2017
+                    .ruby-col-6
+                      .ruby-col-4
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-5.jpg')
+                      .ruby-col-8
+                        span.ruby-c-title
+                          a(href='#') Illustrator Creates Stunning Dresses From Everyday Objects
+                        .ruby-c-inline
+                          span.ruby-c-category
+                            a(href='#')
+                              i.icon.icon-tag(aria-hidden='true')
+                              |  News / Tech
+                          span.ruby-c-date
+                            a(href='#')
+                              i.icon.icon-calendar(aria-hidden='true')
+                              |  05/01/2017
+                  .ruby-row
+                    .ruby-col-6
+                      .ruby-col-4
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-6.jpg')
+                      .ruby-col-8
+                        span.ruby-c-title
+                          a(href='#') Italian Pastry Chef Creates Miniature Worlds With Desserts
+                        .ruby-c-inline
+                          span.ruby-c-category
+                            a(href='#')
+                              i.icon.icon-tag(aria-hidden='true')
+                              |  News / Tech
+                          span.ruby-c-date
+                            a(href='#')
+                              i.icon.icon-calendar(aria-hidden='true')
+                              |  05/01/2017
+                    .ruby-col-6
+                      .ruby-col-4
+                        img(src='http://brienlabs.com/ruby-mega-menu/img/blog-7.jpg')
+                      .ruby-col-8
+                        span.ruby-c-title
+                          a(href='#') Dogs Brought To The Lavender Gardens To Capture Their Joy
+                        .ruby-c-inline
+                          span.ruby-c-category
+                            a(href='#')
+                              i.icon.icon-tag(aria-hidden='true')
+                              |  News / Tech
+                          span.ruby-c-date
+                            a(href='#')
+                              i.icon.icon-calendar(aria-hidden='true')
+                              |  05/01/2017
+                span.ruby-dropdown-toggle
               li
-                a(href='#') Test 4
-          li
-            a(href='/contact.html') Contact Us
-          li
-            a(href='/sign-up.html') Sign Up
-          li
-            a(href='/sign-in.html') Sign In
-          li
-            a(href='/cart.html')
-              span.icon.icon-shopping-cart.m-5
-              |               Your cart
-          li
-            a#btn-search-top.btn-search(href='#')
-              span.icon.icon-search
-          li.language-switcher
-            select#language-switcher.select2.language-switcher(name='language-switcher')
-      form.search-box(action='')
-        input.search-input(type='text' placeholder='Type here to search...')
+                a(href='#') Blog-Article-List
+                .ruby-grid.ruby-grid-lined(style='height: 264.359px;')
+                  .ruby-row
+                    .ruby-col-6
+                      span.ruby-c-title(style='margin-bottom:15px') POPULAR THREADS
+                      .ruby-row
+                        .ruby-col-1
+                          img(src='img/blog-1.jpg')
+                        .ruby-col-11
+                          span.ruby-c-title
+                            a(href='#') An Erupting Volcano And A Meteor Has Created A Fantastic View
+                      .ruby-row
+                        .ruby-col-1
+                          img(src='img/blog-2.jpg')
+                        .ruby-col-11
+                          span.ruby-c-title
+                            a(href='#') Bottle Labels With Short Stories To Be Read Is The New Marketing Era
+                      .ruby-row
+                        .ruby-col-1
+                          img(src='img/blog-3.jpg')
+                        .ruby-col-11
+                          span.ruby-c-title
+                            a(href='#') 10+ Stunning Animal Portraits That Has Been Filmed By Polyushko
+                      .ruby-row
+                        .ruby-col-1
+                          img(src='img/blog-10.jpg')
+                        .ruby-col-11
+                          span.ruby-c-title
+                            a(href='#') 10 Freaking Facts About Being An airline pilot
+                    .ruby-col-6
+                      span.ruby-c-title(style='margin-bottom:15px') MOST COMMENTED
+                      .ruby-row
+                        .ruby-col-1
+                          img(src='img/blog-1.jpg')
+                        .ruby-col-11
+                          span.ruby-c-title
+                            a(href='#') An Erupting Volcano And A Meteor Has Created A Fantastic View
+                      .ruby-row
+                        .ruby-col-1
+                          img(src='img/blog-2.jpg')
+                        .ruby-col-11
+                          span.ruby-c-title
+                            a(href='#') Bottle Labels With Short Stories To Be Read Is The New Marketing Era
+                      .ruby-row
+                        .ruby-col-1
+                          img(src='img/blog-3.jpg')
+                        .ruby-col-11
+                          span.ruby-c-title
+                            a(href='#') 10+ Stunning Animal Portraits That Has Been Filmed By Polyushko
+                      .ruby-row
+                        .ruby-col-1
+                          img(src='img/blog-10.jpg')
+                        .ruby-col-11
+                          span.ruby-c-title
+                            a(href='#') 10 Freaking Facts About Being An airline pilot
+                span.ruby-dropdown-toggle
+          span.ruby-dropdown-toggle
+        li.ruby-menu-mega-shop
+          a(href='#') Shop
+          div(style='height: 263px;')
+            ul
+              li.ruby-active-menu-item
+                a(href='#') Clothing
+                .ruby-grid.ruby-grid-lined
+                  .ruby-row
+                    .ruby-col-2
+                      h3.ruby-list-heading TOPS
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                    .ruby-col-2
+                      img(src='img/outerwear-2.jpg')
+                    .ruby-col-2
+                      h3.ruby-list-heading BOTTOM
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                    .ruby-col-2
+                      h3.ruby-list-heading NIGHTWEAR
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                    .ruby-col-2
+                      img(src='img/outerwear-3.jpg')
+                    .ruby-col-2
+                      h3.ruby-list-heading SWIMWEAR
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                span.ruby-dropdown-toggle
+              li
+                a(href='#') Outerwear
+                .ruby-grid.ruby-grid-lined
+                  .ruby-row
+                    .ruby-col-3
+                      img(src='img/outerwear.jpg')
+                    .ruby-col-3
+                      h3.ruby-list-heading COATS
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                        li
+                          a(href='#') Menu Item #6
+                        li
+                          a(href='#') Menu Item #7
+                    .ruby-col-3
+                      h3.ruby-list-heading JACKETS
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                        li
+                          a(href='#') Menu Item #6
+                        li
+                          a(href='#') Menu Item #7
+                    .ruby-col-3
+                      h3.ruby-list-heading LEATHER
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                        li
+                          a(href='#') Menu Item #6
+                        li
+                          a(href='#') Menu Item #7
+                span.ruby-dropdown-toggle
+              li
+                a(href='#') Bags &amp; Shoes
+                .ruby-grid.ruby-grid-lined
+                  .ruby-row
+                    .ruby-col-3
+                      img(src='img/bags.jpg')
+                    .ruby-col-3
+                      h3.ruby-list-heading BAGS
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                    .ruby-col-3
+                      h3.ruby-list-heading SHOES
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                        li
+                          a(href='#') Menu Item #5
+                    .ruby-col-3
+                      img(src='img/shoes.jpg')
+                span.ruby-dropdown-toggle
+              li
+                a(href='#') Accessories
+                .ruby-grid.ruby-grid-lined
+                  .ruby-row
+                    .ruby-col-3
+                      img(src='img/eyewear.jpg')
+                      h3.ruby-list-heading(style='margin-top: 16px;') EYEWEAR
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                    .ruby-col-3
+                      img(src='img/jewellery.jpg')
+                      h3.ruby-list-heading(style='margin-top: 16px;') JEWELLERY
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                    .ruby-col-3
+                      img(src='img/watches.jpg')
+                      h3.ruby-list-heading(style='margin-top: 16px;') WATCHES
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                    .ruby-col-3
+                      img(src='img/textile.jpg')
+                      h3.ruby-list-heading(style='margin-top: 16px;') OTHERS
+                      ul
+                        li
+                          a(href='#') Menu Item #1
+                        li
+                          a(href='#') Menu Item #2
+                        li
+                          a(href='#') Menu Item #3
+                        li
+                          a(href='#') Menu Item #4
+                span.ruby-dropdown-toggle
+              li
+                a(href='#') Collections
+                .ruby-grid.ruby-grid-lined
+                  .ruby-row
+                    .ruby-col-3
+                      img(src='img/collection-accessori.jpg')
+                    .ruby-col-3
+                      img(src='img/collection-bridal.jpg')
+                    .ruby-col-3
+                      img(src='img/collection-cube.jpg')
+                    .ruby-col-3
+                      img(src='img/collection-elegante.jpg')
+                  .ruby-row
+                    .ruby-col-3
+                      img(src='img/collection-maxmara.jpg')
+                    .ruby-col-3
+                      img(src='img/collection-sfilata.jpg')
+                    .ruby-col-3
+                      img(src='img/collection-shine.jpg')
+                    .ruby-col-3
+                      img(src='img/collection-s-maxmara.jpg')
+                span.ruby-dropdown-toggle
+          span.ruby-dropdown-toggle
+        li.ruby-menu-right
+          a(href='#') Right
+          ul
+            li
+              a(href='#') 2nd Level #1
+            li
+              a(href='#') 2nd Level #2
+            li.ruby-open-to-left
+              a(href='#') 2nd Level #3
+              ul
+                li.ruby-open-to-left
+                  a(href='#')
+                    i.icon.icon-university(aria-hidden='true')
+                    | 3rd Level #1
+                  ul
+                    li
+                      a(href='#') 4th Level #1
+                    li
+                      a(href='#') 4th Level #2
+                  span.ruby-dropdown-toggle
+                li
+                  a(href='#')
+                    i.icon.icon-thumbs-up(aria-hidden='true')
+                    | 3rd Level #2
+                li
+                  a(href='#')
+                    i.icon.icon-users(aria-hidden='true')
+                    | 3rd Level #3
+                li
+                  a(href='#')
+                    i.icon.icon-file(aria-hidden='true')
+                    | 3rd Level #4
+                  ul
+                    li
+                      a(href='#')
+                        i.icon.icon-paper-plane(aria-hidden='true')
+                        | 4th Level #1
+                    li
+                      a(href='#')
+                        i.icon.icon-print(aria-hidden='true')
+                        | 4th Level #2
+                    li
+                      a(href='#')
+                        i.icon.icon-shopping-bag(aria-hidden='true')
+                        | 4th Level #3
+                  span.ruby-dropdown-toggle
+              span.ruby-dropdown-toggle
+            li.ruby-open-to-left
+              a(href='#') 2nd Level #4
+              ul
+                li
+                  a(href='#') 3rd Level #1
+                li
+                  a(href='#') 3rd Level #2
+                li
+                  a(href='#') 3rd Level #3
+              span.ruby-dropdown-toggle
+            li
+              a(href='#') 2nd Level #5
+          span.ruby-dropdown-toggle
+        li.ruby-menu-right.ruby-menu-social
+          a(href='#')
+            i.icon.icon-iconcebook(aria-hidden='true')
+            span @rubymenu
+        li.ruby-menu-right.ruby-menu-social
+          a(href='#')
+            i.icon.icon-twitter(aria-hidden='true')
+            span /rubymenu
+        li.ruby-menu-right.ruby-menu-social.ruby-menu-search
+          a(href='#')
+            i.icon.icon-search(aria-hidden='true')
+            span
+              input(type='text' name='search' placeholder='Search..')
+    // END:   RUBY HORIZONTAL MENU
+    // ###########################
+    // END: RUBY DEMO HEADER
