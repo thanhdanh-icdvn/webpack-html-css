@@ -72,7 +72,7 @@ const swiperInstance1 = new Swiper(".mySwiper", {
 
 const discoverSwiper = new Swiper("#discover-list-swiper", {
   slidesPerView: 1,
-  spaceBetween: 15,
+  spaceBetween: 10,
   centeredSlides: false,
   autoplay:true,
   loop: true,
@@ -98,27 +98,27 @@ const discoverSwiper = new Swiper("#discover-list-swiper", {
     // >=0
     0: {
       slidesPerView: 1,
-      spaceBetween: 15
+      spaceBetween: 10
     },
     // >=600
     600: {
       slidesPerView: 2,
-      spaceBetween: 15
+      spaceBetween: 10
     },
     // >=900
     900: {
       slidesPerView: 3,
-      spaceBetween: 15
+      spaceBetween: 10
     },
     // >=1200
     1200: {
       slidesPerView: 4,
-      spaceBetween: 15
+      spaceBetween: 10
     },
     // >=1800
     1800: {
-      slidesPerView: 5,
-      spaceBetween: 15
+      slidesPerView: 4,
+      spaceBetween: 10
     },
   },
 });
