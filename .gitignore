@@ -152,3 +152,4 @@ dist
 # package-lock.json --need for ci
 .vscode
 .firebase/*
+.idea/*
