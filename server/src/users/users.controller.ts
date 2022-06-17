@@ -49,7 +49,7 @@ export const getUserById: RequestHandler = (req: IGetUserReq, res: Response) => 
   } else {
     res.status(404).json({
       code: 404,
-      message: "User not found or is deactivated"
+      message: "User not found or deactivated"
     })
   }
 };
@@ -110,7 +110,7 @@ export const updateUserById: RequestHandler = (req: IUpdateUserReq, res: Respons
   } else {
     return res.status(404).json({
       code: 404,
-      message: "User not found or is deactivated"
+      message: "User not found or deactivated"
     });
   }
 };
