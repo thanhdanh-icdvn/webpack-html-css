@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { addUser, deleteUserById, getUserById, getUsers, updateUserById } from "./users.controller";
+import { addUser, deleteUserById, getUserById, getUsers, login, updateUserById } from "./users.controller";
 
 
 const userRouter = Router();
@@ -30,5 +30,9 @@ userRouter
   .delete(
     deleteUserById
   );
-
+userRouter
+  .route('/login')
+  .post(
+    login
+  );
 export default userRouter;
