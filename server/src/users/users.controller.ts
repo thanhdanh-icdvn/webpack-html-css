@@ -140,7 +140,7 @@ export const updateUserById: RequestHandler = (req: IUpdateUserReq, res: Respons
 };
 
 /**
- * deletes a user
+ * Delete a user
  *
  * @param req Express Request
  * @param res Express Response
@@ -159,6 +159,13 @@ export const deleteUserById: RequestHandler = (req: IDeleteUserReq, res: Respons
   }
 };
 
+/**
+ * Login by username and password
+ *
+ * @param req Express Request
+ * @param res Express Response
+ */
+// @ts-ignore
 export const login: RequestHandler = (req: ILoginUserReq, res: Response) => {
   const { password, username } = req.body;
   const currentUser = USERS.find(user => user.username === username && user.isActive);

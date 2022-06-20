@@ -9,6 +9,7 @@ import helmet from 'helmet';
 import path from "path";
 import morgan from "morgan";
 import { appRoutes } from "./routes";
+import { mongoConnector } from "./utils/db.connector";
 
 // Load config form .env file
 dotenv.config({
@@ -36,7 +37,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.static("public"));
-
+mongoConnector(process.env.MONGO_URL_PREFIX, process.env.MONGO_USERNAME, process.env.MONGO_PASSWORD, process.env.MONGO_URL_POSTFIX);
 // Config router
 app.use("/api/v1",appRoutes);
 /**
