@@ -1,9 +1,15 @@
-import { Router } from "express";
-import authRouter from "../auth";
-import teamRouter from "../teams/teams.routes";
-import usersRouter from "../users/users.routes";
+/**
+ * Libary import
+ */
+import { Router } from 'express';
+/**
+ * App import
+ */
+import { UploadRouter } from './upload.route';
+import { UserRouter } from './user.route';
+import { AuthRouter } from './auth.route';
 
 export const appRoutes = Router();
-appRoutes.use("/teams",teamRouter);
-appRoutes.use("/users",usersRouter);
-appRoutes.use("/auth",authRouter);
+appRoutes.use('/auth',AuthRouter);
+appRoutes.use('/users',UserRouter);
+appRoutes.use('/upload',UploadRouter);
