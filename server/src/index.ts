@@ -8,7 +8,8 @@ import { appRoutes } from './routes';
 import { mongoConnector } from './utils/db.connector';
 import { Logger } from 'tslog';
 
-const log:Logger = new Logger();
+export const log: Logger = new Logger();
+
 // Load config form .env file
 dotenv.config({
   path: (path.resolve(__dirname, '../.env.local'))
@@ -49,13 +50,7 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.use(express.static('public'));
 // Connect to db
-mongoConnector(
-  MONGO_URL_PREFIX,
-  MONGO_USERNAME,
-  MONGO_PASSWORD,
-  MONGO_URL_POSTFIX,
-  MONGO_OPTIONS
-);
+mongoConnector(MONGO_URL_PREFIX, MONGO_USERNAME, MONGO_PASSWORD, MONGO_URL_POSTFIX, MONGO_OPTIONS);
 
 /**
  * App router prefix

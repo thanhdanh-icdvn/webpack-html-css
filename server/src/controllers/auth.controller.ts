@@ -2,11 +2,20 @@ import { UserModel } from './../models/user.model';
 import { NextFunction, Request, Response } from 'express';
 import { decrypt } from '../utils/utils.encode';
 
+/**
+ * Authencation controller
+ */
 export class AuthController {
-  static async login (req: Request, res: Response) {
+  /**
+   * Login method
+   * @param req
+   * @param res
+   * @returns
+   */
+  static async login(req: Request, res: Response) {
     const { username, password } = req.body;
     try {
-      const user = await UserModel.findOne({ username,isActive:true });
+      const user = await UserModel.findOne({ username, isActive: true });
       if (!user) {
         return res.status(404).json({
           code: 404,

@@ -1,12 +1,19 @@
 import { Request, Response } from 'express';
 import { v4 } from 'uuid';
+import { IUser } from '../interfaces/user.interface';
 import { UserModel } from '../models/user.model';
 import { encrypt } from '../utils/utils.encode';
 /**
  * User controller CRUD
  */
 export class UserController {
-  static async findAll (req: Request, res: Response) {
+  /**
+   * Function get all user
+   * @param req
+   * @param res
+   * @returns
+   */
+  static async findAll(req: Request, res: Response) {
     try {
       const user = await UserModel.find({ isActive: true });
       if (!user) {
@@ -24,11 +31,16 @@ export class UserController {
       });
     }
   }
-
-  static async findById (req: Request, res: Response) {
+  /**
+   * Function find user by Id
+   * @param req
+   * @param res
+   * @returns
+   */
+  static async findById(req: Request, res: Response) {
     const { id } = req.params;
     try {
-      const user = await UserModel.find({ id, isActive: true });
+      const user = await UserModel.findOne({ id, isActive: true });
       if (!user) {
         return res.status(404).json({
           code: 404,
@@ -44,8 +56,13 @@ export class UserController {
       });
     }
   }
-
-  static async create (req: Request, res: Response) {
+  /**
+   *
+   * @param req Function to insert user into db
+   * @param res
+   * @returns
+   */
+  static async create(req: Request, res: Response) {
     const id = v4();
     const { body } = req;
     const { password } = body;
@@ -69,8 +86,14 @@ export class UserController {
       });
     }
   }
-
-  static async deleteById (req: Request, res: Response) {
+  /**
+   * Function delete user by Id
+   * @author thanhd
+   * @param req
+   * @param res
+   * @returns
+   */
+  static async deleteById(req: Request, res: Response) {
     const { id } = req.params;
     try {
       const user = await UserModel.find({ id, isActive: true });
@@ -108,8 +131,13 @@ export class UserController {
       });
     }
   }
-
-  static async updateById (req: Request, res: Response) {
+  /**
+   * Function update user by id
+   * @param req
+   * @param res
+   * @returns
+   */
+  static async updateById(req: Request<Partial<IUser>>, res: Response) {
     const { id } = req.params;
     const updateInfo = req.body;
     try {
