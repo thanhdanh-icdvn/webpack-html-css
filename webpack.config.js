@@ -6,7 +6,6 @@ const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
 const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-const nodeExternals = require('webpack-node-externals');
 
 /**
  * Function to generate HTML from template

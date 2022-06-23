@@ -1,5 +1,5 @@
 {
-  "name": "swiper_example",
+  "name": "express_html",
   "version": "1.0.0",
   "description": "Swiper sass html css",
   "main": "index.html",
@@ -8,7 +8,7 @@
     "serve": "webpack-dev-server --open",
     "build": "webpack --mode=development",
     "build:prod": "webpack --mode=production",
-    "lint":"tslint --fix -c tslint.json 'src/**/*.ts'"
+    "lint": "tslint --fix -c tslint.json 'src/**/*.ts'"
   },
   "keywords": [
     "html",
@@ -34,7 +34,6 @@
     "copy-webpack-plugin": "^10.2.4",
     "css-loader": "^6.7.1",
     "dotenv": "^16.0.1",
-    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^6.2.0",
     "fs": "^0.0.1-security",
     "html-loader": "^3.1.0",

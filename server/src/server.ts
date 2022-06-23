@@ -1,3 +1,4 @@
+import { errorMiddleware404, errorMiddlewareServer } from './middlewares/error.middleware';
 import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -22,7 +23,6 @@ if (!process.env.PORT) {
   process.exit(1);
 }
 
-
 const PORT: number = parseInt(process.env.PORT as string, 10);
 const {
   MONGO_URL_PREFIX,
@@ -31,7 +31,6 @@ const {
   MONGO_URL_POSTFIX,
   MONGO_OPTIONS
 } = process.env;
-
 
 /**
  * Express instance
@@ -49,13 +48,22 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(express.static('public'));
-// Connect to db
+/**
+ * Connect to db
+ */
 mongoConnector(MONGO_URL_PREFIX, MONGO_USERNAME, MONGO_PASSWORD, MONGO_URL_POSTFIX, MONGO_OPTIONS);
 
 /**
  * App router prefix
  */
 app.use('/api/v1', appRoutes);
+
+/**
+ * Catch base error
+ */
+app.use(errorMiddleware404);
+app.use(errorMiddlewareServer);
+
 /**
  * Server activation
  */

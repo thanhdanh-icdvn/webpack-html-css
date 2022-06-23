@@ -1,6 +1,6 @@
 import { encryptBase64 } from '../utils/utils.encode';
 import { NextFunction, Request, Response } from 'express';
-import multer, { Multer, MulterError } from 'multer';
+import multer, {  } from 'multer';
 import fs from 'fs';
 import { Logger } from 'tslog';
 import path from 'path';
@@ -10,8 +10,8 @@ const log: Logger = new Logger();
  * Upload variables
  */
 export const UPLOAD_FOLDER = path.resolve(process.cwd(),'uploads');
-export const MAX_SIZE = 2 * 1024 * 1024;// 2MB
-export const MAX_FILE_COUNTS = 10;
+export const MAX_SIZE = 10 * 1024 * 1024;// 10MB
+export const MAX_FILE_COUNTS = 2;
 /**
  * Upload storage
  */
