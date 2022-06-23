@@ -53,7 +53,12 @@ const UserSchema = new Schema<IUser>({
     required:true,
     default:null
   }
-}, { timestamps: true });
+}, { timestamps: true,toJSON: {
+  transform: (doc, ret) =>{
+    delete ret._id;
+    delete ret.__v;
+  }
+} });
 UserSchema.plugin(mongooseUniqueValidator);
 
 
