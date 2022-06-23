@@ -3,7 +3,7 @@ import { verify } from 'jsonwebtoken';
 import { TOKEN_SECRET } from '../server';
 
 export const verifyToken = (req: Request, res: Response,next:NextFunction)=>{
-  const token = req.body.token || req.query.token || req.headers.authorization?.split(' ')[1];
+  const token = req.query.token?.toString() || req.headers.authorization?.split(' ')[1];
   if (!token) {
     return res.status(403).send('A token is required for authentication');
   }
