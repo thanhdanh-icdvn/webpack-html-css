@@ -10,7 +10,8 @@ export interface IUser extends Document{
   avatar?:string;
   isActive?:boolean;
   bio?:string;
-  hashedPassword:string;
+  password:string;
+  token:string;
 }
 
 export interface IGetUserReq extends Request<{id:IUser['id']}>{}

@@ -24,12 +24,13 @@ if (!process.env.PORT) {
 }
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
-const {
+export const {
   MONGO_URL_PREFIX,
   MONGO_USERNAME,
   MONGO_PASSWORD,
   MONGO_URL_POSTFIX,
-  MONGO_OPTIONS
+  MONGO_OPTIONS,
+  TOKEN_SECRET
 } = process.env;
 
 /**

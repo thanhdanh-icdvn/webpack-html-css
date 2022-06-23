@@ -1,4 +1,6 @@
+import { generateAccessToken } from './../utils/utils.generate-token';
 import { Request, Response } from 'express';
+import { sign } from 'jsonwebtoken';
 import { v4 } from 'uuid';
 import { IUser } from '../interfaces/user.interface';
 import { UserModel } from '../models/user.model';
@@ -65,19 +67,21 @@ export class UserController {
   static async create(req: Request, res: Response) {
     const id = v4();
     const { body } = req;
-    const { password } = body;
-    const hashedPassword = encrypt(password);
+    const { password,...restBody } = body;
+    const hashedPassword: string = encrypt(password);
     try {
+      const token = generateAccessToken(restBody);
       const user = new UserModel({
         ...body,
-        hashedPassword,
+        password: hashedPassword,
+        token,
         id
       });
       await user.save();
       return res.status(201).json({
         code: 201,
         message: 'User created successfully',
-        data: user
+        data: user,
       });
     } catch (error) {
       return res.status(500).json({

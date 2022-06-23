@@ -1,31 +1,35 @@
 import { model, Schema } from 'mongoose';
-const UserSchema = new Schema({
+import mongooseUniqueValidator from 'mongoose-unique-validator';
+import { IUser } from '../interfaces/user.interface';
+const UserSchema = new Schema<IUser>({
   id: {
     type: String,
-    unique: [true, 'id must be unique'],
-    required: [true, 'id is required']
+    unique: true,
+    required: [true, 'Id is required'],
   },
   username: {
     type: String,
-    required: [true, 'Username is required'],
+    required: true,
+    trim: true,
+    unique: true,
     lowercase: true
   },
   firstName: {
     type: String,
-    required: [true, 'First name is required'],
+    required: [true, 'First Name is required'],
   },
   lastName: {
     type: String,
-    required: [true, 'Last name is required']
+    required: [true, 'Last Name is required']
   },
   dob: {
     type: Date,
-    required: [true, 'Date of birth is required']
+    required: [true, 'Day of birth is required']
   },
   email: {
     type: String,
     match: /.+\@.+\..+/,
-    unique: [true, 'Email must be unique'],
+    unique: true,
     required: [true, 'Email is required']
   },
   avatar: {
@@ -40,9 +44,17 @@ const UserSchema = new Schema({
     type: String,
     default: ''
   },
-  hashedPassword: {
+  password: {
     type: String,
     required: [true, 'Password is required'],
   },
-}, { timestamps: true});
-export const UserModel = model('User', UserSchema);
+  token:{
+    type:String,
+    required:true,
+    default:null
+  }
+}, { timestamps: true });
+UserSchema.plugin(mongooseUniqueValidator);
+
+
+export const UserModel = model<IUser>('User', UserSchema);
