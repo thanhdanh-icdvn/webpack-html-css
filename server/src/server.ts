@@ -1,4 +1,3 @@
-import { errorMiddleware404, errorMiddlewareServer } from './middlewares/error.middleware';
 import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
@@ -8,6 +7,8 @@ import morgan from 'morgan';
 import { appRoutes } from './routes';
 import { mongoConnector } from './utils/db.connector';
 import { Logger } from 'tslog';
+import { errorMiddleware404, errorMiddlewareServer } from './middlewares/error.middleware';
+import cookieParser from 'cookie-parser';
 
 export const log: Logger = new Logger();
 
@@ -37,9 +38,13 @@ export const {
  * Express instance
  */
 const app = express();
+
 /**
  * App configuation
  */
+
+// Use cookie parser middleware
+app.use(cookieParser());
 // use helmet to protect server
 app.use(helmet());
 // use cors to forward api to client

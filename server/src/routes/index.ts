@@ -6,7 +6,7 @@ import { Router } from 'express';
  * App import
  */
 import { UploadRouter } from './upload.route';
-import { UserRouter } from './user.route';
+import { UserRouter } from './users.route';
 import { AuthRouter } from './auth.route';
 
 export const appRoutes = Router();

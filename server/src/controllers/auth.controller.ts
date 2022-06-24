@@ -1,7 +1,8 @@
 import { generateAccessToken } from './../utils/utils.generate-token';
 import { Request, Response } from 'express';
-import { UserModel } from './../models/user.model';
-import { decrypt } from '../utils/utils.encode';
+import { UserModel } from '../models/users.model';
+import { decrypt, encrypt } from '../utils/utils.encode';
+import { v4 } from 'uuid';
 /**
  * Authencation controller
  */
@@ -45,6 +46,7 @@ export class AuthController {
           };
           const token = generateAccessToken(tokenInput);
           user.token = token;
+          res.cookie('token', token, { httpOnly: true });
           return res.status(200).json({
             code: 200,
             message: 'Login successfully',
@@ -61,6 +63,40 @@ export class AuthController {
       return res.status(500).json({
         code: 500,
         message: 'Server error. ' + error
+      });
+    }
+  }
+
+  /**
+   *
+   * @param req Function to insert user into db
+   * @param res
+   * @returns
+   */
+   static async registerUser(req: Request, res: Response) {
+    const id = v4();
+    const { body } = req;
+    const { password,...restBody } = body;
+    const hashedPassword: string = encrypt(password);
+    try {
+      const token = generateAccessToken(restBody);
+      const user = new UserModel({
+        ...body,
+        password: hashedPassword,
+        token,
+        id
+      });
+      await user.save();
+      res.cookie('token', token, { httpOnly: true });
+      return res.status(201).json({
+        code: 201,
+        message: 'User created successfully',
+        data: user,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        code: 500,
+        message: error
       });
     }
   }

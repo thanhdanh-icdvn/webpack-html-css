@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 import mongooseUniqueValidator from 'mongoose-unique-validator';
-import { IUser } from '../interfaces/user.interface';
+import { IUser } from '../interfaces/users.interface';
 const UserSchema = new Schema<IUser>({
   id: {
     type: String,
@@ -57,6 +57,7 @@ const UserSchema = new Schema<IUser>({
   transform: (doc, ret) =>{
     delete ret._id;
     delete ret.__v;
+    delete ret.password;
   }
 } });
 UserSchema.plugin(mongooseUniqueValidator);
