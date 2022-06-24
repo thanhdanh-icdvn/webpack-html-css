@@ -9,6 +9,7 @@ import { mongoConnector } from './utils/db.connector';
 import { Logger } from 'tslog';
 import { errorMiddleware404, errorMiddlewareServer } from './middlewares/error.middleware';
 import cookieParser from 'cookie-parser';
+import { apiLimitter } from './middlewares/rate-limit.middleware';
 
 export const log: Logger = new Logger();
 
@@ -62,7 +63,7 @@ mongoConnector(MONGO_URL_PREFIX, MONGO_USERNAME, MONGO_PASSWORD, MONGO_URL_POSTF
 /**
  * App router prefix
  */
-app.use('/api/v1', appRoutes);
+app.use('/api/v1',apiLimitter, appRoutes);
 
 /**
  * Catch base error

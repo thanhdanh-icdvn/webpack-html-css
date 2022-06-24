@@ -1,23 +1,23 @@
-import { encryptBase64 } from '../utils/utils.encode';
-import { NextFunction, Request, Response } from 'express';
-import multer, {  } from 'multer';
+import path from 'path';
 import fs from 'fs';
 import { Logger } from 'tslog';
-import path from 'path';
+import { NextFunction, Request, Response } from 'express';
+import multer, { Multer } from 'multer';
+import { encryptBase64 } from '../utils/utils.encode';
 
 const log: Logger = new Logger();
 /**
  * Upload variables
  */
-export const UPLOAD_FOLDER = path.resolve(process.cwd(),'uploads');
-export const MAX_SIZE = 10 * 1024 * 1024;// 10MB
-export const MAX_FILE_COUNTS = 2;
+export const UPLOAD_FOLDER = path.resolve(process.cwd(), 'uploads');
+export const MAX_SIZE = 100 * 1024 * 1024;// 100MB
+export const MAX_FILE_COUNTS = 20;
 /**
  * Upload storage
  */
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (!fs.existsSync(UPLOAD_FOLDER)){
+    if (!fs.existsSync(UPLOAD_FOLDER)) {
       fs.mkdirSync(UPLOAD_FOLDER);
     }
     cb(null, UPLOAD_FOLDER);
@@ -31,11 +31,26 @@ const storage = multer.diskStorage({
 
 export const upload = multer({
   storage,
-  limits:{
+  limits: {
     fileSize: MAX_SIZE,
     files: 20
-  },
+  }
 });
+export const uploadWithFilter = (filter:RegExp=(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)):Multer => {
+  return multer({
+    storage,
+    limits: {
+      fileSize: MAX_SIZE,
+      files: 20
+    },
+    fileFilter(req, file, callback) {
+      if (!file.originalname.match(filter)) {
+        return callback(new Error('Only image files are allowed!'));
+      }
+      callback(null, true);
+    },
+  });
+};
 /**
  * Upload controller
  */
@@ -46,10 +61,10 @@ class UploadController {
    * @param res json respone
    * @returns Uploaded file or undefine
    */
-  static async uploadSingleFile(req: Request, res: Response,next:NextFunction): Promise<any> {
+  static async uploadSingleFile(req: Request, res: Response, next: NextFunction): Promise<any> {
     try {
       const file = await req.file;
-      if(!file?.fieldname){
+      if (!file?.fieldname) {
         return res.status(400).json({
           code: 400,
           message: 'Invalid field name'
@@ -133,30 +148,34 @@ class UploadController {
    * @param req
    * @param res
    */
-  static async getListFiles(req:Request,res:Response):Promise<any> {
+  static async getListFiles(req: Request, res: Response): Promise<any> {
     const directoryPath = UPLOAD_FOLDER;
-   try {
-    fs.readdir(directoryPath, (err, files) =>{
-      if (err) {
-        res.status(500).send({
-          message: 'Unable to scan files!',
+    try {
+      fs.readdir(directoryPath, (err, files) => {
+        if (err) {
+          res.status(500).json({
+            code: 500,
+            message: 'Unable to scan files!',
+          });
+        }
+        const fileInfos: any[] = [];
+        files.forEach((file) => {
+          fileInfos.push({
+            name: file,
+            url: directoryPath + file,
+          });
         });
-      }
-      const fileInfos:any[] = [];
-      files.forEach((file) => {
-        fileInfos.push({
-          name: file,
-          url: directoryPath + file,
+        res.status(200).json({
+          code: 200,
+          data: fileInfos
         });
       });
-      res.status(200).send(fileInfos);
-    });
-   } catch (error) {
-    res.status(500).send({
-      code:500,
-      message:'Error occure. '+ error
-    });
-   }
+    } catch (error) {
+      res.status(500).send({
+        code: 500,
+        message: 'Error occure. ' + error
+      });
+    }
   }
 
   /**
@@ -164,33 +183,22 @@ class UploadController {
    * @param req
    * @param res
    */
-  static async downloadFile(req:Request,res:Response){
+  static async downloadFile(req: Request, res: Response) {
     try {
-    const fileName = req.params.name;
-    const directoryPath =UPLOAD_FOLDER;
-    res.download(directoryPath + fileName, fileName, (err) => {
-      if (err) {
-        res.status(500).send({
-          message: 'Could not download the file. ' + err,
-        });
-      }
-    });
+      const fileName = req.params.name;
+      const directoryPath = UPLOAD_FOLDER;
+      res.download(directoryPath + fileName, fileName, (err) => {
+        if (err) {
+          res.status(500).send({
+            message: 'Could not download the file. ' + err,
+          });
+        }
+      });
     } catch (error) {
       res.status(500).send({
-        code:500,
-        message:'Error occure. '+ error
+        code: 500,
+        message: 'Error occure. ' + error
       });
-    }
-  }
-  static async multerFilter(req:Request,file:any,callback:any):Promise<any>{
-    try {
-      if (!file.originalname.match(/\.(png|jpg)$/)) {
-        // upload only png and jpg format
-      return callback(new Error('Please upload a Image'));
-    }
-    callback(null, true);
-    } catch (error) {
-      callback(new Error(JSON.stringify(error)));
     }
   }
 }
