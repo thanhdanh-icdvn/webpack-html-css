@@ -1,0 +1,15 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "no-trailing-whitespace": [true, "ignore-jsdoc"],
+        "prefer-const": [true, {"destructuring": "any"}],
+        "semicolon": [true, "always"],
+        "space-before-function-paren": false,
+        "quotemark": [true, "single"]
+    },
+    "rulesDirectory": []
+}

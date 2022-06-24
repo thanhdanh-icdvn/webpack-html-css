@@ -4,9 +4,8 @@ const path = require('path');
 const webpack = require('webpack');
 const fs = require('fs');
 const CopyPlugin = require('copy-webpack-plugin');
-const ImageminWebpWebpackPlugin  = require('imagemin-webp-webpack-plugin');
+const ImageminWebpWebpackPlugin = require('imagemin-webp-webpack-plugin');
 const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
-const nodeExternals = require('webpack-node-externals');
 
 /**
  * Function to generate HTML from template
@@ -24,7 +23,7 @@ function generateHtmlPlugins(templateDir = './client/src/pages/views/') {
       filename: `${name}.html`,
       template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
       minify: false,
-      pretty:true
+      pretty: true
     })
   })
 }
@@ -49,7 +48,7 @@ const client = {
       process: 'process/browser',
       $: 'jquery',
       jQuery: 'jquery',
-      gsap:'gsap'
+      gsap: 'gsap'
     }),
     new MiniCssExtractPlugin({
       filename: "assets/css/[name].css"
@@ -101,94 +100,94 @@ const client = {
   },
   module: {
     rules: [{
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: ['babel-loader'],
-      },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|tiff|bmp|svg|jfif)$/i,
-        include: [
-          path.resolve(__dirname, './client/src/assets/images')
-        ],
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(svg)$/i,
-        include: [
-          path.resolve(__dirname, './client/src/assets/icons')
-        ],
-        type: 'asset/resource',
-      },
-      {
-        test: /\.(eot|woff|woff2|ttf|otf)$/,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/fonts/[name].[ext]'
-        }
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                sourceMap: true,
-                plugins: [
-                  "postcss-flexbugs-fixes",
-                  [
-                    "postcss-preset-env",
-                    {
-                      "autoprefixer": {
-                        "flexbox": "no-2009"
-                      },
-                      "stage": 3,
-                      "features": {
-                        "custom-properties": false
-                      }
-                    }
-                  ]
-                ]
-              }
-            }
-          },
-          'resolve-url-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-      },
-      {
-        test: /\.font\.js/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              url: false
-            }
-          },
-          'webfonts-loader'
-        ]
-      },
-      {
-        test: /\.pug$/,
-        use: [
-          "pug-loader"
-        ]
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: ['babel-loader'],
+    },
+    {
+      test: /\.css$/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader'
+      ]
+    },
+    {
+      test: /\.(png|jpg|jpeg|gif|tiff|bmp|svg|jfif)$/i,
+      include: [
+        path.resolve(__dirname, './client/src/assets/images')
+      ],
+      type: 'asset/resource',
+    },
+    {
+      test: /\.(svg)$/i,
+      include: [
+        path.resolve(__dirname, './client/src/assets/icons')
+      ],
+      type: 'asset/resource',
+    },
+    {
+      test: /\.(eot|woff|woff2|ttf|otf)$/,
+      type: 'asset/resource',
+      generator: {
+        filename: 'assets/fonts/[name].[ext]'
       }
+    },
+    {
+      test: /\.s[ac]ss$/i,
+      use: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            postcssOptions: {
+              sourceMap: true,
+              plugins: [
+                "postcss-flexbugs-fixes",
+                [
+                  "postcss-preset-env",
+                  {
+                    "autoprefixer": {
+                      "flexbox": "no-2009"
+                    },
+                    "stage": 3,
+                    "features": {
+                      "custom-properties": false
+                    }
+                  }
+                ]
+              ]
+            }
+          }
+        },
+        'resolve-url-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+      ],
+    },
+    {
+      test: /\.font\.js/,
+      use: [
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: {
+            url: false
+          }
+        },
+        'webfonts-loader'
+      ]
+    },
+    {
+      test: /\.pug$/,
+      use: [
+        "pug-loader"
+      ]
+    }
     ]
   }
 }
