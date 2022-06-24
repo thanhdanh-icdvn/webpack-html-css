@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { MulterError  } from 'multer';
 import { MAX_FILE_COUNTS, upload, uploadWithFilter } from '../controllers/upload.controller';
+import { log } from '../server';
 
 /**
  * Upload single file middleware
@@ -14,6 +15,7 @@ export const uploadSingleMiddleWare = (req: Request, res: Response, next: NextFu
     if (error instanceof MulterError) {
       // A Multer error occurred when uploading.
       const {stack,...otherError} = error;
+      log.debug(stack);
       return(res.status(400).json({
         code: 400,
         multerErrorCode:error.code,
@@ -41,6 +43,7 @@ export const uploadMultipleMiddleWare = (req: Request, res: Response, next: Next
     if (error instanceof MulterError) {
       // A Multer error occurred when uploading.
       const {stack,...otherError} = error;
+      log.debug(stack);
       return(res.status(400).json({
         code: 400,
         multerErrorCode:error.code,
@@ -68,6 +71,7 @@ export const uploadPhotoMiddleware = (req: Request, res: Response, next: NextFun
     if (error instanceof MulterError) {
       // A Multer error occurred when uploading.
       const {stack, ...otherError} = error;
+      log.debug(stack);
       return(res.status(400).json({
         code: 400,
         multerErrorCode:error.code,
