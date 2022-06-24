@@ -1,4 +1,4 @@
-import { AES, enc } from 'crypto-js';
+import { AES, enc, lib } from 'crypto-js';
 import * as dotenv from 'dotenv';
 import path from 'path';
 import { Logger } from 'tslog';
@@ -15,7 +15,7 @@ export const PASSWORD_SECRET = process.env.PASSWORD_SECRET + '';
  * @param secret
  * @returns Encrypted password
  */
-export const encrypt = (content: string = '', secret: string = PASSWORD_SECRET) => {
+export const encrypt = (content = '', secret: string = PASSWORD_SECRET) => {
   const encypted = AES.encrypt(content, secret).toString();
   log.debug(encypted);
   return encypted;
@@ -26,7 +26,7 @@ export const encrypt = (content: string = '', secret: string = PASSWORD_SECRET) 
  * @param secret
  * @returns Decrypted password
  */
-export const decrypt = (crypted: string = '', secret: string = PASSWORD_SECRET) => {
+export const decrypt = (crypted = '', secret: string = PASSWORD_SECRET) => {
   const decrypted = AES.decrypt(crypted, secret).toString(enc.Utf8);
   log.debug(decrypted);
   return decrypted;
@@ -44,6 +44,6 @@ export const encryptBase64 = (stringSource: string) => {
  * @param base64Value Decrypt from base 64 to normal text
  * @returns string
  */
-export const decryptBase64 = (base64Value: any) => {
+export const decryptBase64 = (base64Value: lib.WordArray) => {
   return enc.Base64.stringify(base64Value);
 };

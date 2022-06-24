@@ -1,5 +1,6 @@
 export interface IError {
-  code: number;
-  message: string | object | undefined;
+  code?: number;
+  status?:number;
+  message?: string | object | undefined;
   codeText?:string;
 }
