@@ -22,7 +22,7 @@
     "jquery": "^3.6.0",
     "scrollmagic": "^2.0.8",
     "select2": "^4.1.0-rc.0",
-    "swiper": "^8.1.4"
+    "swiper": "^8.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
