@@ -12,10 +12,12 @@ export interface IUser extends Document{
   bio?:string;
   password:string;
   token:string;
+  provider:string;
+  subject:string;
 }
 
-export interface IGetUserReq extends Request<{id:IUser['id']}>{}
-export interface IAddUserReq extends Request<{}> { }
-export interface IUpdateUserReq extends Request<{ id: IUser['id'] }, any, IUser> { }
-export interface IDeleteUserReq extends Request<{ id: IUser['id'] }> { }
-export interface ILoginUserReq extends Request<{}> { }
+export type IGetUserReq = Request<{id:IUser['id']}>
+export type IAddUserReq = Request<Record<string,unknown>>
+export type IUpdateUserReq = Request<{ id: IUser['id'] }, Record<string,unknown>, IUser>
+export type IDeleteUserReq = Request<{ id: IUser['id'] }>
+export type ILoginUserReq = Request<Record<string,unknown>>

@@ -1,8 +1,6 @@
-import * as dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import path from 'path';
 import morgan from 'morgan';
 import { appRoutes } from './routes';
 import { mongoConnector } from './utils/db.connector';
@@ -10,13 +8,12 @@ import { Logger } from 'tslog';
 import { errorMiddleware404, errorMiddlewareServer } from './middlewares/error.middleware';
 import cookieParser from 'cookie-parser';
 import { apiLimitter } from './middlewares/rate-limit.middleware';
-
+import { MONGO_OPTIONS, MONGO_PASSWORD, MONGO_URL_POSTFIX, MONGO_URL_PREFIX, MONGO_USERNAME } from './config';
+import passport from 'passport';
+import { googlePassportMiddleware } from './middlewares/auth.middleware';
+import sessions from 'express-session';
 export const log: Logger = new Logger();
 
-// Load config form .env file
-dotenv.config({
-  path: (path.resolve(__dirname, '../.env.local'))
-});
 
 /**
  * App variables
@@ -26,14 +23,6 @@ if (!process.env.PORT) {
 }
 
 const PORT: number = parseInt(process.env.PORT as string, 10);
-export const {
-  MONGO_URL_PREFIX,
-  MONGO_USERNAME,
-  MONGO_PASSWORD,
-  MONGO_URL_POSTFIX,
-  MONGO_OPTIONS,
-  TOKEN_SECRET
-} = process.env;
 
 /**
  * Express instance
@@ -55,21 +44,37 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use(express.static('public'));
+app.use(sessions({
+  secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+  saveUninitialized:true,
+  cookie: { maxAge: 1000 * 60 * 60 * 24 },
+  resave: false
+}));
+googlePassportMiddleware();
+app.use(passport.initialize());
+app.use(passport.session());
+
 /**
  * Connect to db
  */
-mongoConnector(MONGO_URL_PREFIX, MONGO_USERNAME, MONGO_PASSWORD, MONGO_URL_POSTFIX, MONGO_OPTIONS);
+mongoConnector(
+  MONGO_URL_PREFIX as string,
+  MONGO_USERNAME as string,
+  MONGO_PASSWORD as string,
+  MONGO_URL_POSTFIX as string,
+  MONGO_OPTIONS as string
+);
 
 /**
  * App router prefix
  */
 app.use('/api/v1',apiLimitter, appRoutes);
-
 /**
  * Catch base error
  */
 app.use(errorMiddleware404);
 app.use(errorMiddlewareServer);
+
 
 /**
  * Server activation

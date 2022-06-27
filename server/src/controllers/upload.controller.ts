@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { Logger } from 'tslog';
-import { NextFunction, Request, Response } from 'express';
+import {Request, Response } from 'express';
 import multer, { Multer } from 'multer';
 import { encryptBase64 } from '../utils/utils.encode';
 
@@ -61,7 +61,7 @@ class UploadController {
    * @param res json respone
    * @returns Uploaded file or undefine
    */
-  static async uploadSingleFile(req: Request, res: Response): Promise<any> {
+  static async uploadSingleFile(req: Request, res: Response){
     try {
       const file = await req.file;
       if (!file?.fieldname) {
@@ -94,7 +94,7 @@ class UploadController {
    * @param res
    * @returns
    */
-  static async uploadMultipleFile(req: Request, res: Response): Promise<any> {
+  static async uploadMultipleFile(req: Request, res: Response){
     try {
       const files = req.files;
       log.debug(files);
@@ -122,7 +122,7 @@ class UploadController {
    * @param res
    * @returns
    */
-  static async photoInDB(req: Request, res: Response): Promise<any> {
+  static async photoInDB(req: Request, res: Response){
     try {
       const img = fs.readFileSync(req.file?.path || '', { encoding: 'utf8', flag: 'r' });
       const encodedImage = encryptBase64(img.toString()).toString();
@@ -140,64 +140,6 @@ class UploadController {
       return res.status(400).json({
         code: 400,
         message: 'Save file to db failed. ' + error
-      });
-    }
-  }
-  /**
-   * Get file list
-   * @param req
-   * @param res
-   */
-  static async getListFiles(req: Request, res: Response): Promise<any> {
-    const directoryPath = UPLOAD_FOLDER;
-    try {
-      fs.readdir(directoryPath, (err, files) => {
-        if (err) {
-          res.status(500).json({
-            code: 500,
-            message: 'Unable to scan files!',
-          });
-        }
-        const fileInfos: any[] = [];
-        files.forEach((file) => {
-          fileInfos.push({
-            name: file,
-            url: directoryPath + file,
-          });
-        });
-        res.status(200).json({
-          code: 200,
-          data: fileInfos
-        });
-      });
-    } catch (error) {
-      res.status(500).send({
-        code: 500,
-        message: 'Error occure. ' + error
-      });
-    }
-  }
-
-  /**
-   * Download file
-   * @param req
-   * @param res
-   */
-  static async downloadFile(req: Request, res: Response) {
-    try {
-      const fileName = req.params.name;
-      const directoryPath = UPLOAD_FOLDER;
-      res.download(directoryPath + fileName, fileName, (err) => {
-        if (err) {
-          res.status(500).send({
-            message: 'Could not download the file. ' + err,
-          });
-        }
-      });
-    } catch (error) {
-      res.status(500).send({
-        code: 500,
-        message: 'Error occure. ' + error
       });
     }
   }

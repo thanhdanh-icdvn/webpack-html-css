@@ -1,12 +1,51 @@
+import { v4 } from 'uuid';
+import passport from 'passport';
+import { UserModel } from './../models/users.model';
 import { generateAccessToken } from './../utils/utils.generate-token';
 import { Request, Response } from 'express';
-import { UserModel } from '../models/users.model';
 import { decrypt, encrypt } from '../utils/utils.encode';
-import { v4 } from 'uuid';
+import { GOOGLE_CALLBACK_URI, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '../config';
+import { Strategy as GoogleStratery } from 'passport-google-oauth20';
+import { log } from '../server';
 /**
  * Authencation controller
  */
 export class AuthController {
+
+  /**
+   *
+   * @param req Function to insert user into db
+   * @param res
+   * @returns
+   */
+   static async registerUser(req: Request, res: Response) {
+    const id = v4();
+    const { body } = req;
+    const { password,...restBody } = body;
+    const hashedPassword: string = encrypt(password);
+    try {
+      const token = generateAccessToken(restBody);
+      const user = new UserModel({
+        ...body,
+        password: hashedPassword,
+        token,
+        id
+      });
+      await user.save();
+      res.cookie('token', token, { httpOnly: true });
+      return res.status(201).json({
+        code: 201,
+        message: 'User created successfully',
+        data: user,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        code: 500,
+        message: error
+      });
+    }
+  }
+
   /**
    * Login method
    * @param req
@@ -67,37 +106,21 @@ export class AuthController {
     }
   }
 
-  /**
-   *
-   * @param req Function to insert user into db
-   * @param res
-   * @returns
-   */
-   static async registerUser(req: Request, res: Response) {
-    const id = v4();
-    const { body } = req;
-    const { password,...restBody } = body;
-    const hashedPassword: string = encrypt(password);
+  static async loginWithGoogle(req:Request,res:Response){
     try {
-      const token = generateAccessToken(restBody);
-      const user = new UserModel({
-        ...body,
-        password: hashedPassword,
-        token,
-        id
+      const authenticateResult = await  passport.authenticate('google', {
+        scope: ['openid','profile', 'email']
       });
-      await user.save();
-      res.cookie('token', token, { httpOnly: true });
-      return res.status(201).json({
-        code: 201,
-        message: 'User created successfully',
-        data: user,
-      });
+      log.info(authenticateResult)
+      return res.status(200).json({
+        code:200,
+        message:authenticateResult
+      })
     } catch (error) {
       return res.status(500).json({
-        code: 500,
-        message: error
-      });
+        code:500,
+        message:'Server error. '+error
+      })
     }
   }
 }

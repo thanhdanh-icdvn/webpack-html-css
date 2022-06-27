@@ -28,7 +28,7 @@ const UserSchema = new Schema<IUser>({
   },
   email: {
     type: String,
-    match: /.+\@.+\..+/,
+    match: /.+@.+\..+/,
     unique: true,
     required: [true, 'Email is required']
   },
@@ -52,6 +52,16 @@ const UserSchema = new Schema<IUser>({
     type:String,
     required:true,
     default:null
+  },
+  provider:{
+    type:String,
+    required:true,
+    default:'local'
+  },
+  subject:{
+    type:String,
+    required:true,
+    default:''
   }
 }, { timestamps: true,toJSON: {
   transform: (doc, ret) =>{

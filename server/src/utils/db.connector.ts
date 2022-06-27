@@ -11,11 +11,11 @@ const log: Logger = new Logger();
  * @param options Mongo options
  */
 export async function mongoConnector(
-  prefix: string | undefined,
-  username: string | undefined,
-  password: string | undefined,
-  postfix: string | undefined,
-  options?: string | undefined,
+  prefix: string,
+  username: string,
+  password: string,
+  postfix: string,
+  options?: string,
 ): Promise<void> {
   try {
     const connectionString = `${prefix}${username}:${password}@${postfix}?${options}`;

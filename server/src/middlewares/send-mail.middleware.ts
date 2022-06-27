@@ -4,7 +4,7 @@ import fs from 'fs';
 import ejs from 'ejs';
 import juice from 'juice';
 
-import { MailHostSMTP, MailPortSMTP } from './../enums/mail-host.enum';
+import { MailHostSMTP, MailPortSMTP } from '../enums/mail-host.enum'
 import { IMailOptions } from '../interfaces/mail-option.interface';
 import { MAIL_PASSWORD, MAIL_USERNAME } from '../config';
 import path from 'path';
