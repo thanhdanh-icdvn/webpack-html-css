@@ -36,7 +36,7 @@ export const upload = multer({
     files: 20
   }
 });
-export const uploadWithFilter = (filter:RegExp=(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)):Multer => {
+export const uploadWithFilter = (filter=(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)):Multer => {
   return multer({
     storage,
     limits: {
@@ -61,7 +61,7 @@ class UploadController {
    * @param res json respone
    * @returns Uploaded file or undefine
    */
-  static async uploadSingleFile(req: Request, res: Response, next: NextFunction): Promise<any> {
+  static async uploadSingleFile(req: Request, res: Response): Promise<any> {
     try {
       const file = await req.file;
       if (!file?.fieldname) {
