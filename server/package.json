@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
     "watch:serve": "ts-node src/server.ts",
-    "start" :"ts-node src/server.ts",
-    "postinstall": "tsc",
+    "prestart": "npm run build",
+    "start" :"node dist/server.js",
     "lint": "eslint . --ext .ts",
     "build":"tsc --build",
     "clean":"tsc --build --clean"
