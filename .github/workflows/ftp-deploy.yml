@@ -19,6 +19,7 @@ jobs:
 
     - name: 🔨 Build Project
       run: |
+        cd client
         npm ci
         npm run build:prod
 
