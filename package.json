@@ -4,7 +4,7 @@
   "description": "Express shop",
   "main": "index.js",
   "scripts": {
-    "deploy:server":"git subtree push --prefix server heroku main"
+    "deploy:server":"git subtree push --prefix server origin heroku"
   },
   "repository": {
     "type": "git",
