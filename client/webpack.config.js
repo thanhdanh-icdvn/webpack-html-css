@@ -12,7 +12,7 @@ const HtmlWebpackPugPlugin = require('html-webpack-pug-plugin');
  * @param {*} templateDir The tempalte directory
  * @returns Html filed in build directory
  */
-function generateHtmlPlugins(templateDir = './client/src/pages/views/') {
+function generateHtmlPlugins(templateDir = './src/pages/views/') {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
   return templateFiles.map(item => {
     // Split names and extension
@@ -27,17 +27,17 @@ function generateHtmlPlugins(templateDir = './client/src/pages/views/') {
     })
   })
 }
-const htmlPlugins = generateHtmlPlugins('./client/src/pages/views/');
+const htmlPlugins = generateHtmlPlugins('./src/pages/views/');
 
 const client = {
-  entry: './client/src/js/app.js',
+  entry: './src/js/app.js',
   mode: 'development',
   resolve: {
     modules: ['./node_modules'],
     alias: {
       'swiper': path.resolve(__dirname, './node_modules/swiper'),
       'gsap': path.resolve(__dirname, './node_modules/gsap'),
-      'assets': path.resolve(__dirname, './client/src/assets'),
+      'assets': path.resolve(__dirname, './src/assets'),
     },
     fallback: {
       fs: false
@@ -55,7 +55,7 @@ const client = {
     }),
     new CopyPlugin({
       patterns: [{
-        from: 'client/src/assets/images',
+        from: 'src/assets/images',
         to: 'assets/images'
       }]
     }),
@@ -96,7 +96,7 @@ const client = {
     compress: true,
     port: 9000,
     hot: true,
-    watchFiles: ["./client/src/pages/**/*.pug"],
+    watchFiles: ["./src/pages/**/*.pug"],
   },
   module: {
     rules: [{
@@ -114,14 +114,14 @@ const client = {
     {
       test: /\.(png|jpg|jpeg|gif|tiff|bmp|svg|jfif)$/i,
       include: [
-        path.resolve(__dirname, './client/src/assets/images')
+        path.resolve(__dirname, './src/assets/images')
       ],
       type: 'asset/resource',
     },
     {
       test: /\.(svg)$/i,
       include: [
-        path.resolve(__dirname, './client/src/assets/icons')
+        path.resolve(__dirname, './src/assets/icons')
       ],
       type: 'asset/resource',
     },
