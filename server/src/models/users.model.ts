@@ -1,7 +1,12 @@
-import { model, Schema } from 'mongoose';
+
+import {FilterQuery,Model, model, Schema } from 'mongoose';
 import mongooseUniqueValidator from 'mongoose-unique-validator';
 import { IUser } from '../interfaces/users.interface';
-const UserSchema = new Schema<IUser>({
+export interface IUserModel extends Model<IUser>{
+  findOneOrCreate(condition:FilterQuery<IUser>):void
+}
+
+const UserSchema = new Schema<IUser,IUserModel>({
   id: {
     type: String,
     unique: true,
@@ -13,6 +18,9 @@ const UserSchema = new Schema<IUser>({
     trim: true,
     unique: true,
     lowercase: true
+  },
+  displayName: {
+    type: String
   },
   firstName: {
     type: String,
@@ -32,7 +40,7 @@ const UserSchema = new Schema<IUser>({
     unique: true,
     required: [true, 'Email is required']
   },
-  avatar: {
+  image: {
     type: String,
     default: ''
   },
@@ -48,29 +56,41 @@ const UserSchema = new Schema<IUser>({
     type: String,
     required: [true, 'Password is required'],
   },
-  token:{
-    type:String,
-    required:true,
-    default:null
+  token: {
+    type: String,
+    required: true,
+    default: null
   },
-  provider:{
-    type:String,
-    required:true,
-    default:'local'
+  provider: {
+    type: String,
+    required: false,
+    default: 'local'
   },
-  subject:{
-    type:String,
-    required:true,
-    default:''
+  googleId: {
+    type: String,
+    required: false,
+    default: ''
+  },
+  facebookId: {
+    type: String,
+    required: false,
+    default: ''
   }
-}, { timestamps: true,toJSON: {
-  transform: (doc, ret) =>{
-    delete ret._id;
-    delete ret.__v;
-    delete ret.password;
+}, {
+  timestamps: true, toJSON: {
+    transform: (doc, ret) => {
+      delete ret._id;
+      delete ret.__v;
+      delete ret.password;
+    }
   }
-} });
+});
 UserSchema.plugin(mongooseUniqueValidator);
-
-
-export const UserModel = model<IUser>('User', UserSchema);
+UserSchema.statics.findOneOrCreate = function findOneOrCreate(condition, callback) {
+  this.findOne(condition, (err: Error, result: IUser) => {
+    return result ?
+    callback(err, result) :
+    this.create(condition, (err: Error, result: IUser) => { return callback(err, result) })
+  })
+}
+export const UserModel = model<IUser,IUserModel>('User', UserSchema);

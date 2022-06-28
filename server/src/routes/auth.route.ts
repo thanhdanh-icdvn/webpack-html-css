@@ -10,6 +10,14 @@ AuthRouter.route('/google').get(
     scope: ['openid','email', 'profile']
   }));
 AuthRouter.route('/google/callback').get(passport.authenticate('google', {
-  successRedirect: '/api/v1',
-  failureRedirect: '/api/v1/auth/google'
+  successReturnToOrRedirect: '/api/v1/auth/google/sucess',
+  failureRedirect: '/api/v1/auth/google/failed'
+}));
+AuthRouter.route('/facebook').get(
+  passport.authenticate('facebook', {
+    scope: ['openid','email', 'profile']
+  }));
+AuthRouter.route('/facebook/callback').get(passport.authenticate('facebook', {
+  successReturnToOrRedirect: '/api/v1/auth/facebook/sucess',
+  failureRedirect: '/api/v1/auth/facebook/failed'
 }));

@@ -4,8 +4,6 @@ import { UserModel } from './../models/users.model';
 import { generateAccessToken } from './../utils/utils.generate-token';
 import { Request, Response } from 'express';
 import { decrypt, encrypt } from '../utils/utils.encode';
-import { GOOGLE_CALLBACK_URI, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '../config';
-import { Strategy as GoogleStratery } from 'passport-google-oauth20';
 import { log } from '../server';
 /**
  * Authencation controller
@@ -21,15 +19,15 @@ export class AuthController {
    static async registerUser(req: Request, res: Response) {
     const id = v4();
     const { body } = req;
-    const { password,...restBody } = body;
+    const { password } = body;
     const hashedPassword: string = encrypt(password);
     try {
-      const token = generateAccessToken(restBody);
+      const token = generateAccessToken(id);
       const user = new UserModel({
         ...body,
+        id,
         password: hashedPassword,
         token,
-        id
       });
       await user.save();
       res.cookie('token', token, { httpOnly: true });
@@ -64,24 +62,13 @@ export class AuthController {
       } else {
         const {
           password: userPassword,
-          firstName,
-          lastName,
-          avatar,
-          dob,
-          email,
-          bio
+          id
         } = user;
         const decryptedPassword = decrypt(userPassword);
         const validPassord = decryptedPassword === password;
         if (validPassord) {
           const tokenInput = {
-            username,
-            firstName,
-            lastName,
-            avatar,
-            dob,
-            email,
-            bio
+            id
           };
           const token = generateAccessToken(tokenInput);
           user.token = token;

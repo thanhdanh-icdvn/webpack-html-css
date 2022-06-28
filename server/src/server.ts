@@ -10,7 +10,7 @@ import cookieParser from 'cookie-parser';
 import { apiLimitter } from './middlewares/rate-limit.middleware';
 import { MONGO_OPTIONS, MONGO_PASSWORD, MONGO_URL_POSTFIX, MONGO_URL_PREFIX, MONGO_USERNAME } from './config';
 import passport from 'passport';
-import { googlePassportMiddleware } from './middlewares/auth.middleware';
+import { googlePassportMiddleware, facebookPassportMiddleware } from './middlewares/auth.middleware';
 import sessions from 'express-session';
 export const log: Logger = new Logger();
 
@@ -51,6 +51,7 @@ app.use(sessions({
   resave: false
 }));
 googlePassportMiddleware();
+facebookPassportMiddleware();
 app.use(passport.initialize());
 app.use(passport.session());
 

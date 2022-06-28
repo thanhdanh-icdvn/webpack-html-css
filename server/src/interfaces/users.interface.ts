@@ -3,17 +3,19 @@ import { Document } from 'mongoose';
 export interface IUser extends Document{
   id:string;
   username:string;
+  displayName?:string;
   firstName:string;
   lastName:string;
   dob:Date;
   email:string;
-  avatar?:string;
+  image?:string;
   isActive?:boolean;
   bio?:string;
   password:string;
   token:string;
   provider:string;
-  subject:string;
+  googleId?:string,
+  facebookId?:string
 }
 
 export type IGetUserReq = Request<{id:IUser['id']}>
