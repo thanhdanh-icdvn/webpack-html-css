@@ -8,7 +8,10 @@
     "watch": "nodemon -e ts -w ./src -x npm run watch:serve",
     "watch:serve": "ts-node src/server.ts",
     "start" :"ts-node src/server.ts",
-    "lint": "eslint . --ext .ts"
+    "postinstall": "tsc",
+    "lint": "eslint . --ext .ts",
+    "build":"tsc --build",
+    "clean":"tsc --build --clean"
   },
   "keywords": [
     "express",
