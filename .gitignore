@@ -153,3 +153,4 @@ dist/
 .vscode
 .firebase/*
 .idea/*
+**/service_account.json

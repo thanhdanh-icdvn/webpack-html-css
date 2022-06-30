@@ -1,6 +1,10 @@
+
 import { Router } from 'express';
-import { firebaseLoginByEmailAndPassword } from '../middlewares/firebase.auth.middleware';
+import {
+  firebaseRegisterWithEmailAndPassword,
+  firebaseLoginWithEmailAndPassword,
+} from '../middlewares/firebase.auth.middleware';
 
-export const FirebaseAuthRouter= Router();
-
-FirebaseAuthRouter.route('/login-by-email').post(firebaseLoginByEmailAndPassword);
+export const FirebaseAuthRouter = Router();
+FirebaseAuthRouter.route('/register-by-email').post(firebaseRegisterWithEmailAndPassword);
+FirebaseAuthRouter.route('/login-by-email').post(firebaseLoginWithEmailAndPassword);
