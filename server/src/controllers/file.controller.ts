@@ -43,7 +43,7 @@ export class FileController{
             message: 'Unable to scan files!',
           });
         }
-        const fileInfos: any[] = [];
+        const fileInfos: unknown[] = [];
         files.forEach((file) => {
           fileInfos.push({
             name: file,

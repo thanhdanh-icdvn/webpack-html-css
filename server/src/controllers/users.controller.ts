@@ -1,3 +1,4 @@
+import { encrypt } from './../utils/utils.encode';
 import { Request, Response } from 'express';
 import { IUser } from '../interfaces/users.interface';
 import { UserModel } from '../models/users.model';
@@ -107,9 +108,11 @@ export class UserController {
    */
   static async updateById(req: Request<Partial<IUser>>, res: Response) {
     const { id } = req.params;
-    const updateInfo = req.body;
+    const { password, ...updateInfo } = req.body;
+
     try {
-      const userToUpdated = await UserModel.updateOne({ id }, { ...updateInfo });
+      const userToUpdated = password ? await UserModel.updateOne({ id }, { password: encrypt(password), updateInfo }):
+        await UserModel.updateOne({ id }, { updateInfo });
       if (userToUpdated.modifiedCount === 1) {
         const userUpdated = await UserModel.find({ id });
         return res.status(200).json({

@@ -32,7 +32,7 @@ export const googlePassportMiddleware = () => {
       clientSecret: GOOGLE_CLIENT_SECRET as string,
       callbackURL: GOOGLE_CALLBACK_URI as string
     },
-    (accessToken: string, refreshToken: string, profile: GoogleProfile, done: (err?: any, user?: GoogleProfile) => void) => {
+    (accessToken: string, refreshToken: string, profile: GoogleProfile, done: (err?: Error|null|undefined, user?: GoogleProfile) => void) => {
       log.info(accessToken, profile);
       return done(null, profile);
     }
@@ -54,7 +54,7 @@ export const facebookPassportMiddleware = () => {
     clientSecret: FACEBOOK_CLIENT_SECRET as string,
     callbackURL: FACEBOOK_CALLBACK_URI as string
   },
-    (accessToken: string, refreshToken: string, profile: FacebookProfile, done: (err?: any, user?: FacebookProfile) => void) => {
+    (accessToken: string, refreshToken: string, profile: FacebookProfile, done: (err?: Error | null, user?: FacebookProfile) => void) => {
       log.info(accessToken, profile);
       return done(null, profile);
     }

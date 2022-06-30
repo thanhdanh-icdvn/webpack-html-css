@@ -1,3 +1,4 @@
+import { firebaseConfig } from './config/index';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -12,6 +13,10 @@ import { MONGO_OPTIONS, MONGO_PASSWORD, MONGO_URL_POSTFIX, MONGO_URL_PREFIX, MON
 import passport from 'passport';
 import { googlePassportMiddleware, facebookPassportMiddleware } from './middlewares/auth.middleware';
 import sessions from 'express-session';
+import { initializeApp } from 'firebase/app';
+
+export const firebaseApp = initializeApp(firebaseConfig);
+
 export const log: Logger = new Logger();
 
 
@@ -45,7 +50,7 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.use(express.static('public'));
 app.use(sessions({
-  secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+  secret: 'thisismysecrctekeyfhrgfgrfrty84fwir767',
   saveUninitialized:true,
   cookie: { maxAge: 1000 * 60 * 60 * 24 },
   resave: false
@@ -55,6 +60,9 @@ facebookPassportMiddleware();
 app.use(passport.initialize());
 app.use(passport.session());
 
+/**
+ * Firebase Initialize app
+ */
 /**
  * Connect to db
  */

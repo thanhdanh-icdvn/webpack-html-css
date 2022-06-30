@@ -10,7 +10,8 @@
     "postinstall": "tsc",
     "prestart": "npm run build",
     "start": "node dist/server.js",
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "build": "tsc --build",
     "clean": "tsc --build --clean"
   },
@@ -46,8 +47,8 @@
     "@types/passport-google-oauth20": "^2.0.11",
     "@types/passport-local": "^1.0.34",
     "@types/uuid": "^8.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
     "body-parser": "^1.20.0",
     "concurrently": "^7.2.2",
     "cookie-parser": "^1.4.6",
@@ -83,5 +84,8 @@
     "tslog": "^3.3.3",
     "typescript": "^4.7.3",
     "uuid": "^8.3.2"
+  },
+  "dependencies": {
+    "firebase": "^9.8.4"
   }
 }
