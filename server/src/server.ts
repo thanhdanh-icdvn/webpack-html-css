@@ -1,4 +1,4 @@
-import { firebaseConfig } from './config/index';
+import {firebaseConfig } from './config/index';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -59,7 +59,6 @@ googlePassportMiddleware();
 facebookPassportMiddleware();
 app.use(passport.initialize());
 app.use(passport.session());
-
 /**
  * Firebase Initialize app
  */
@@ -77,7 +76,7 @@ mongoConnector(
 /**
  * App router prefix
  */
-app.use('/api/v1',apiLimitter, appRoutes);
+app.use('/',apiLimitter, appRoutes);
 /**
  * Catch base error
  */
