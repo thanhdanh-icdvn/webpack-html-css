@@ -76,7 +76,7 @@ mongoConnector(
 /**
  * App router prefix
  */
-app.use('/',apiLimitter, appRoutes);
+app.use('/api/v1',apiLimitter, appRoutes);
 /**
  * Catch base error
  */
