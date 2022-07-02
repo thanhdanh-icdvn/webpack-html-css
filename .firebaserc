@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "webpack-bundle"
-  }
+    "default": "expressjs-clothes-shopping",
+    "staging": "expressjs-clothes-shopping"
+  },
+  "targets": {}
 }
