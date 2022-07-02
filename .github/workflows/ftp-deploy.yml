@@ -21,7 +21,7 @@ jobs:
       run: |
         cd client
         npm ci
-        npm run build:prod
+        npm run build
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -30,7 +30,7 @@ jobs:
         username: ${{ secrets.FTP_USER_NAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         local-dir: |
-          ./client/dist/
+          ./client/build/
         server-dir: |
           ./public_html/
         exclude: |
