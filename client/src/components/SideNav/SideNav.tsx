@@ -1,11 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import { Footer, Logo, Menu, Nav } from './SideNav.style'
 import { PATH } from '../../constants/paths'
-import home from '../../assets/images/home.svg'
-import list from '../../assets/images/list.svg'
 import logo from '../../assets/images/logo.svg'
-import users from '../../assets/images/users.svg'
 import { connect, ConnectedProps } from 'react-redux'
+import { FiHome, FiUsers, FiPackage } from 'react-icons/fi'
 
 const mapStateToProps = (state: AppState) => ({
   closeSideNav: state.app.closeSideNav
@@ -29,19 +27,20 @@ function SideNav(props: Props) {
       <Menu className='list-unstyled mb-5'>
         <li>
           <NavLink to={PATH.HOME}>
-            <img src={home} alt='' />
+            <FiHome />
             <span>Home</span>
           </NavLink>
         </li>
         <li>
           <NavLink to={PATH.USERS}>
-            <img src={users} alt='' />
+            <FiUsers />
             <span>Users</span>
           </NavLink>
         </li>
         <li>
           <NavLink to={PATH.PRODUCTS}>
-            <img src={list} alt='' />
+            {/* <img src={product} alt={''} srcSet={product} /> */}
+            <FiPackage enableBackground='white' />
             <span>Products</span>
           </NavLink>
         </li>

@@ -22,6 +22,7 @@ export const Menu = styled.ul`
       color: white;
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       text-decoration: none;
+      svg,
       img {
         width: 20px;
         height: auto;
