@@ -1,8 +1,13 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { BREAKPOINT, COLOR } from '../../constants/styles'
 
 export const Footer = styled.div`
   padding: 0 30px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  max-width: 100%;
 `
 
 export const Menu = styled.ul`
@@ -36,6 +41,7 @@ export const Nav = styled.nav`
   background: #3e64ff;
   color: #fff;
   transition: all 0.3s;
+  position: relative;
   &.close {
     min-width: 80px;
     max-width: 80px;
@@ -67,10 +73,16 @@ export const Nav = styled.nav`
   }
 `
 
-export const Logo = styled.a`
+export const Logo = styled(Link)`
   display: block;
   color: #fff;
   font-weight: 900;
   padding: 10px 30px;
   transition: 0.3s;
+  img {
+    max-width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+    object-fit: cover;
+  }
 `

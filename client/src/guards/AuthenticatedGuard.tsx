@@ -1,4 +1,4 @@
-import { RouteProps } from 'react-router-dom'
+import { OutletProps, RouteProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 import React from 'react'
 import ProtectedRoutes from '../components/ProtectedRoute/ProtectedRoute'
@@ -6,10 +6,10 @@ import ProtectedRoutes from '../components/ProtectedRoute/ProtectedRoute'
 interface ReduxProps {
   isAuthenticated: boolean
 }
-interface Props extends ReduxProps, RouteProps {
+export interface AuthProps extends ReduxProps, RouteProps, OutletProps {
   isAuthenticated: boolean
 }
-const AuthenticatedGuard: React.FC<Props> = (props: Props): JSX.Element => {
+const AuthenticatedGuard: React.FC<AuthProps> = (props: AuthProps): JSX.Element => {
   return <ProtectedRoutes {...props} />
 }
 function mapStateToProps(state: AppState): { isAuthenticated: boolean } {

@@ -19,11 +19,11 @@ type Props = ConnectedProps<typeof connector>
 
 function ProductItem(props: Props) {
   const { productItem, getProductItem } = props
-  const params: { idProduct?: string } = useParams()
+  const params: { productId?: string } = useParams()
   useEffect(() => {
-    const { idProduct } = params
-    if (idProduct) {
-      getProductItem(idProduct)
+    const { productId } = params
+    if (productId) {
+      getProductItem(productId)
     }
   }, [params, getProductItem])
   return (

@@ -8,19 +8,17 @@ const ProductItem = lazy(() => import('../pages/Product/ProductItem/ProductItem'
 export default function ProductRoutes() {
   return (
     <Routes>
-      <Route element={<AuthenticatedGuard />}>
+      <Route path={PATH.PRODUCTS} element={<AuthenticatedGuard />}>
         <Route
-          path={PATH.PRODUCT}
+          index
           element={
             <Suspense fallback={<Loading />}>
               <ProductList />
             </Suspense>
           }
         />
-      </Route>
-      <Route element={<AuthenticatedGuard />}>
         <Route
-          path={PATH.PRODUCT + '/:idProduct'}
+          path={PATH.PRODUCTS + '/:productId'}
           element={
             <Suspense fallback={<Loading />}>
               <ProductItem />

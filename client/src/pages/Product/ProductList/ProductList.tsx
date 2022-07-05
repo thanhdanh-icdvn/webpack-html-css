@@ -47,7 +47,7 @@ const ProductList = (props: Props) => {
                 <td>{product.quantity}</td>
                 <td>{handlePrice(product.price)}</td>
                 <td>
-                  <Link className='btn btn-primary' to={PATH.PRODUCT + `/${product.id}`}>
+                  <Link className='btn btn-primary' to={PATH.PRODUCTS + `/${product.id}`}>
                     Detail
                   </Link>
                 </td>

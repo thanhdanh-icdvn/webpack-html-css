@@ -6,7 +6,7 @@ const initialState = {
   productList: [] as Product[]
 }
 
-export const ProductListReducer = (state = initialState, action: ActionRedux) =>
+export const productListReducer = (state = initialState, action: ActionRedux) =>
   produce(state, (draft) => {
     switch (action.type) {
       case types.GET_PRODUCT_LIST_REQUESTED:

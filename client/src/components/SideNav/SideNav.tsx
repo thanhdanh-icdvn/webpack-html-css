@@ -3,6 +3,8 @@ import { Footer, Logo, Menu, Nav } from './SideNav.style'
 import { PATH } from '../../constants/paths'
 import home from '../../assets/images/home.svg'
 import list from '../../assets/images/list.svg'
+import logo from '../../assets/images/logo.svg'
+import users from '../../assets/images/users.svg'
 import { connect, ConnectedProps } from 'react-redux'
 
 const mapStateToProps = (state: AppState) => ({
@@ -20,13 +22,8 @@ function SideNav(props: Props) {
   return (
     <Nav className={closeSideNav ? 'close' : ''}>
       <h1>
-        <Logo
-          href='https://xdevclass.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='text-white'
-        >
-          X
+        <Logo to={PATH.HOME} className='text-white'>
+          <img src={logo} alt='Logo' srcSet={logo} />
         </Logo>
       </h1>
       <Menu className='list-unstyled mb-5'>
@@ -37,22 +34,28 @@ function SideNav(props: Props) {
           </NavLink>
         </li>
         <li>
-          <NavLink to={PATH.PRODUCT}>
+          <NavLink to={PATH.USERS}>
+            <img src={users} alt='' />
+            <span>Users</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={PATH.PRODUCTS}>
             <img src={list} alt='' />
-            <span>Product</span>
+            <span>Products</span>
           </NavLink>
         </li>
       </Menu>
       <Footer>
         <p>
-          Copyright ©{new Date().getFullYear()} All rights reserved | This template is made with by
+          Copyright ©{new Date().getFullYear()} All rights reserved | This template is made by{' '}
           <a
-            href='https://xdevclass.com/'
+            href='https://github.com/thanhdanh-icdvn'
             target='_blank'
             rel='noopener noreferrer'
             className='ml-1 text-white'
           >
-            XdevClass
+            Thanhd
           </a>
         </p>
       </Footer>

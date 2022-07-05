@@ -36,7 +36,7 @@ const Login = (props: Props) => {
     if (!loading) {
       const payload = { username, password }
       login(payload)
-        .then((res) => {
+        .then(() => {
           navigate(PATH.HOME, { replace: true })
         })
         .catch((err) => {

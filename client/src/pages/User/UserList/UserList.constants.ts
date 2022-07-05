@@ -1,0 +1,3 @@
+export const GET_USER_LIST_REQUESTED = 'views/UserList/GET_USER_LIST_REQUESTED'
+export const GET_USER_LIST_SUCCESS = 'views/UserList/GET_USER_LIST_SUCCESS'
+export const GET_USER_LIST_FAILED = 'views/UserList/GET_USER_LIST_FAILED'
