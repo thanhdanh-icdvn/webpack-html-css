@@ -1,0 +1,14 @@
+import { BrowserRouter } from 'react-router-dom'
+import HomeRoutes from './HomeRoutes'
+import LoginRoutes from './LoginRoutes'
+import ProductRoutes from './ProductRoutes'
+
+export default function AppRoutes() {
+  return (
+    <BrowserRouter>
+      <HomeRoutes />
+      <ProductRoutes />
+      <LoginRoutes />
+    </BrowserRouter>
+  )
+}
