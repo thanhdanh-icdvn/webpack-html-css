@@ -12,13 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          if [ -e yarn.lock ]; then
-          yarn install --frozen-lockfile
-          elif [ -e package-lock.json ]; then
           npm ci
-          else
-          npm i
-          fi
           npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
