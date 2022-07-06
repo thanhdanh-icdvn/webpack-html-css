@@ -12,6 +12,7 @@ jobs:
         with:
           node-version: '16'
       - run: |
+          cd client
           unset CI
           npm install --legacy-peer-deps
           npm run build
