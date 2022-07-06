@@ -3,7 +3,8 @@ import { Footer, Logo, Menu, Nav } from './SideNav.style'
 import { PATH } from '../../constants/paths'
 import logo from '../../assets/images/logo.svg'
 import { connect, ConnectedProps } from 'react-redux'
-import { FiHome, FiUsers, FiPackage } from 'react-icons/fi'
+import { FiHome, FiUsers, FiPackage, FiPieChart } from 'react-icons/fi'
+import { TbReportAnalytics } from 'react-icons/tb'
 
 const mapStateToProps = (state: AppState) => ({
   closeSideNav: state.app.closeSideNav
@@ -39,8 +40,20 @@ function SideNav(props: Props) {
         </li>
         <li>
           <NavLink to={PATH.PRODUCTS}>
-            <FiPackage enableBackground='white' />
+            <FiPackage />
             <span>Products</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={PATH.STATISTICAL}>
+            <FiPieChart />
+            <span>Statistical</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={PATH.REPORT}>
+            <TbReportAnalytics />
+            <span>Report</span>
           </NavLink>
         </li>
       </Menu>

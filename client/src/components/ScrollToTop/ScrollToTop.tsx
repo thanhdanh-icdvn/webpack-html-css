@@ -25,7 +25,7 @@ export const ScrollToTop: React.FC<ScrollToTopProps> = ({ scrollOffset = 300 }) 
 
   window.addEventListener('scroll', toggleVisible)
   return (
-    <Button>
+    <Button color='pink'>
       <FaArrowCircleUp onClick={scrollToTop} style={{ display: visible ? 'inline' : 'none' }} />
     </Button>
   )

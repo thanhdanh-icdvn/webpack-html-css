@@ -6,6 +6,7 @@ import { PATH } from '../../../constants/paths'
 import { handlePrice } from '../../../helper/priceString'
 import { TableContainer } from './ProductList.styles'
 import { useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 const mapStateToProps = (state: AppState) => ({
   productList: state.productList.productList
@@ -27,6 +28,9 @@ const ProductList = (props: Props) => {
 
   return (
     <MainLayout>
+      <Helmet>
+        <title>Product List</title>
+      </Helmet>
       <h2>Product List</h2>
       <TableContainer>
         <table className='table table-striped'>

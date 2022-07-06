@@ -8,7 +8,7 @@ export const Button = styled.div`
   font-size: 3rem;
   z-index: 1;
   cursor: pointer;
-  color: blue;
+  color: ${(props) => props.color || 'blue'};
   transition: transform 500ms ease-in;
   transform-origin: center;
 

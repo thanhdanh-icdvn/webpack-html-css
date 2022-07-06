@@ -6,14 +6,18 @@ import { Provider } from 'react-redux'
 import { store } from './store/store'
 import App from './App/App'
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-)
+const appContainer = document.getElementById('root') as HTMLElement
+const appRoot = () => {
+  return (
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  )
+}
+const root = ReactDOM.createRoot(appContainer)
+root.render(appRoot())
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

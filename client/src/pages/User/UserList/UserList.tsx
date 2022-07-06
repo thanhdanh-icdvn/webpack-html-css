@@ -4,7 +4,8 @@ import { getUserList } from './UserList.thunks'
 import { Link } from 'react-router-dom'
 import { PATH } from '../../../constants/paths'
 import { TableContainer } from './UserList.styles'
-import { useEffect } from 'react'
+import { Fragment, useEffect } from 'react'
+import { Helmet } from 'react-helmet-async'
 
 const mapStateToProps = (state: AppState) => ({
   userList: state.userList.userList
@@ -17,7 +18,7 @@ const mapDispatchToProps = {
 const connector = connect(mapStateToProps, mapDispatchToProps)
 
 type Props = ConnectedProps<typeof connector>
-const UserList = (props: Props) => {
+const UserList = (props: Props): JSX.Element => {
   const { getUserList, userList } = props
 
   useEffect(() => {
@@ -25,38 +26,43 @@ const UserList = (props: Props) => {
   }, [getUserList])
 
   return (
-    <MainLayout>
-      <h2>User List</h2>
-      <TableContainer>
-        <table className='table table-striped'>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Is admin</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {userList &&
-              userList.map((user, index) => (
-                <tr key={user.id}>
-                  <th>{index + 1}</th>
-                  <td>{user.username}</td>
-                  <td>{user.password}</td>
-                  <td>{user.isAdmin + ''}</td>
-                  <td>
-                    <Link className='btn btn-primary' to={PATH.PRODUCTS + `/${user.id}`}>
-                      Detail
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </TableContainer>
-    </MainLayout>
+    <Fragment>
+      <Helmet>
+        <title>User List</title>
+      </Helmet>
+      <MainLayout>
+        <h2>User List</h2>
+        <TableContainer>
+          <table className='table table-striped'>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Is admin</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userList &&
+                userList.map((user, index) => (
+                  <tr key={user.id}>
+                    <th>{index + 1}</th>
+                    <td>{user.username}</td>
+                    <td>{user.password}</td>
+                    <td>{user.isAdmin + ''}</td>
+                    <td>
+                      <Link className='btn btn-primary' to={PATH.PRODUCTS + `/${user.id}`}>
+                        Detail
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </TableContainer>
+      </MainLayout>
+    </Fragment>
   )
 }
 

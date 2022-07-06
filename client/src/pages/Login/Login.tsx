@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { login } from './Login.thunks'
 import { LoginButton, Title } from './Login.styles'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../constants/paths'
 import { FiLogIn } from 'react-icons/fi'
+import { Helmet } from 'react-helmet-async'
 const mapStateToProps = (state: any) => ({
   loading: state.loading
 })
@@ -46,33 +47,38 @@ const Login = (props: Props) => {
   }
 
   return (
-    <div className='container'>
-      <div className='min-vh-100 row'>
-        <div className='col-md-6 m-auto'>
-          <form className='p-5 rounded-sm shadow text-center' onSubmit={submit}>
-            <Title>Login</Title>
-            <p className='text-muted'>Please enter your login and password!</p>
-            <input
-              type='text'
-              placeholder='Username'
-              onChange={handleUsername}
-              className='form-control form-control-lg mb-4'
-            />
-            <input
-              type='password'
-              placeholder='Password'
-              onChange={handlePassword}
-              className='form-control form-control-lg mb-4'
-            />
-            {error && <div className='mb-3 text-danger text-xl-center'>{error}</div>}
-            <LoginButton type='submit' className='btn btn-block btn-info btn-lg'>
-              <FiLogIn />
-              Login
-            </LoginButton>
-          </form>
+    <Fragment>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
+      <div className='container'>
+        <div className='min-vh-100 row'>
+          <div className='col-md-6 m-auto'>
+            <form className='p-5 rounded-sm shadow text-center' onSubmit={submit}>
+              <Title>Login</Title>
+              <p className='text-muted'>Please enter your login and password!</p>
+              <input
+                type='text'
+                placeholder='Username'
+                onChange={handleUsername}
+                className='form-control form-control-lg mb-4'
+              />
+              <input
+                type='password'
+                placeholder='Password'
+                onChange={handlePassword}
+                className='form-control form-control-lg mb-4'
+              />
+              {error && <div className='mb-3 text-danger text-xl-center'>{error}</div>}
+              <LoginButton type='submit' className='btn btn-block btn-info btn-lg'>
+                <FiLogIn />
+                Login
+              </LoginButton>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   )
 }
 
