@@ -20,13 +20,7 @@ jobs:
     - name: 🔨 Build Project
       run: |
         cd client
-        if [ -e yarn.lock ]; then
-        yarn install --frozen-lockfile
-        elif [ -e package-lock.json ]; then
-        npm ci
-        else
-        npm i
-        fi
+        npm install
         npm run build
 
     - name: 📂 Sync files
