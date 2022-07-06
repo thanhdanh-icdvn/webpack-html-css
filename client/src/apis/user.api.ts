@@ -50,10 +50,10 @@ export const loginApi = ({ username, password }: ReqLogin): Promise<ResLoginApi>
           data: {
             accessToken: '82jdu82193yh90sad83hxfgsd'
           },
-          message: 'Login thành công'
+          message: 'Login successed'
         })
       } else {
-        reject(new Error('Login thất bại'))
+        reject(new Error('Login failed'))
       }
     }, 100)
   })

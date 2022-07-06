@@ -28,6 +28,7 @@ export const Menu = styled.ul`
         height: auto;
         display: inline-block;
         margin-right: 10px;
+        flex-shrink: 0;
       }
       &.active {
         background: ${COLOR.BLUE};

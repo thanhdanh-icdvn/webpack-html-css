@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
 import { login } from './Login.thunks'
-import { Title } from './Login.styles'
+import { LoginButton, Title } from './Login.styles'
 import { useNavigate } from 'react-router-dom'
 import { PATH } from '../../constants/paths'
-
+import { FiLogIn } from 'react-icons/fi'
 const mapStateToProps = (state: any) => ({
   loading: state.loading
 })
@@ -65,9 +65,10 @@ const Login = (props: Props) => {
               className='form-control form-control-lg mb-4'
             />
             {error && <div className='mb-3 text-danger text-xl-center'>{error}</div>}
-            <button type='submit' className='btn btn-block btn-info btn-lg'>
+            <LoginButton type='submit' className='btn btn-block btn-info btn-lg'>
+              <FiLogIn />
               Login
-            </button>
+            </LoginButton>
           </form>
         </div>
       </div>

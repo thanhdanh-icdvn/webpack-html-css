@@ -39,7 +39,6 @@ function SideNav(props: Props) {
         </li>
         <li>
           <NavLink to={PATH.PRODUCTS}>
-            {/* <img src={product} alt={''} srcSet={product} /> */}
             <FiPackage enableBackground='white' />
             <span>Products</span>
           </NavLink>
