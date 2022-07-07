@@ -5,6 +5,7 @@ import logo from '../../assets/images/logo.svg'
 import { connect, ConnectedProps } from 'react-redux'
 import { FiHome, FiUsers, FiPackage, FiPieChart } from 'react-icons/fi'
 import { TbReportAnalytics } from 'react-icons/tb'
+import ReactTooltip from '@huner2/react-tooltip'
 
 const mapStateToProps = (state: AppState) => ({
   closeSideNav: state.app.closeSideNav
@@ -16,7 +17,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps)
 
 type Props = ConnectedProps<typeof connector>
 
-function SideNav(props: Props) {
+function SideNav(props: Props): JSX.Element {
   const { closeSideNav } = props
   return (
     <Nav className={closeSideNav ? 'close' : ''}>
@@ -28,31 +29,76 @@ function SideNav(props: Props) {
       <Menu className='list-unstyled mb-5'>
         <li>
           <NavLink to={PATH.HOME}>
-            <FiHome />
+            <FiHome data-for='home-tooltip' data-tip='' />
+            <ReactTooltip
+              id='home-tooltip'
+              effect='float'
+              globalEventOff='mouseleave'
+              event='mouseenter'
+              eventOff='mouseleave'
+            >
+              {'Home'}
+            </ReactTooltip>
             <span>Home</span>
           </NavLink>
         </li>
         <li>
           <NavLink to={PATH.USERS}>
-            <FiUsers />
+            <FiUsers data-for='users-tooltip' data-tip='' />
+            <ReactTooltip
+              id='users-tooltip'
+              effect='float'
+              globalEventOff=''
+              event='mouseenter'
+              eventOff='mouseleave'
+            >
+              {'Users'}
+            </ReactTooltip>
             <span>Users</span>
           </NavLink>
         </li>
         <li>
           <NavLink to={PATH.PRODUCTS}>
-            <FiPackage />
+            <FiPackage data-for='products-tooltip' data-tip='' />
+            <ReactTooltip
+              id='products-tooltip'
+              effect='float'
+              globalEventOff=''
+              event='mouseenter'
+              eventOff='mouseleave'
+            >
+              {'Products'}
+            </ReactTooltip>
             <span>Products</span>
           </NavLink>
         </li>
         <li>
           <NavLink to={PATH.STATISTICAL}>
-            <FiPieChart />
+            <FiPieChart data-for='statistical-tooltip' data-tip='' />
+            <ReactTooltip
+              id='statistical-tooltip'
+              effect='float'
+              globalEventOff=''
+              event='mouseenter'
+              eventOff='mouseleave'
+            >
+              {'Statistical'}
+            </ReactTooltip>
             <span>Statistical</span>
           </NavLink>
         </li>
         <li>
           <NavLink to={PATH.REPORT}>
-            <TbReportAnalytics />
+            <TbReportAnalytics data-for='reports-tooltip' data-tip='' />
+            <ReactTooltip
+              id='reports-tooltip'
+              effect='float'
+              globalEventOff=''
+              event='mouseenter'
+              eventOff='mouseleave'
+            >
+              {'Reports'}
+            </ReactTooltip>
             <span>Report</span>
           </NavLink>
         </li>

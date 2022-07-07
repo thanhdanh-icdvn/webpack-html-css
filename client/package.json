@@ -12,6 +12,7 @@
     "format": "prettier --write src/**/*.{js,jsx,ts,tsx,scss,css,json} --config ./.prettierrc"
   },
   "dependencies": {
+    "@huner2/react-tooltip": "^4.2.22",
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

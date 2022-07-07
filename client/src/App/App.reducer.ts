@@ -6,7 +6,7 @@ interface IAction {
   type: string
 }
 const initialState = {
-  isAuthenticated: false,
+  isAuthenticated: !!localStorage.getItem('token'),
   closeSideNav: false
 }
 
