@@ -7,7 +7,6 @@ const Home = lazy(() => import('../pages/Home/Home'))
 const ProductList = lazy(() => import('../pages/Product/ProductList/ProductList'))
 const ProductItem = lazy(() => import('../pages/Product/ProductItem/ProductItem'))
 const UserItem = lazy(() => import('../pages/User/UserItem/UserItem'))
-
 const UserList = lazy(() => import('../pages/User/UserList/UserList'))
 const Login = lazy(() => import('../pages/Login/Login'))
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'))
