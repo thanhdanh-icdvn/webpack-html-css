@@ -49,7 +49,12 @@ const Login = (props: Props) => {
   return (
     <Fragment>
       <Helmet>
-        <title>Login</title>
+        <title>Login page</title>
+        <meta name='description' content='Login page' />
+        <link rel='canonical' href='/login' />
+        <meta name='robots' content='index, follow' />
+        <meta property='og:description' content='Login page' />
+        <meta property='og:image' content='https://via.placeholder.com/150/92c952.jpg' />
       </Helmet>
       <div className='container'>
         <div className='min-vh-100 row'>

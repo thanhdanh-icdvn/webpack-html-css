@@ -6,10 +6,10 @@ export default function Home() {
   return (
     <Fragment>
       <Helmet>
-        <title>Home</title>
-        <meta property='og:title' content='Home' />
-        <meta property='og:url' content={window.location.href} />
-        <link rel='canonical' href={window.location.href} />
+        <title>Home page</title>
+        <meta name='description' content='Description goes here.' />
+        <link rel='canonical' href='/' />
+        <meta name='robots' content='index, follow' />
       </Helmet>
       <MainLayout>
         <h2 className='mb-4'>Home</h2>

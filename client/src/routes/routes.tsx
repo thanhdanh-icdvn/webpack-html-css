@@ -6,6 +6,8 @@ import AuthenticatedGuard from '../guards/AuthenticatedGuard'
 const Home = lazy(() => import('../pages/Home/Home'))
 const ProductList = lazy(() => import('../pages/Product/ProductList/ProductList'))
 const ProductItem = lazy(() => import('../pages/Product/ProductItem/ProductItem'))
+const UserItem = lazy(() => import('../pages/User/UserItem/UserItem'))
+
 const UserList = lazy(() => import('../pages/User/UserList/UserList'))
 const Login = lazy(() => import('../pages/Login/Login'))
 const NotFound = lazy(() => import('../pages/NotFound/NotFound'))
@@ -13,7 +15,7 @@ export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<AuthenticatedGuard />}>
+        <Route>
           <Route
             path={PATH.HOME}
             element={
@@ -47,6 +49,14 @@ export default function AppRoutes() {
             element={
               <Suspense fallback={<Loading />}>
                 <UserList />
+              </Suspense>
+            }
+          />
+          <Route
+            path={PATH.USERS + '/:userId'}
+            element={
+              <Suspense fallback={<Loading />}>
+                <UserItem />
               </Suspense>
             }
           />

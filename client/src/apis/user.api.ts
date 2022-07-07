@@ -3,13 +3,17 @@ const mockUsers = [
     id: 1,
     username: 'admin',
     password: '123',
-    isAdmin: true
+    isAdmin: true,
+    thumbnail: 'https://via.placeholder.com/600/92c952',
+    avatar: 'https://via.placeholder.com/150/92c952'
   },
   {
     id: 2,
     username: 'user',
     password: 'user',
-    isAdmin: false
+    isAdmin: false,
+    thumbnail: 'https://via.placeholder.com/600/771796',
+    avatar: 'https://via.placeholder.com/150/24f355'
   }
 ]
 
@@ -20,24 +24,24 @@ export const getUserListApi = (): Promise<ResGetUserApi> =>
         data: {
           users: mockUsers
         },
-        message: 'Lấy user thành công'
+        message: 'Get user succeed'
       })
     }, 100)
   })
 
-export const getUserItemApi = (username: string): Promise<ResGetUserItemApi> =>
+export const getUserItemApi = (id: string | number): Promise<ResGetUserItemApi> =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      const user = mockUsers.find((user) => user.username === username)
+      const user = mockUsers.find((user) => +user.id == id)
       if (user) {
         resolve({
           data: {
             user
           },
-          message: 'Lấy sản phẩm thành công'
+          message: 'Get users succeed'
         })
       } else {
-        reject(new Error('Không tìm thấy sản phẩm'))
+        reject(new Error('No users found'))
       }
     }, 100)
   })
@@ -50,7 +54,7 @@ export const loginApi = ({ username, password }: ReqLogin): Promise<ResLoginApi>
           data: {
             accessToken: '82jdu82193yh90sad83hxfgsd'
           },
-          message: 'Login successed'
+          message: 'Login succeed'
         })
       } else {
         reject(new Error('Login failed'))

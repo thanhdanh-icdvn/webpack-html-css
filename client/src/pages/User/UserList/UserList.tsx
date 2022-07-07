@@ -39,6 +39,8 @@ const UserList = (props: Props): JSX.Element => {
                 <th>#</th>
                 <th>Username</th>
                 <th>Password</th>
+                <th>Thumnail</th>
+                <th>Avatar</th>
                 <th>Is admin</th>
                 <th>Actions</th>
               </tr>
@@ -50,9 +52,21 @@ const UserList = (props: Props): JSX.Element => {
                     <th>{index + 1}</th>
                     <td>{user.username}</td>
                     <td>{user.password}</td>
+                    <td>
+                      <img
+                        src={user.thumbnail}
+                        alt={user.username}
+                        srcSet={user.thumbnail}
+                        width={150}
+                        height={150}
+                      />
+                    </td>
+                    <td>
+                      <img src={user.avatar} alt={user.username} srcSet={user.avatar} />
+                    </td>
                     <td>{user.isAdmin + ''}</td>
                     <td>
-                      <Link className='btn btn-primary' to={PATH.PRODUCTS + `/${user.id}`}>
+                      <Link className='btn btn-primary' to={PATH.USERS + `/${user.id}`}>
                         Detail
                       </Link>
                     </td>

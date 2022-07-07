@@ -3,6 +3,8 @@ interface User {
   username: string
   password: string
   isAdmin: boolean
+  thumbnail: string
+  avatar: stringg
 }
 
 interface ReqLogin {
