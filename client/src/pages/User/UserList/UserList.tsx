@@ -53,16 +53,24 @@ const UserList = (props: Props): JSX.Element => {
                     <td>{user.username}</td>
                     <td>{user.password}</td>
                     <td>
-                      <img
-                        src={user.thumbnail}
-                        alt={user.username}
-                        srcSet={user.thumbnail}
-                        width={150}
-                        height={150}
-                      />
+                      {user.thumbnail ? (
+                        <img
+                          src={user.thumbnail}
+                          alt={user.username}
+                          srcSet={user.thumbnail}
+                          width={150}
+                          height={150}
+                        />
+                      ) : (
+                        'No thumnail'
+                      )}
                     </td>
                     <td>
-                      <img src={user.avatar} alt={user.username} srcSet={user.avatar} />
+                      {user.avatar ? (
+                        <img src={user.avatar} alt={user.username} srcSet={user.avatar} />
+                      ) : (
+                        'No avatar'
+                      )}
                     </td>
                     <td>{user.isAdmin + ''}</td>
                     <td>

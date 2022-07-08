@@ -1,0 +1,66 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const AppleTouchIconsPlugin = require('apple-touch-icons-webpack-plugin')
+const appIconOptions = {
+  icon: 'logo192.png'
+}
+const client = {
+  entry: './src/index.tsx',
+  output: {
+    path: path.join(__dirname, 'build'),
+    filename: '[name].js',
+    chunkFilename: '[id].[chunkhash].js'
+  },
+  devtool: 'inline-source-map',
+  mode: process.env.NODE_ENV || 'development',
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js']
+  },
+  devServer: {
+    static: './build'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: ['ts-loader']
+      },
+      {
+        test: /\.(s[ac]ss|css)$/i,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
+        type: 'asset/resource'
+      }
+    ]
+  },
+  plugins: [
+    new AppleTouchIconsPlugin(appIconOptions),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'public', 'index.html'),
+      favicon: './public/favicon.ico',
+      filename: 'index.html',
+      manifest: './public/manifest.json'
+    })
+  ],
+  optimization: {
+    runtimeChunk: 'single'
+  }
+}
+module.exports = [client]
