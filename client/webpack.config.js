@@ -6,6 +6,7 @@ const AppleTouchIconsPlugin = require('apple-touch-icons-webpack-plugin')
 const appIconOptions = {
   icon: 'logo192.png'
 }
+const mode = process.env.NODE_ENV || 'development'
 const client = {
   entry: './src/index.tsx',
   output: {
@@ -13,7 +14,7 @@ const client = {
     filename: '[name].js',
     chunkFilename: '[id].[chunkhash].js'
   },
-  devtool: 'inline-source-map',
+  devtool: mode === 'development' ? 'inline-source-map' : false,
   mode: process.env.NODE_ENV || 'development',
   resolve: {
     extensions: ['.tsx', '.ts', '.js']
@@ -61,6 +62,11 @@ const client = {
   ],
   optimization: {
     runtimeChunk: 'single'
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
   }
 }
 module.exports = [client]
