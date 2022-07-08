@@ -3,22 +3,22 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
-    jest: true,
+    jest: true
   },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'plugin:prettier/recommended',
+    'plugin:prettier/recommended'
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
+      jsx: true
     },
     ecmaVersion: 'latest',
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
@@ -27,11 +27,11 @@ module.exports = {
     quotes: ['error', 'single'],
     'no-duplicate-imports': 'error',
     'react/jsx-uses-react': 'error',
-    'react/jsx-uses-vars': 'error',
+    'react/jsx-uses-vars': 'error'
   },
   settings: {
     'import/resolver': {
-      typescript: {},
+      typescript: {}
     },
     react: {
       createClass: 'createReactClass', // Regex for Component Factory to use,
@@ -41,7 +41,7 @@ module.exports = {
       version: 'detect', // React version. "detect" automatically picks the version you have installed.
       // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
       // It will default to "latest" and warn if missing, and to "detect" in the future
-      flowVersion: '0.53', // Flow version
-    },
-  },
+      flowVersion: '0.53' // Flow version
+    }
+  }
 }

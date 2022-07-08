@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths":{
+      "api":["api"],
+      "assets":["assets"],
+      "layouts":["layouts"],
+      "pages":["pages"],
+      "@":["@"]
+    },
     "outDir": "./build/",
     "sourceMap": true,
     "target": "es5",
@@ -23,6 +31,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }

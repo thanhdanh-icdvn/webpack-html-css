@@ -1,0 +1,9 @@
+{
+  "moduleNameMapper": {
+    "^api/(.*)$": "/src/api/$1",
+    "^assets/(.*)$": "/src/assets/$1",
+    "^pages/(.*)$": "/src/pages/$1",
+    "^layouts/(.*)$": "/src/layouts/$1",
+    "^@/(.*)$": "/src/$1",
+  }
+}

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const ESLintPlugin = require('eslint-webpack-plugin')
 const AppleTouchIconsPlugin = require('apple-touch-icons-webpack-plugin')
 const appIconOptions = {
   icon: 'logo192.png'
@@ -17,10 +17,21 @@ const client = {
   devtool: mode === 'development' ? 'inline-source-map' : false,
   mode: process.env.NODE_ENV || 'development',
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js', 'jsx'],
+    alias: {
+      assets: path.resolve(__dirname, './src/assets/'),
+      api: path.resolve(__dirname, './src/api/'),
+      layouts: path.resolve(__dirname, './src/layouts/'),
+      pages: path.resolve(__dirname, './src/pages/'),
+      components: path.resolve(__dirname, './src/components/')
+    }
   },
   devServer: {
-    static: './build'
+    static: './build',
+    port: 3000,
+    hot: true,
+    historyApiFallback: true,
+    open: true
   },
   module: {
     rules: [
@@ -52,6 +63,7 @@ const client = {
     ]
   },
   plugins: [
+    new ESLintPlugin(),
     new AppleTouchIconsPlugin(appIconOptions),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
