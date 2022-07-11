@@ -3,6 +3,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const AppleTouchIconsPlugin = require('apple-touch-icons-webpack-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const appIconOptions = {
   icon: 'logo192.png'
 }
@@ -60,13 +61,14 @@ const client = {
   },
   plugins: [
     new ESLintPlugin(),
-    new AppleTouchIconsPlugin(appIconOptions),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
       favicon: './public/favicon.ico',
       filename: 'index.html',
       manifest: './public/manifest.json'
-    })
+    }),
+    new AppleTouchIconsPlugin(appIconOptions),
+    new WebpackManifestPlugin()
   ],
   optimization: {
     runtimeChunk: 'single'
