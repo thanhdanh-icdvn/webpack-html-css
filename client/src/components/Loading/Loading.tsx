@@ -1,5 +1,5 @@
 import { Fragment } from 'react'
-import { COLOR } from '../../constants/styles'
+import { COLOR } from '@/constants/styles'
 import { StyledLoading } from './Loading.styles'
 
 export default function Loading(): JSX.Element {

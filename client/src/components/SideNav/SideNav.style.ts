@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { BREAKPOINT, COLOR } from '../../constants/styles'
+import { BREAKPOINT, COLOR } from '@/constants/styles'
 
 export const Footer = styled.div`
   padding: 0 30px;

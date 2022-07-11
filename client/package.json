@@ -61,7 +61,6 @@
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.1.4",
-    "eslint-loader": "^4.0.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.30.1",
@@ -102,9 +101,5 @@
   "main": ".eslintrc.js",
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "moduleDirectories": [
-    "<rootDir>/src",
-    "node_modules"
-  ]
+  "license": "ISC"
 }

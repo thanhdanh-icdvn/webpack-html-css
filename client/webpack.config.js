@@ -19,15 +19,11 @@ const client = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js', 'jsx'],
     alias: {
-      assets: path.resolve(__dirname, './src/assets/'),
-      api: path.resolve(__dirname, './src/api/'),
-      layouts: path.resolve(__dirname, './src/layouts/'),
-      pages: path.resolve(__dirname, './src/pages/'),
-      components: path.resolve(__dirname, './src/components/')
+      '@': path.resolve(__dirname, 'src')
     }
   },
   devServer: {
-    static: './build',
+    static: [{ directory: path.resolve('./dist') }, { directory: path.resolve('./public') }],
     port: 3000,
     hot: true,
     historyApiFallback: true,
@@ -43,7 +39,7 @@ const client = {
       {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
-        use: ['ts-loader']
+        use: ['babel-loader', 'ts-loader']
       },
       {
         test: /\.(s[ac]ss|css)$/i,

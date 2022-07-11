@@ -1,5 +1,5 @@
 import { Navigate, Outlet, OutletProps } from 'react-router-dom'
-import { PATH } from '../../constants/paths'
+import { PATH } from '@/constants/paths'
 
 const ProtectedRoutes = (props: OutletProps) => {
   return localStorage.getItem('token') ? (

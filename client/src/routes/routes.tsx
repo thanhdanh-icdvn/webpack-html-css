@@ -1,15 +1,15 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Loading from '../components/Loading/Loading'
-import { PATH } from '../constants/paths'
-import AuthenticatedGuard from '../guards/AuthenticatedGuard'
-const Home = lazy(() => import('../pages/Home/Home'))
-const ProductList = lazy(() => import('../pages/Product/ProductList/ProductList'))
-const ProductItem = lazy(() => import('../pages/Product/ProductItem/ProductItem'))
-const UserItem = lazy(() => import('../pages/User/UserItem/UserItem'))
-const UserList = lazy(() => import('../pages/User/UserList/UserList'))
-const Login = lazy(() => import('../pages/Login/Login'))
-const NotFound = lazy(() => import('../pages/NotFound/NotFound'))
+import Loading from '@/components/Loading/Loading'
+import { PATH } from '@/constants/paths'
+import AuthenticatedGuard from '@/guards/AuthenticatedGuard'
+const Home = lazy(() => import('@/pages/Home/Home'))
+const ProductList = lazy(() => import('@/pages/Product/ProductList/ProductList'))
+const ProductItem = lazy(() => import('@/pages/Product/ProductItem/ProductItem'))
+const UserItem = lazy(() => import('@/pages/User/UserItem/UserItem'))
+const UserList = lazy(() => import('@/pages/User/UserList/UserList'))
+const Login = lazy(() => import('@/pages/Login/Login'))
+const NotFound = lazy(() => import('@/pages/NotFound/NotFound'))
 export default function AppRoutes() {
   return (
     <BrowserRouter>

@@ -1,12 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths":{
-      "api":["api"],
-      "assets":["assets"],
-      "layouts":["layouts"],
-      "pages":["pages"],
-      "@":["@"]
+      "@/*":["./src/*"]
     },
     "outDir": "./build/",
     "sourceMap": true,

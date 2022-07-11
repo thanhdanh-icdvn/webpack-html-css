@@ -1,7 +1,7 @@
 import { OutletProps, RouteProps } from 'react-router-dom'
 import { connect } from 'react-redux'
 import React from 'react'
-import ProtectedRoutes from '../components/ProtectedRoute/ProtectedRoute'
+import ProtectedRoutes from '@/components/ProtectedRoute/ProtectedRoute'
 
 interface ReduxProps {
   isAuthenticated: boolean
