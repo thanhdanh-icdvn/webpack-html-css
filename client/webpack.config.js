@@ -33,7 +33,7 @@ const client = {
   devServer: {
     static: [{ directory: path.resolve('./dist') }, { directory: path.resolve('./public') }],
     host: process.env.CLIENT_HOST,
-    port: process.env.PORT || 80,
+    port: parseInt(process.env.PORT, 10) || 80,
     hot: true,
     historyApiFallback: true,
     open: true,

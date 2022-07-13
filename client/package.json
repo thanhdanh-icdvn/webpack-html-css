@@ -55,7 +55,6 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.25",
     "@types/webpack": "^5.28.0",
-    "@types/webpack-dev-server": "^4.7.2",
     "@typescript-eslint/eslint-plugin": "^5.30.3",
     "@typescript-eslint/parser": "^5.30.4",
     "apple-touch-icons-webpack-plugin": "^1.2.0",
