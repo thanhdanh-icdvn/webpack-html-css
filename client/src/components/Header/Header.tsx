@@ -3,7 +3,7 @@ import { logout, toggleSideNav } from '@/App/App.actions'
 import { useNavigate } from 'react-router-dom'
 import { LogoutIcon, MenuToogleButton, SearchBox, SearchBoxWrapper } from './Header.style'
 import { PATH } from '@/constants/paths'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FiMenu, FiLogOut } from 'react-icons/fi'
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
 const mapStateToProps = (state: AppState) => ({
@@ -19,7 +19,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps)
 
 type Props = ConnectedProps<typeof connector>
 
-const Header = (props: Props): JSX.Element => {
+const Header: React.FC<Props> = (props: Props): JSX.Element => {
   const { logout, toggleSideNav, closeSideNav } = props
   const navigate = useNavigate()
   const [iconSize] = useState(25)

@@ -13,8 +13,9 @@ import {
 } from 'chart.js'
 import { Bar, Doughnut, Line, Pie } from 'react-chartjs-2'
 import { faker } from '@faker-js/faker'
-import { RefObject, useCallback, useRef } from 'react'
+import React, { RefObject, useCallback, useRef } from 'react'
 import { ChartJSOrUndefined } from 'react-chartjs-2/dist/types'
+import slugify from 'slugify'
 
 export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
   ChartJS.register(
@@ -35,7 +36,12 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
     'right' = 'right',
     'bottom' = 'right'
   }
-  const options = (title: string, position: keyof typeof postion) => {
+  const options = (
+    title: string,
+    position: keyof typeof postion,
+    scales = {},
+    interaction = {}
+  ) => {
     return {
       responsive: true,
       plugins: {
@@ -46,7 +52,9 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
           display: true,
           text: title
         }
-      }
+      },
+      scales,
+      interaction
     }
   }
 
@@ -71,21 +79,21 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
       {
         label: 'Dataset 1',
         data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        backgroundColor: 'rgba(75,192,192,0.2)',
-        borderColor: 'rgba(75,192,192,1)',
+        borderColor: 'rgb(255, 99, 132)',
+        backgroundColor: 'rgba(255, 99, 132,0.3)',
         fill: true
       },
       {
         label: 'Dataset 2',
         data: labels.map(() => faker.datatype.number({ min: -300, max: 1000 })),
-        borderColor: 'rgb(251, 0, 21)',
-        backgroundColor: 'rgba(247, 96, 96, 0.5)'
+        borderColor: 'rgb(75, 192, 192)',
+        backgroundColor: 'rgba(75, 192, 192,0.3)'
       },
       {
         label: 'Dataset 3',
         data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-        borderColor: 'rgb(251, 0, 146)',
-        backgroundColor: 'rgb(207, 107, 165)'
+        borderColor: 'rgb(53, 162, 235)',
+        backgroundColor: 'rgba(53, 162, 235,0.3)'
       }
     ]
   }
@@ -95,17 +103,17 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
       {
         label: 'Dataset 1',
         data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        backgroundColor: 'rgba(75,192,192,1)'
+        backgroundColor: 'rgb(255, 99, 132)'
       },
       {
         label: 'Dataset 2',
         data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        backgroundColor: 'rgba(251, 0, 21)'
+        backgroundColor: 'rgb(75, 192, 192)'
       },
       {
         label: 'Dataset 3',
         data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        backgroundColor: 'rgb(251, 0, 146)'
+        backgroundColor: 'rgb(53, 162, 235)'
       }
     ]
   }
@@ -140,6 +148,8 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
   const barRef = useRef<ChartJSOrUndefined<'bar', number[], string>>(null)
   const doughnutRef = useRef<ChartJSOrUndefined<'doughnut', number[], string>>(null)
   const pieRef = useRef<ChartJSOrUndefined<'pie', number[], string>>(null)
+  const stackedRef = useRef<ChartJSOrUndefined<'bar', number[], string>>(null)
+  const groupedRef = useRef<ChartJSOrUndefined<'bar', number[], string>>(null)
   const downloadImage = useCallback(
     (
       ref: RefObject<
@@ -151,8 +161,16 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
       >,
       chartTitle = 'chart'
     ) => {
+      const slugifyOptions = {
+        replacement: '-',
+        remove: undefined,
+        lower: false,
+        strict: false,
+        locale: 'vi',
+        trim: true
+      }
       const link = document.createElement('a')
-      link.download = chartTitle + '.png'
+      link.download = slugify(chartTitle, slugifyOptions) + '_' + Date.now().toString() + '.png'
       link.href = ref?.current?.toBase64Image() as string
       link.click()
     },
@@ -165,7 +183,7 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
         <button
           type='button'
           id='btn-download-line'
-          onClick={() => downloadImage(lineRef, 'LineChart')}
+          onClick={() => downloadImage(lineRef, 'Line Chart')}
           className='btn btn-sm btn-outline-primary'
         >
           Download Line
@@ -176,10 +194,62 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
         <button
           type='button'
           id='btn-download-line'
-          onClick={() => downloadImage(barRef, 'BarChart')}
+          onClick={() => downloadImage(barRef, 'Bar Chart')}
           className='btn btn-sm btn-outline-primary'
         >
           Download Bar
+        </button>
+      </div>
+      <div className='col-md-6'>
+        <Bar
+          options={options('Stacked chart', 'bottom', {
+            x: {
+              stacked: true
+            },
+            y: {
+              stacked: true
+            }
+          })}
+          data={barData}
+          ref={stackedRef}
+        />
+        <button
+          type='button'
+          id='btn-download-stacked'
+          onClick={() => downloadImage(stackedRef, 'Stacked Chart')}
+          className='btn btn-sm btn-outline-primary'
+        >
+          Download Stacked
+        </button>
+      </div>
+      <div className='col-md-6'>
+        <Bar
+          options={options(
+            'Grouped chart',
+            'bottom',
+            {
+              x: {
+                stacked: true
+              },
+              y: {
+                stacked: true
+              }
+            },
+            {
+              mode: 'index' as const,
+              intersect: false
+            }
+          )}
+          data={barData}
+          ref={groupedRef}
+        />
+        <button
+          type='button'
+          id='btn-download-grouped'
+          onClick={() => downloadImage(groupedRef, 'Grouped Chart')}
+          className='btn btn-sm btn-outline-primary'
+        >
+          Download Grouped
         </button>
       </div>
       <div className='col-md-4'>
@@ -187,7 +257,7 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
         <button
           type='button'
           id='btn-download-pie'
-          onClick={() => downloadImage(pieRef, 'PieChart')}
+          onClick={() => downloadImage(pieRef, 'Pie Chart')}
           className='btn btn-sm btn-outline-primary'
         >
           Download Pie
@@ -198,7 +268,7 @@ export const ChartComponent: React.FC<unknown> = (): JSX.Element => {
         <button
           type='button'
           id='btn-download-doughnut'
-          onClick={() => downloadImage(doughnutRef, 'DoughnutChart')}
+          onClick={() => downloadImage(doughnutRef, 'Doughnut Chart')}
           className='btn btn-sm btn-outline-primary'
         >
           Download Doughnut

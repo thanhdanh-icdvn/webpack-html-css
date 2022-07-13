@@ -4,10 +4,7 @@ import { BREAKPOINT, COLOR } from '@/constants/styles'
 
 export const Footer = styled.div`
   padding: 0 30px;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  max-width: 100%;
+  margin-top: auto;
 `
 
 export const Menu = styled.ul`
@@ -36,7 +33,6 @@ export const Menu = styled.ul`
     }
   }
 `
-
 export const Nav = styled.nav`
   min-width: 270px;
   max-width: 270px;
@@ -44,6 +40,9 @@ export const Nav = styled.nav`
   color: #fff;
   transition: all 0.3s;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   &.close {
     min-width: 80px;
     max-width: 80px;

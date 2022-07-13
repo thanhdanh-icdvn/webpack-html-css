@@ -7,7 +7,7 @@ export const Button = styled.div`
   bottom: 5rem;
   right: 5rem;
   font-size: 3rem;
-  z-index: 1;
+  z-index: 1200;
   cursor: pointer;
   color: ${(props) => props.color || 'blue'};
   transition: transform 500ms ease-in;
