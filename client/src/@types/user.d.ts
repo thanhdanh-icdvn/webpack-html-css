@@ -12,10 +12,10 @@ interface ReqLogin {
   password: string
 }
 interface ResLoginApi extends Res {
-  data: {
-    accessToken: string
+  data?: {
+    token?: string
   }
-  message: string
+  message?: string
 }
 
 type ResLogin = ActionRedux

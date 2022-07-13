@@ -1,3 +1,4 @@
+import { BREAKPOINT } from '@/constants/styles'
 import styled from 'styled-components'
 export const Button = styled.div`
   position: fixed;
@@ -14,5 +15,12 @@ export const Button = styled.div`
 
   :hover {
     transform: scale(1.1);
+  }
+  @media (max-width: ${BREAKPOINT.MD - 1}px) {
+    width: 3rem;
+    height: 3rem;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.5rem;
   }
 `

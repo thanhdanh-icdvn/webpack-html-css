@@ -1,13 +1,17 @@
 import React, { Fragment, useState } from 'react'
 import { connect, ConnectedProps } from 'react-redux'
-import { login } from './Login.thunks'
-import { LoginButton, Title } from './Login.styles'
 import { useNavigate } from 'react-router-dom'
+import { login } from './Login.thunks'
 import { PATH } from '../../constants/paths'
-import { FiLogIn } from 'react-icons/fi'
 import { Helmet } from 'react-helmet-async'
-const mapStateToProps = (state: any) => ({
-  loading: state.loading
+
+import { LoginButton, StyledGoogleButton, Title } from './Login.styles'
+import { FiLogIn } from 'react-icons/fi'
+import { FcGoogle } from 'react-icons/fc'
+import { FaFacebook } from 'react-icons/fa'
+
+const mapStateToProps = (state: AppState) => ({
+  loading: state.login.loading
 })
 
 const mapDispatchToProps = {
@@ -60,25 +64,45 @@ const Login = (props: Props) => {
         <div className='min-vh-100 row'>
           <div className='col-md-6 m-auto'>
             <form className='p-5 rounded-sm shadow text-center' onSubmit={submit}>
-              <Title>Login</Title>
-              <p className='text-muted'>Please enter your login and password!</p>
-              <input
-                type='text'
-                placeholder='Username'
-                onChange={handleUsername}
-                className='form-control form-control-lg mb-4'
-              />
-              <input
-                type='password'
-                placeholder='Password'
-                onChange={handlePassword}
-                className='form-control form-control-lg mb-4'
-              />
-              {error && <div className='mb-3 text-danger text-xl-center'>{error}</div>}
-              <LoginButton type='submit' className='btn btn-block btn-info btn-lg'>
-                <FiLogIn />
-                Login
-              </LoginButton>
+              <div className='login-email-block py-3'>
+                <Title>Login</Title>
+                <p className='text-muted text-sm-center'>Login by username and password</p>
+                <input
+                  autoComplete='username'
+                  type='text'
+                  placeholder='Username'
+                  onChange={handleUsername}
+                  className='form-control form-control-lg mb-4'
+                />
+                <input
+                  autoComplete='current-password'
+                  type='password'
+                  placeholder='Password'
+                  onChange={handlePassword}
+                  className='form-control form-control-lg mb-4'
+                />
+                {error && <div className='mb-3 text-danger text-xl-center'>{error}</div>}
+                <LoginButton type='submit' className='btn btn-block btn-info btn-lg'>
+                  <FiLogIn />
+                  Login
+                </LoginButton>
+              </div>
+              <StyledGoogleButton className='google-btn'>
+                <button className='google-btn__wrapper'>
+                  <FcGoogle className='google-btn__icon' />
+                  <div className='google-btn__text'>
+                    <span>Sign in with Google</span>
+                  </div>
+                </button>
+              </StyledGoogleButton>
+              <StyledGoogleButton className='facebook-btn mt-3'>
+                <button className='facebook-btn__wrapper'>
+                  <FaFacebook className='facebook-btn__icon' color='blue' />
+                  <div className='facebook-btn__text'>
+                    <span>Sign in with Facebook</span>
+                  </div>
+                </button>
+              </StyledGoogleButton>
             </form>
           </div>
         </div>

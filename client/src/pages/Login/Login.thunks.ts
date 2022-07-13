@@ -5,7 +5,7 @@ export const login = (payload: ReqLogin) => (dispatch: AppDispatch) => {
   dispatch(loginRequested())
   return loginApi(payload)
     .then((res: ResLoginApi) => {
-      localStorage.setItem('token', res.data.accessToken)
+      localStorage.setItem('token', res?.data?.token as string)
       return dispatch(loginSuccess(res))
     })
     .catch((err) => Promise.reject(dispatch(loginFailed(err))))

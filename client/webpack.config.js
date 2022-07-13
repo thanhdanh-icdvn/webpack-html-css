@@ -4,10 +4,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin')
 const AppleTouchIconsPlugin = require('apple-touch-icons-webpack-plugin')
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
+const dotenv = require('dotenv')
+const { DefinePlugin } = require('webpack')
 const appIconOptions = {
   icon: 'logo192.png'
 }
 const mode = process.env.NODE_ENV || 'development'
+const env = dotenv.config().parsed
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next])
+  return prev
+}, {})
 const client = {
   entry: './src/index.tsx',
   output: {
@@ -25,10 +32,18 @@ const client = {
   },
   devServer: {
     static: [{ directory: path.resolve('./dist') }, { directory: path.resolve('./public') }],
-    port: 3000,
+    host: process.env.CLIENT_HOST,
+    port: process.env.PORT,
     hot: true,
     historyApiFallback: true,
-    open: true
+    open: true,
+    proxy: {
+      '/api/**': {
+        target: `${process.env.API_HOST}:${process.env.API_PORT}`,
+        secure: false,
+        changeOrigin: true
+      }
+    }
   },
   module: {
     rules: [
@@ -61,6 +76,7 @@ const client = {
   },
   plugins: [
     new ESLintPlugin(),
+    new DefinePlugin(envKeys),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
       favicon: './public/favicon.ico',

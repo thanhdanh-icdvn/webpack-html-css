@@ -1,5 +1,6 @@
+import { BREAKPOINT } from '@/constants/styles'
 import styled from 'styled-components'
-import theme from '../../theme'
+import theme from '@/theme'
 
 export const MenuToogleButton = styled.button`
   display: flex;
@@ -29,6 +30,9 @@ export const SearchBoxWrapper = styled.div`
   margin: 0px 10px 0px 10px;
   flex: 1;
   max-width: 80%;
+  @media (max-width: ${BREAKPOINT.MD - 1}px) {
+    max-width: 50%;
+  }
   svg {
     display: flex;
     vertical-align: middle;

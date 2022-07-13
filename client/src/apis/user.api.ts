@@ -47,18 +47,37 @@ export const getUserItemApi = (id: string | number): Promise<ResGetUserItemApi> 
   })
 
 export const loginApi = ({ username, password }: ReqLogin): Promise<ResLoginApi> => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (username === 'admin' && password === '123') {
-        resolve({
-          data: {
-            accessToken: '82jdu82193yh90sad83hxfgsd'
-          },
-          message: 'Login succeed'
-        })
-      } else {
-        reject(new Error('Login failed'))
-      }
-    }, 100)
+  const loginOptions = {
+    method: 'POST',
+    body: JSON.stringify({
+      username: username,
+      password: password
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+  return new Promise<ResLoginApi>((resolve, reject) => {
+    fetch('/api/v1/auth/login', loginOptions)
+      .then((response) => {
+        return response.json()
+      })
+      .then((result) => {
+        process.env.NODE_ENV === 'development' && console.log(result)
+        if (result.code === 200) {
+          resolve({
+            data: {
+              token: result.data.token
+            },
+            message: result.message
+          })
+        } else {
+          reject(new Error(result.message))
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+        reject(err.message || err)
+      })
   })
 }
