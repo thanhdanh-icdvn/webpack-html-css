@@ -1,11 +1,19 @@
 import { connect, ConnectedProps } from 'react-redux'
 import { logout, toggleSideNav } from '@/App/App.actions'
 import { useNavigate } from 'react-router-dom'
-import { LogoutIcon, MenuToogleButton, SearchBox, SearchBoxWrapper } from './Header.style'
+import {
+  HeaderRight,
+  LogoutIcon,
+  MenuToogleButton,
+  ProfileAvatar,
+  SearchBox,
+  SearchBoxWrapper
+} from './Header.style'
 import { PATH } from '@/constants/paths'
 import React, { useEffect, useState } from 'react'
 import { FiMenu, FiLogOut } from 'react-icons/fi'
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
+import DefaultAvatar from '@/assets/images/default_avatar.png'
 const mapStateToProps = (state: AppState) => ({
   closeSideNav: state.app.closeSideNav
 })
@@ -30,7 +38,7 @@ const Header: React.FC<Props> = (props: Props): JSX.Element => {
   useEffect(() => undefined, [navigate])
 
   return (
-    <header className='d-flex bg-light justify-content-between p-3 shadow-sm'>
+    <header className='d-flex bg-light justify-content-between p-3 shadow-sm sticky-top'>
       {closeSideNav ? (
         <MenuToogleButton className='btn btn-primary' onClick={toggleSideNav}>
           <FiMenu fontSize={iconSize} />
@@ -44,10 +52,13 @@ const Header: React.FC<Props> = (props: Props): JSX.Element => {
         <SearchBox className='h__search-box' placeholder='Type to search' />
         <AiOutlineSearch />
       </SearchBoxWrapper>
-      <LogoutIcon onClick={handleLogout} className='btn btn-outline-secondary'>
-        <FiLogOut />
-        Logout
-      </LogoutIcon>
+      <HeaderRight className='header--right'>
+        <ProfileAvatar className='mx-3' src={DefaultAvatar} alt='Avatar'></ProfileAvatar>
+        <LogoutIcon onClick={handleLogout} className='btn btn-outline-secondary'>
+          <FiLogOut />
+          Logout
+        </LogoutIcon>
+      </HeaderRight>
     </header>
   )
 }

@@ -1,5 +1,5 @@
 import * as actions from './UserList.actions'
-import { getUserListApi } from '../../../apis/user.api'
+import { getUserListApi } from '@/apis/user.api'
 
 export const getUserList = () => (dispatch: AppDispatch) => {
   dispatch(actions.getUserListRequested())

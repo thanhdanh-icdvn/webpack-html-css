@@ -1,5 +1,5 @@
 import * as actions from './UserItem.actions'
-import { getUserItemApi } from '../../../apis/user.api'
+import { getUserItemApi } from '@/apis/user.api'
 
 export const getUserItem = (id: string) => (dispatch: AppDispatch) => {
   dispatch(actions.getUserItemRequested())

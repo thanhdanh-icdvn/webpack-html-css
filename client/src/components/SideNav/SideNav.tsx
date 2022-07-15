@@ -3,7 +3,7 @@ import { Footer, Logo, Menu, Nav } from './SideNav.style'
 import { PATH } from '@/constants/paths'
 import logo from '@/assets/images/logo.svg'
 import { connect, ConnectedProps } from 'react-redux'
-import { FiHome, FiUsers, FiPackage, FiPieChart } from 'react-icons/fi'
+import { FiHome, FiUsers, FiPackage, FiPieChart, FiFolder, FiSettings } from 'react-icons/fi'
 import { TbReportAnalytics } from 'react-icons/tb'
 import ReactTooltip from '@huner2/react-tooltip'
 
@@ -89,7 +89,7 @@ function SideNav(props: Props): JSX.Element {
             </NavLink>
           </li>
           <li>
-            <NavLink to={PATH.REPORT}>
+            <NavLink to={PATH.REPORTS}>
               <TbReportAnalytics data-for='reports-tooltip' data-tip='' />
               <ReactTooltip
                 id='reports-tooltip'
@@ -100,7 +100,37 @@ function SideNav(props: Props): JSX.Element {
               >
                 {'Reports'}
               </ReactTooltip>
-              <span>Report</span>
+              <span>Reports</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={PATH.FILE_MANAGER}>
+              <FiFolder data-for='file-manger-tooltip' data-tip='' />
+              <ReactTooltip
+                id='file-manger-tooltip'
+                effect='float'
+                globalEventOff=''
+                event='mouseenter'
+                eventOff='mouseleave'
+              >
+                {'File manger'}
+              </ReactTooltip>
+              <span>File manger</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={PATH.SETTINGS}>
+              <FiSettings data-for='settings-tooltip' data-tip='' />
+              <ReactTooltip
+                id='settings-tooltip'
+                effect='float'
+                globalEventOff=''
+                event='mouseenter'
+                eventOff='mouseleave'
+              >
+                {'Settings'}
+              </ReactTooltip>
+              <span>Settings</span>
             </NavLink>
           </li>
         </Menu>

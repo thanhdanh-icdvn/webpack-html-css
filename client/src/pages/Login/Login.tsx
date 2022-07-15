@@ -9,6 +9,7 @@ import { LoginButton, StyledGoogleButton, Title } from './Login.styles'
 import { FiLogIn } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebook } from 'react-icons/fa'
+import theme from '@/theme'
 
 const mapStateToProps = (state: AppState) => ({
   loading: state.login.loading
@@ -82,7 +83,7 @@ const Login = (props: Props) => {
                   className='form-control form-control-lg mb-4'
                 />
                 {error && <div className='mb-3 text-danger text-xl-center'>{error}</div>}
-                <LoginButton type='submit' className='btn btn-block btn-info btn-lg'>
+                <LoginButton type='submit' className='btn btn-info btn-lg'>
                   <FiLogIn />
                   Login
                 </LoginButton>
@@ -97,7 +98,7 @@ const Login = (props: Props) => {
               </StyledGoogleButton>
               <StyledGoogleButton className='facebook-btn mt-3'>
                 <button className='facebook-btn__wrapper'>
-                  <FaFacebook className='facebook-btn__icon' color='blue' />
+                  <FaFacebook className='facebook-btn__icon' color={theme.facebook} />
                   <div className='facebook-btn__text'>
                     <span>Sign in with Facebook</span>
                   </div>

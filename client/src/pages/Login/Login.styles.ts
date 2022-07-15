@@ -5,8 +5,9 @@ export const Title = styled.h1`
   margin-bottom: 1rem;
 `
 export const LoginButton = styled.button`
-  display: inline-flex;
+  display: inline-block;
   align-items: center;
+  width: 100%;
   svg {
     margin-right: 5px;
     vertical-align: middle;
@@ -27,7 +28,7 @@ export const StyledGoogleButton = styled.div`
       border: 1px solid ${theme.grey};
       background-color: ${theme.white};
       border-radius: 4px;
-      padding: 10px;
+      padding: 5px 10px;
       display: flex;
       justify-content: center;
       align-items: center;

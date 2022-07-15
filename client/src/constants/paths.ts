@@ -4,5 +4,7 @@ export const PATH = {
   USERS: '/users',
   LOGIN: '/login',
   STATISTICAL: '/statistical',
-  REPORT: '/report'
+  REPORTS: '/reports',
+  FILE_MANAGER: '/file-manager',
+  SETTINGS: '/settings'
 }

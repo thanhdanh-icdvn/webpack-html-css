@@ -66,3 +66,31 @@ export const SearchBox = styled.input`
     outline: none;
   }
 `
+
+export const HeaderRight = styled.div`
+  display: flex;
+  align-items: center;
+`
+export const ProfileAvatar = styled.img`
+  background-color: ${theme.blue};
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  &::after {
+    content: '';
+    background-image: ${(props) => {
+      return props.src
+    }};
+    color: ${(props) => {
+      return props.color || 'white'
+    }};
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+`

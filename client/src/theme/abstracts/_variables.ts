@@ -38,7 +38,10 @@ const variables = {
   fontWeightBold: 600,
 
   // z-index
-  zIndex: (name: string) => zIndexTypes[name as keyof typeof zIndexTypes]
+  zIndex: (name: string) => zIndexTypes[name as keyof typeof zIndexTypes],
+
+  // brand
+  facebook: '#3b5998'
 }
 
 export default variables

@@ -10,6 +10,10 @@ const UserItem = lazy(() => import('@/pages/User/UserItem/UserItem'))
 const UserList = lazy(() => import('@/pages/User/UserList/UserList'))
 const Login = lazy(() => import('@/pages/Login/Login'))
 const NotFound = lazy(() => import('@/pages/NotFound/NotFound'))
+const ReportList = lazy(() => import('@/pages/Report/ReportList'))
+const ReportItem = lazy(() => import('@/pages/Report/ReportItem'))
+const FileManager = lazy(() => import('@/pages/FileManager/FileManager'))
+const Settings = lazy(() => import('@/pages/Settings/Settings'))
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -56,6 +60,44 @@ export default function AppRoutes() {
             element={
               <Suspense fallback={<Loading />}>
                 <UserItem />
+              </Suspense>
+            }
+          />
+        </Route>
+        <Route element={<AuthenticatedGuard />}>
+          <Route
+            path={PATH.FILE_MANAGER}
+            element={
+              <Suspense fallback={<Loading />}>
+                <FileManager />
+              </Suspense>
+            }
+          />
+        </Route>
+        <Route element={<AuthenticatedGuard />}>
+          <Route
+            path={PATH.REPORTS}
+            element={
+              <Suspense fallback={<Loading />}>
+                <ReportList />
+              </Suspense>
+            }
+          />
+          <Route
+            path={PATH.REPORTS + '/:reportId'}
+            element={
+              <Suspense fallback={<Loading />}>
+                <ReportItem />
+              </Suspense>
+            }
+          />
+        </Route>
+        <Route element={<AuthenticatedGuard />}>
+          <Route
+            path={PATH.SETTINGS}
+            element={
+              <Suspense fallback={<Loading />}>
+                <Settings />
               </Suspense>
             }
           />
