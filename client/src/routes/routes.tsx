@@ -13,7 +13,7 @@ const NotFound = lazy(() => import('@/pages/NotFound/NotFound'))
 const ReportList = lazy(() => import('@/pages/Report/ReportList'))
 const ReportItem = lazy(() => import('@/pages/Report/ReportItem'))
 const FileManager = lazy(() => import('@/pages/FileManager/FileManager'))
-const Settings = lazy(() => import('@/pages/Settings/Settings'))
+const Settings = lazy(() => import('@/pages/Setting/Settings'))
 export default function AppRoutes() {
   return (
     <BrowserRouter>
