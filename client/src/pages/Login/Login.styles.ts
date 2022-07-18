@@ -13,7 +13,7 @@ export const LoginButton = styled.button`
     vertical-align: middle;
   }
 `
-export const StyledGoogleButton = styled.div`
+export const StyledSocialButton = styled.div`
   svg {
     flex-shrink: 0;
     vertical-align: middle;
@@ -21,7 +21,8 @@ export const StyledGoogleButton = styled.div`
     height: 30px;
   }
   .google-btn,
-  .facebook-btn {
+  .facebook-btn,
+  .github-btn {
     display: block;
     width: 100%;
     &__wrapper {

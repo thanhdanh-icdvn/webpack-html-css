@@ -11,7 +11,7 @@ import cookieParser from 'cookie-parser';
 import { apiLimitter } from './middlewares/rate-limit.middleware';
 import { MONGO_OPTIONS, MONGO_PASSWORD, MONGO_URL_POSTFIX, MONGO_URL_PREFIX, MONGO_USERNAME } from './config';
 import passport from 'passport';
-import { googlePassportMiddleware, facebookPassportMiddleware } from './middlewares/auth.middleware';
+import { googlePassportMiddleware, facebookPassportMiddleware, githubPassportMiddleware } from './middlewares/auth.middleware';
 import sessions from 'express-session';
 import { initializeApp } from 'firebase/app';
 
@@ -57,6 +57,7 @@ app.use(sessions({
 }));
 googlePassportMiddleware();
 facebookPassportMiddleware();
+githubPassportMiddleware();
 app.use(passport.initialize());
 app.use(passport.session());
 /**

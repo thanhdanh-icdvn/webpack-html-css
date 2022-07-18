@@ -5,10 +5,10 @@ import { login } from './Login.thunks'
 import { PATH } from '../../constants/paths'
 import { Helmet } from 'react-helmet-async'
 
-import { LoginButton, StyledGoogleButton, Title } from './Login.styles'
+import { LoginButton, StyledSocialButton, Title } from './Login.styles'
 import { FiLogIn } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
-import { FaFacebook } from 'react-icons/fa'
+import { FaFacebook, FaGithub } from 'react-icons/fa'
 import theme from '@/theme'
 
 const mapStateToProps = (state: AppState) => ({
@@ -50,7 +50,16 @@ const Login = (props: Props) => {
         })
     }
   }
+  function handleLoginWithGoogle(): void {
+    window.open('/api/v1/auth/google', '_self')
+  }
 
+  function handleLoginWithFacebook(): void {
+    window.open('/api/v1/auth/facebook', '_self')
+  }
+  function handleLoginWithGithub(): void {
+    window.open('/api/v1/auth/github', '_self')
+  }
   return (
     <Fragment>
       <Helmet>
@@ -64,47 +73,62 @@ const Login = (props: Props) => {
       <div className='container'>
         <div className='min-vh-100 row'>
           <div className='col-md-6 m-auto'>
-            <form className='p-5 rounded-sm shadow text-center' onSubmit={submit}>
-              <div className='login-email-block py-3'>
-                <Title>Login</Title>
-                <p className='text-muted text-sm-center'>Login by username and password</p>
-                <input
-                  autoComplete='username'
-                  type='text'
-                  placeholder='Username'
-                  onChange={handleUsername}
-                  className='form-control form-control-lg mb-4'
-                />
-                <input
-                  autoComplete='current-password'
-                  type='password'
-                  placeholder='Password'
-                  onChange={handlePassword}
-                  className='form-control form-control-lg mb-4'
-                />
-                {error && <div className='mb-3 text-danger text-xl-center'>{error}</div>}
-                <LoginButton type='submit' className='btn btn-info btn-lg'>
-                  <FiLogIn />
-                  Login
-                </LoginButton>
+            <div className='p-5 rounded-sm shadow text-center'>
+              <form className='' onSubmit={submit}>
+                <div className='login-email-block py-3'>
+                  <Title>Login</Title>
+                  <p className='text-muted text-sm-center'>Login by username and password</p>
+                  <input
+                    autoComplete='username'
+                    type='text'
+                    placeholder='Username'
+                    onChange={handleUsername}
+                    className='form-control form-control-lg mb-4'
+                  />
+                  <input
+                    autoComplete='current-password'
+                    type='password'
+                    placeholder='Password'
+                    onChange={handlePassword}
+                    className='form-control form-control-lg mb-4'
+                  />
+                  {error && <div className='mb-3 text-danger text-xl-center'>{error}</div>}
+                  <LoginButton type='submit' className='btn btn-info btn-lg'>
+                    <FiLogIn />
+                    Login
+                  </LoginButton>
+                </div>
+              </form>
+              <div className='social-login-block'>
+                <StyledSocialButton className='google-btn'>
+                  <button className='google-btn__wrapper' onClick={() => handleLoginWithGoogle()}>
+                    <FcGoogle className='google-btn__icon' />
+                    <div className='google-btn__text'>
+                      <span>Sign in with Google</span>
+                    </div>
+                  </button>
+                </StyledSocialButton>
+                <StyledSocialButton className='facebook-btn mt-3'>
+                  <button
+                    className='facebook-btn__wrapper'
+                    onClick={() => handleLoginWithFacebook()}
+                  >
+                    <FaFacebook className='facebook-btn__icon' color={theme.facebook} />
+                    <div className='facebook-btn__text'>
+                      <span>Sign in with Facebook</span>
+                    </div>
+                  </button>
+                </StyledSocialButton>
+                <StyledSocialButton className='github-btn mt-3'>
+                  <button className='github-btn__wrapper' onClick={() => handleLoginWithGithub()}>
+                    <FaGithub className='github-btn__icon' color={theme.github} />
+                    <div className='github-btn__text'>
+                      <span>Sign in with Github</span>
+                    </div>
+                  </button>
+                </StyledSocialButton>
               </div>
-              <StyledGoogleButton className='google-btn'>
-                <button className='google-btn__wrapper'>
-                  <FcGoogle className='google-btn__icon' />
-                  <div className='google-btn__text'>
-                    <span>Sign in with Google</span>
-                  </div>
-                </button>
-              </StyledGoogleButton>
-              <StyledGoogleButton className='facebook-btn mt-3'>
-                <button className='facebook-btn__wrapper'>
-                  <FaFacebook className='facebook-btn__icon' color={theme.facebook} />
-                  <div className='facebook-btn__text'>
-                    <span>Sign in with Facebook</span>
-                  </div>
-                </button>
-              </StyledGoogleButton>
-            </form>
+            </div>
           </div>
         </div>
       </div>

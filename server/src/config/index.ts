@@ -32,6 +32,13 @@ export const {
   FIREBASE_MESSAGING_SENDER_ID,
   FIREBASE_APP_ID,
   FIREBASE_MEASUREMENT_ID,
+
+  CLIENT_HOST_NAME,
+  CLIENT_PORT,
+
+  GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET,
+  GITHUB_CALLBACK_URI
 } = process.env;
 
 export const firebaseConfig:IFirebaseConfig = {

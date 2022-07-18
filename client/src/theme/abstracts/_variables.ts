@@ -41,7 +41,8 @@ const variables = {
   zIndex: (name: string) => zIndexTypes[name as keyof typeof zIndexTypes],
 
   // brand
-  facebook: '#3b5998'
+  facebook: '#3b5998',
+  github: '#171515'
 }
 
 export default variables
