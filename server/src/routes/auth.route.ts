@@ -90,7 +90,6 @@ AuthRouter.route('/github/success').get(async function (req, res) {
 AuthRouter.route('/github/failed').get(async function (req, res) {
   res.redirect(clientLoginURI)
 });
-
 AuthRouter.route('/logout').get(async function (req, res) {
   req.logout({ keepSessionInfo: false }, (error) => {
     if (error) {

@@ -42,7 +42,8 @@ const variables = {
 
   // brand
   facebook: '#3b5998',
-  github: '#171515'
+  github: '#171515',
+  microsoft: '#00a4ef'
 }
 
 export default variables

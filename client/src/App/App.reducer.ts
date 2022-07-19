@@ -7,9 +7,9 @@ interface IAction {
 }
 const initialState = {
   isAuthenticated: !!localStorage.getItem('token'),
+  profileItem: null,
   closeSideNav: false
 }
-
 export const AppReducer = (state = initialState, action: IAction) =>
   produce(state, (draft) => {
     switch (action.type) {

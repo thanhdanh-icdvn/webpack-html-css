@@ -38,7 +38,11 @@ export const {
 
   GITHUB_CLIENT_ID,
   GITHUB_CLIENT_SECRET,
-  GITHUB_CALLBACK_URI
+  GITHUB_CALLBACK_URI,
+
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET
 } = process.env;
 
 export const firebaseConfig:IFirebaseConfig = {
@@ -49,4 +53,13 @@ export const firebaseConfig:IFirebaseConfig = {
   messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
   appId: FIREBASE_APP_ID,
   measurementId: FIREBASE_MEASUREMENT_ID
+}
+
+export const CLOUDINARY_URL=`cloudinary://${CLOUDINARY_API_KEY}:${CLOUDINARY_API_SECRET}@${CLOUDINARY_CLOUD_NAME}`
+
+export const cloudinaryConfig = {
+  cloud_name: CLOUDINARY_CLOUD_NAME,
+  api_key: CLOUDINARY_API_KEY,
+  api_secret: CLOUDINARY_API_SECRET,
+  secure: true
 }

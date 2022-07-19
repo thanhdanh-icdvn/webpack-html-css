@@ -22,7 +22,8 @@ export const StyledSocialButton = styled.div`
   }
   .google-btn,
   .facebook-btn,
-  .github-btn {
+  .github-btn,
+  .microsoft-btn {
     display: block;
     width: 100%;
     &__wrapper {

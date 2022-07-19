@@ -1,11 +1,26 @@
 import { Profile as GoogleProfile, Strategy as GoogleStratery } from 'passport-google-oauth20';
 import { NextFunction, Request, Response } from 'express';
+import { Strategy as FacebookStrategy, Profile as FacebookProfile } from 'passport-facebook';
+import { Strategy as GithubStrategy, Profile as GithubProfile } from 'passport-github2'
+import { Strategy as LocalStrategy } from 'passport-local';
 import { verify } from 'jsonwebtoken';
 import passport from 'passport';
-import { FACEBOOK_CLIENT_SECRET, FACEBOOK_CLIENT_ID, GOOGLE_CALLBACK_URI, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, TOKEN_SECRET, FACEBOOK_CALLBACK_URI, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GITHUB_CALLBACK_URI } from '../config';
+import {
+  FACEBOOK_CLIENT_SECRET,
+  FACEBOOK_CLIENT_ID,
+  GOOGLE_CALLBACK_URI,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  TOKEN_SECRET,
+  FACEBOOK_CALLBACK_URI,
+  GITHUB_CLIENT_ID,
+  GITHUB_CLIENT_SECRET,
+  GITHUB_CALLBACK_URI
+} from '../config';
 import { log } from '../server';
-import { Strategy as FacebookStratery, Profile as FacebookProfile } from 'passport-facebook';
-import {Strategy as GithubStratery, Profile as GithubProfile } from 'passport-github2'
+import { decrypt } from '../utils/utils.encode';
+import { IUser } from '../interfaces/users.interface';
+import { UserModel } from '../models/users.model';
 
 export const verifyToken = (req: Request, res: Response, next: NextFunction) => {
   const token = req.query.token?.toString() || req.headers.authorization?.split(' ')[1];
@@ -33,7 +48,7 @@ export const googlePassportMiddleware = () => {
       clientSecret: GOOGLE_CLIENT_SECRET as string,
       callbackURL: GOOGLE_CALLBACK_URI as string
     },
-    (accessToken: string, _refreshToken: string, profile: GoogleProfile, done: (err?: Error|null|undefined, user?: GoogleProfile) => void) => {
+    (accessToken: string, _refreshToken: string, profile: GoogleProfile, done: (err?: Error | null | undefined, user?: GoogleProfile) => void) => {
       log.info(accessToken, profile);
       return done(null, profile);
     }
@@ -50,7 +65,7 @@ export const googlePassportMiddleware = () => {
 }
 
 export const facebookPassportMiddleware = () => {
-  passport.use(new FacebookStratery({
+  passport.use(new FacebookStrategy({
     clientID: FACEBOOK_CLIENT_ID as string,
     clientSecret: FACEBOOK_CLIENT_SECRET as string,
     callbackURL: FACEBOOK_CALLBACK_URI as string
@@ -72,7 +87,7 @@ export const facebookPassportMiddleware = () => {
 }
 
 export const githubPassportMiddleware = () => {
-  passport.use(new GithubStratery({
+  passport.use(new GithubStrategy({
     clientID: GITHUB_CLIENT_ID as string,
     clientSecret: GITHUB_CLIENT_SECRET as string,
     callbackURL: GITHUB_CALLBACK_URI as string
@@ -80,6 +95,28 @@ export const githubPassportMiddleware = () => {
     (accessToken: string, _refreshToken: string, profile: GithubProfile, done: (err?: Error | null, user?: GithubProfile) => void) => {
       log.info(accessToken, profile);
       return done(null, profile);
+    }
+  ));
+  passport.serializeUser((user: Express.User, done) => {
+    log.info(user);
+    done(null, user);
+  });
+
+  passport.deserializeUser((userId: string, done) => {
+    log.info(userId);
+    done(null, userId);
+  });
+}
+
+export const localPassportMiddleware = () => {
+  passport.use(new LocalStrategy(
+    function (username, password, done) {
+      UserModel.findOne({ username: username }, (err: Error | null | undefined, user: IUser) => {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        if (decrypt(user.password) !== password) { return done(null, false); }
+        return done(null, user);
+      });
     }
   ));
   passport.serializeUser((user: Express.User, done) => {
