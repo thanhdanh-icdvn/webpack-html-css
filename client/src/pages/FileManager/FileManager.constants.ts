@@ -1,0 +1,3 @@
+export const GET_ALL_RESOURCES_REQUESTED = 'views/file-manager/GET_ALL_RESOURCES_REQUESTED'
+export const GET_ALL_RESOURCES_SUCCESS = 'views/file-manager/GET_ALL_RESOURCES_SUCCESS'
+export const GET_ALL_RESOURCES_FAILED = 'views/file-manager/GET_ALL_RESOURCES_FAILED'

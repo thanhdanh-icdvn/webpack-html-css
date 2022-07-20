@@ -1,24 +1,42 @@
-import { NavLink } from 'react-router-dom'
-import { Footer, Logo, Menu, Nav } from './SideNav.style'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { ButtonLink, Footer, Logo, Menu, Nav } from './SideNav.style'
 import { PATH } from '@/constants/paths'
 import logo from '@/assets/images/logo.svg'
 import { connect, ConnectedProps } from 'react-redux'
-import { FiHome, FiUsers, FiPackage, FiPieChart, FiFolder, FiSettings } from 'react-icons/fi'
+import {
+  FiHome,
+  FiUsers,
+  FiPackage,
+  FiPieChart,
+  FiFolder,
+  FiSettings,
+  FiLogOut
+} from 'react-icons/fi'
 import { TbReportAnalytics } from 'react-icons/tb'
 import ReactTooltip from '@huner2/react-tooltip'
+import { useEffect } from 'react'
+import { logout } from '@/App/App.actions'
 
 const mapStateToProps = (state: AppState) => ({
   closeSideNav: state.app.closeSideNav
 })
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {
+  logout
+}
 
 const connector = connect(mapStateToProps, mapDispatchToProps)
 
 type Props = ConnectedProps<typeof connector>
 
 function SideNav(props: Props): JSX.Element {
-  const { closeSideNav } = props
+  const { closeSideNav, logout } = props
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    logout()
+    navigate(PATH.LOGIN)
+  }
+  useEffect(() => undefined, [navigate])
   return (
     <Nav className={closeSideNav ? 'close' : ''}>
       <div className='nav-top'>
@@ -132,6 +150,21 @@ function SideNav(props: Props): JSX.Element {
               </ReactTooltip>
               <span>Settings</span>
             </NavLink>
+          </li>
+          <li>
+            <ButtonLink onClick={handleLogout}>
+              <FiLogOut data-for='logout-tooltip' data-tip='' />
+              <ReactTooltip
+                id='logout-tooltip'
+                effect='float'
+                globalEventOff=''
+                event='mouseenter'
+                eventOff='mouseleave'
+              >
+                {'Logout'}
+              </ReactTooltip>
+              <span>Logout</span>
+            </ButtonLink>
           </li>
         </Menu>
       </div>

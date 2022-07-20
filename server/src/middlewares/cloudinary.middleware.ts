@@ -1,11 +1,11 @@
 import { cloudinaryConfig } from './../config/index'
 import { Request, Response } from 'express';
-import { UploadApiResponse, v2 as cloudinary,ResourceApiResponse } from 'cloudinary'
+import { UploadApiResponse, v2 as cloudinary, ResourceApiResponse, UploadApiErrorResponse } from 'cloudinary'
 
 cloudinary.config(cloudinaryConfig)
 export const cloudinaryUploadSingle = async (req: Request, res: Response) => {
   const { file } = req;
-  cloudinary.uploader.upload(file?.path as string, (error: Error, result: UploadApiResponse) => {
+  cloudinary.uploader.upload(file?.path as string, (error: UploadApiErrorResponse | undefined , result: UploadApiResponse | undefined) => {
     if (error) {
       return res.status(500).json({
         code: 500,
@@ -26,10 +26,10 @@ export const cloudinaryUploadSingle = async (req: Request, res: Response) => {
   })
 }
 
-export const cloudinaryGetAllResources = (req: Request,res: Response) => {
+export const cloudinaryGetAllResources = (req: Request, res: Response) => {
   return cloudinary.api.resources({
-    type:req.params.type
-  },(error : Error,result: ResourceApiResponse ) => {
+    type: req.params.type
+  }, (error: UploadApiErrorResponse | undefined, result: ResourceApiResponse | undefined) => {
     if (error) {
       return res.status(500).json({
         code: 500,
@@ -50,27 +50,27 @@ export const cloudinaryGetAllResources = (req: Request,res: Response) => {
   })
 }
 
-export const cloudinaryGetResourceByName = (req: Request,res: Response) => {
-  const {name} =req.params
+export const cloudinaryGetResourceByName = (req: Request, res: Response) => {
+  const { public_id } = req.params
   return cloudinary.api.resource(
-    name as string
-  ,(error : Error,result: ResourceApiResponse ) => {
-    if (error) {
-      return res.status(500).json({
-        code: 500,
-        stack: error.stack,
-        name: error.name,
-        message: 'Error. Details: ' + error.message
-      })
-    }
-    if (result) {
-      return res.status(200).json({
-        code: 200,
-        message: 'Get '+ name + ' success',
-        data: {
-          ...result
-        }
-      })
-    }
-  })
+    public_id as string
+    , (error: UploadApiErrorResponse | undefined, result: ResourceApiResponse | undefined) => {
+      if (error) {
+        return res.status(500).json({
+          code: 500,
+          stack: error.stack,
+          name: error.name,
+          message: 'Error. Details: ' + error.message
+        })
+      }
+      if (result) {
+        return res.status(200).json({
+          code: 200,
+          message: 'Get ' + public_id + ' success',
+          data: {
+            ...result
+          }
+        })
+      }
+    })
 }

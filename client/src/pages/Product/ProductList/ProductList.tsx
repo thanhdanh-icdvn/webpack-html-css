@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { PATH } from '../../../constants/paths'
 import { handlePrice } from '../../../helper/priceString'
 import { TableContainer } from './ProductList.styles'
-import { useEffect } from 'react'
+import { Fragment, useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 
 const mapStateToProps = (state: AppState) => ({
@@ -27,40 +27,42 @@ const ProductList = (props: Props) => {
   }, [getProductList])
 
   return (
-    <MainLayout>
+    <Fragment>
       <Helmet>
         <title>Product List</title>
       </Helmet>
-      <h2>Product List</h2>
-      <TableContainer>
-        <table className='table table-striped'>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {productList.map((product, index) => (
-              <tr key={product.id}>
-                <th>{index + 1}</th>
-                <td>{product.name}</td>
-                <td>{product.quantity}</td>
-                <td>{handlePrice(product.price)}</td>
-                <td>
-                  <Link className='btn btn-primary' to={PATH.PRODUCTS + `/${product.id}`}>
-                    Detail
-                  </Link>
-                </td>
+      <MainLayout>
+        <h2>Product List</h2>
+        <TableContainer>
+          <table className='table table-striped'>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </TableContainer>
-    </MainLayout>
+            </thead>
+            <tbody>
+              {productList.map((product, index) => (
+                <tr key={product.id}>
+                  <th>{index + 1}</th>
+                  <td>{product.name}</td>
+                  <td>{product.quantity}</td>
+                  <td>{handlePrice(product.price)}</td>
+                  <td>
+                    <Link className='btn btn-primary' to={PATH.PRODUCTS + `/${product.id}`}>
+                      Detail
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </TableContainer>
+      </MainLayout>
+    </Fragment>
   )
 }
 

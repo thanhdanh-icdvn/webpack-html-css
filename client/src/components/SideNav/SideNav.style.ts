@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { BREAKPOINT, COLOR } from '@/constants/styles'
+import theme from '@/theme'
 
 export const Footer = styled.div`
   padding: 0 30px;
@@ -85,5 +86,16 @@ export const Logo = styled(Link)`
     height: auto;
     background-repeat: no-repeat;
     object-fit: cover;
+  }
+`
+
+export const ButtonLink = styled.button`
+  background-color: transparent;
+  border: none;
+  color: ${theme.white};
+  padding: 10px 30px;
+
+  svg {
+    margin-right: 10px;
   }
 `

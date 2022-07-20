@@ -14,4 +14,4 @@ UploadRouter.route('/multiple').post(verifyToken,uploadMultipleMiddleWare, Uploa
 UploadRouter.route('/photos').post(verifyToken,uploadPhotoMiddleware, UploadController.uploadMultipleFile);
 UploadRouter.route('/cloudinary/single').post(verifyToken,uploadSingleMiddleWare, cloudinaryUploadSingle);
 UploadRouter.route('/cloudinary/resources').get(verifyToken,cloudinaryGetAllResources);
-UploadRouter.route('/cloudinary/resources/:name').get(verifyToken,cloudinaryGetResourceByName);
+UploadRouter.route('/cloudinary/resources/:public_id').get(verifyToken,cloudinaryGetResourceByName);

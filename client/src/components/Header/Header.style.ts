@@ -19,6 +19,9 @@ export const LogoutIcon = styled.span`
     margin-right: 5px;
     vertical-align: middle;
   }
+  @media (max-width: ${BREAKPOINT.MD - 1}px) {
+    display: none;
+  }
 `
 
 export const SearchBoxWrapper = styled.div`
@@ -31,7 +34,7 @@ export const SearchBoxWrapper = styled.div`
   flex: 1;
   max-width: 80%;
   @media (max-width: ${BREAKPOINT.MD - 1}px) {
-    max-width: 50%;
+    display: none;
   }
   svg {
     display: flex;

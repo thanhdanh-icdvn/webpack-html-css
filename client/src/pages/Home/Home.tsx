@@ -13,7 +13,7 @@ export default function Home() {
         <meta name='robots' content='index, follow' />
       </Helmet>
       <MainLayout>
-        <HomeWrapper>
+        <HomeWrapper className='px-3'>
           <h2 className='mb-4'>Home</h2>
           <ChartComponent />
         </HomeWrapper>

@@ -1,14 +1,30 @@
 import MainLayout from '@/layouts/MainLayout'
-import { useEffect, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useDropzone } from 'react-dropzone'
 import { Thumb, ThumbsContainer, ThumbImage, ThumbInner } from './FileManager.styles'
+import { connect, ConnectedProps } from 'react-redux'
+import { getAllCloudinaryResources } from './FileManager.thunks'
+import { ImageSlider } from './ImageSlider'
 
-interface FileWithPreview extends File {
-  preview: string
+const mapStateToProps = (state: AppState) => ({
+  loading: state.resources.loading,
+  resources: state.resources.resources
+})
+
+const mapDispatchToProps = {
+  getAllCloudinaryResources
 }
-const FileManager: React.FC<unknown> = (): JSX.Element => {
+type FileManagerProps = ConnectedProps<typeof connector>
+
+const connector = connect(mapStateToProps, mapDispatchToProps)
+const FileManager: React.FC<FileManagerProps> = (props: FileManagerProps): JSX.Element => {
   const [files, setFiles] = useState<FileWithPreview[]>([])
+  const [imageSize, setImageSize] = useState<number>(400)
+  const { getAllCloudinaryResources, resources } = props
+  useEffect(() => {
+    getAllCloudinaryResources()
+  }, [getAllCloudinaryResources])
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       'image/*': []
@@ -40,6 +56,10 @@ const FileManager: React.FC<unknown> = (): JSX.Element => {
     </Thumb>
   ))
 
+  const handleChangeImageSize = (event: ChangeEvent<HTMLInputElement>) => {
+    setImageSize(Number.parseFloat(event.target.value))
+  }
+
   useEffect(() => {
     return () => files.forEach((file) => URL.revokeObjectURL(file.preview))
   })
@@ -48,18 +68,72 @@ const FileManager: React.FC<unknown> = (): JSX.Element => {
       <Helmet>
         <title>File manager</title>
       </Helmet>
-      <div>
-        <h3>File Manager</h3>
-        <section className='container'>
-          <div {...getRootProps({ className: 'dropzone' })}>
-            <input {...getInputProps()} />
-            <p>Drag and drop some files here, or click to select files</p>
+      <div className=''>
+        <section>
+          <h3>File Manager</h3>
+          <div className='container'>
+            <div {...getRootProps({ className: 'dropzone' })}>
+              <input {...getInputProps()} />
+              <p>Drag and drop some files here, or click to select files</p>
+            </div>
+            <ThumbsContainer>{thumbs}</ThumbsContainer>
+            <div
+              style={{
+                display: 'block',
+                width: '100%'
+              }}
+            >
+              <input
+                type='range'
+                min={200}
+                max={1000}
+                value={imageSize || 200}
+                onChange={handleChangeImageSize}
+                id={'image-slider'}
+                style={{
+                  display: 'inline-block',
+                  width: '100%',
+                  cursor: 'pointer'
+                }}
+              />
+              <input
+                type='number'
+                id='textInput'
+                value={imageSize || 200}
+                onChange={(e) => setImageSize(Number.parseFloat(e.target.value))}
+              />
+              <label htmlFor='textInput'>Image size</label>
+            </div>
+            {resources &&
+              resources.map((image) => {
+                return (
+                  <img
+                    key={image.asset_id}
+                    src={image.url}
+                    alt={image.public_id}
+                    srcSet={image.url}
+                    width={imageSize || 200}
+                    height={imageSize || 200}
+                    className='m-3'
+                    style={{
+                      maxWidth: '100%',
+                      aspectRatio: '16/9',
+                      objectFit: 'cover'
+                    }}
+                  />
+                )
+              })}
           </div>
-          <ThumbsContainer>{thumbs}</ThumbsContainer>
+        </section>
+        <section>
+          <h3>Image slider</h3>
+          <div className='container'>
+            <ImageSlider images={resources} imageHeight={imageSize} />
+          </div>
         </section>
       </div>
     </MainLayout>
   )
 }
 
-export default FileManager
+export default connector(FileManager)

@@ -15,7 +15,8 @@ import { FiMenu, FiLogOut } from 'react-icons/fi'
 import { AiOutlineClose, AiOutlineSearch } from 'react-icons/ai'
 import DefaultAvatar from '@/assets/images/default_avatar.png'
 const mapStateToProps = (state: AppState) => ({
-  closeSideNav: state.app.closeSideNav
+  closeSideNav: state.app.closeSideNav,
+  profile: { name: 'user', avatar: '' }
 })
 
 const mapDispatchToProps = {
@@ -54,7 +55,7 @@ const Header: React.FC<Props> = (props: Props): JSX.Element => {
       </SearchBoxWrapper>
       <HeaderRight className='header--right'>
         <ProfileAvatar className='mx-3' src={DefaultAvatar} alt='Avatar'></ProfileAvatar>
-        <LogoutIcon onClick={handleLogout} className='btn btn-outline-secondary'>
+        <LogoutIcon onClick={handleLogout} className='btn btn-outline-secondary btn-logout'>
           <FiLogOut />
           Logout
         </LogoutIcon>

@@ -14,7 +14,7 @@ export default function MainLayout(props: Props) {
         <SideNav />
         <main className='flex-grow-1 mw-100 min-vh-100'>
           <Header />
-          <div className='content mt-3 p-3'>{children}</div>
+          <div className='content mt-3'>{children}</div>
         </main>
       </div>
     </React.Fragment>

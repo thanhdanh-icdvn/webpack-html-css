@@ -6,6 +6,7 @@ import { productItemReducer } from '../pages/Product/ProductItem/ProductItem.red
 import { userListReducer } from '../pages/User/UserList/UserList.reducer'
 import { userItemReducer } from '../pages/User/UserItem/UserItem.reducer'
 import { getProfileReducer } from '@/pages/Profile/ProfileItem/ProfileItem.reducer'
+import { resourcesReducer } from '@/pages/FileManager/FileManager.reducer'
 
 const rootReducer = combineReducers({
   app: AppReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   userList: userListReducer,
   productItem: productItemReducer,
   userItem: userItemReducer,
-  profileItem: getProfileReducer
+  profileItem: getProfileReducer,
+  resources: resourcesReducer
 })
 
 export default rootReducer
