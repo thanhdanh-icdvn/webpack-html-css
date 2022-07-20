@@ -89,13 +89,18 @@ export const Logo = styled(Link)`
   }
 `
 
-export const ButtonLink = styled.button`
+export const ButtonLink = styled.a`
   background-color: transparent;
   border: none;
   color: ${theme.white};
   padding: 10px 30px;
-
-  svg {
+  cursor: pointer;
+  svg,
+  img {
+    width: 20px;
+    height: auto;
+    display: inline-block;
     margin-right: 10px;
+    flex-shrink: 0;
   }
 `
